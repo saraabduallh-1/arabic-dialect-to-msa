@@ -34,7 +34,9 @@ GPU_FREE_FLAG = ROOT.parent / "kass-layer" / "logs" / "gpu-free.flag"
 QUIET_MINUTES = 30
 
 LLMS = ["gemma3:12b", "qwen2.5:7b", "aya-expanse:8b", "command-r7b-arabic:7b",
-        "llama3.1:8b", "qwen3:8b", "gemma3:4b"]
+        "llama3.1:8b", "qwen3:8b", "gemma3:4b", "qwen3.5:9b", "qwen3:14b"]
+# larger than the 10 GB GPU (runs partly on CPU, slow) - run last so it can't delay the rest
+BIG_LLMS = ["qwen3.8:27b"]
 SEQ2SEQ = [("UBC-NLP/AraT5v2-base-1024", "3e-4"), ("moussaKam/AraBART", "5e-5"), ("google/mt5-base", "5e-4")]
 NO_WINDOW = 0x08000000  # CREATE_NO_WINDOW
 
@@ -165,16 +167,22 @@ def main():
     wait_for_kass()
     step("install", install)
     ollama_up()
-    for m in LLMS:
+    for m in LLMS + BIG_LLMS:
         step(f"pull {m}", lambda m=m: sh([OLLAMA, "pull", m], timeout=3 * 3600))
-    for m in LLMS:
-        for mode in ["zero", "rag", "rag_lex"]:
-            step(f"llm {m} {mode}", lambda m=m, mode=mode: (
-                ollama_up(), sh([PY, "src/run_llm.py", "--models", m, "--modes", mode], timeout=12 * 3600)))
+
+    def llm_steps(models):
+        for m in models:
+            for mode in ["zero", "rag", "rag_lex"]:
+                step(f"llm {m} {mode}", lambda m=m, mode=mode: (
+                    ollama_up(), sh([PY, "src/run_llm.py", "--models", m, "--modes", mode], timeout=24 * 3600)))
+
+    llm_steps(LLMS)
     for model, lr in SEQ2SEQ:
         step(f"finetune {model}", lambda model=model, lr=lr: (
             unload_ollama(), sh([PY, "src/finetune.py", "--model", model, "--lr", lr], timeout=12 * 3600)))
     step("report", lambda: sh([PY, "src/report.py"]), tries=1)
+    llm_steps(BIG_LLMS)
+    step("final report", lambda: sh([PY, "src/report.py"]), tries=1)
 
     log("ALL DONE")
     git_sync("Benchmark: all done")

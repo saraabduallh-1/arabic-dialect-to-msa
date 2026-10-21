@@ -38,7 +38,8 @@ LLMS = ["gemma3:12b", "qwen2.5:7b", "aya-expanse:8b", "command-r7b-arabic:7b",
 # larger than the 10 GB GPU (runs partly on CPU, slow) - run last so it can't delay the rest
 BIG_LLMS = ["qwen3.8:27b"]
 SEQ2SEQ = [("UBC-NLP/AraT5v2-base-1024", "3e-4"), ("moussaKam/AraBART", "5e-5"), ("google/mt5-base", "5e-4")]
-NO_WINDOW = 0x08000000  # CREATE_NO_WINDOW
+QLORA = ["Qwen/Qwen2.5-7B-Instruct"]
+NO_WINDOW =0x08000000  # CREATE_NO_WINDOW
 
 
 def log(msg):
@@ -145,8 +146,11 @@ def unload_ollama():
 
 def install():
     pip = [PY, "-m", "pip", "install", "-q", "--timeout", "120", "--retries", "10"]
-    sh(pip + ["torch", "--index-url", "https://download.pytorch.org/whl/cu124"])
-    sh(pip + ["transformers<5", "sentencepiece", "accelerate", "protobuf", "tiktoken"])
+    sh(pip + ["transformers<5", "sentencepiece", "accelerate", "protobuf", "tiktoken", "peft", "bitsandbytes"])
+    # other packages can pull in the CPU-only torch from PyPI, so install the CUDA build last and verify it
+    if sh([PY, "-c", "import torch; assert torch.cuda.is_available()"], check=False):
+        sh(pip + ["--force-reinstall", "--no-deps", "torch", "--index-url", "https://download.pytorch.org/whl/cu130"])
+    sh([PY, "-c", "import torch; assert torch.cuda.is_available()"])
 
 
 def main():
@@ -180,6 +184,9 @@ def main():
     for model, lr in SEQ2SEQ:
         step(f"finetune {model}", lambda model=model, lr=lr: (
             unload_ollama(), sh([PY, "src/finetune.py", "--model", model, "--lr", lr], timeout=12 * 3600)))
+    for model in QLORA:
+        step(f"qlora {model}", lambda model=model: (
+            unload_ollama(), sh([PY, "src/qlora.py", "--model", model], timeout=24 * 3600)))
     step("report", lambda: sh([PY, "src/report.py"]), tries=1)
     llm_steps(BIG_LLMS)
     step("final report", lambda: sh([PY, "src/report.py"]), tries=1)

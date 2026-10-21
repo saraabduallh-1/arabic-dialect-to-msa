@@ -29,6 +29,8 @@ LOCK = RESULTS / "autorun.lock"
 TASK_NAME = "ArabicDialectAutorun"
 
 WAIT_FOR = "arabic_auto.py"
+# written by the KASS LAYER autopilot once all Gemma runs and its decision test are finished
+GPU_FREE_FLAG = ROOT.parent / "kass-layer" / "logs" / "gpu-free.flag"
 QUIET_MINUTES = 30
 
 LLMS = ["gemma3:12b", "qwen2.5:7b", "aya-expanse:8b", "command-r7b-arabic:7b",
@@ -79,14 +81,14 @@ def kass_running():
 def wait_for_kass():
     if "wait" in state():
         return
-    log(f"waiting for {WAIT_FOR} to finish")
+    log(f"waiting for {GPU_FREE_FLAG} and for {WAIT_FOR} to finish")
     quiet_since = None
     while True:
-        if kass_running():
+        if not GPU_FREE_FLAG.exists() or kass_running():
             quiet_since = None
         elif quiet_since is None:
             quiet_since = time.time()
-            log(f"{WAIT_FOR} not running; waiting {QUIET_MINUTES} min to be sure")
+            log(f"GPU-free flag found and {WAIT_FOR} not running; waiting {QUIET_MINUTES} min to be sure")
         elif time.time() - quiet_since >= QUIET_MINUTES * 60:
             break
         time.sleep(60)

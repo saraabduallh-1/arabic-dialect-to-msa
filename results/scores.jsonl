@@ -5,3 +5,4 @@
 {"model": "qwen2.5:7b", "mode": "rag", "BLEU": 24.18, "chrF++": 48.69, "ExactMatch%": 6.87, "SpanAcc%": 21.99, "DialectLeft%": 10.28, "n": 291}
 {"model": "qwen2.5:7b", "mode": "rag_lex", "BLEU": 22.58, "chrF++": 48.16, "ExactMatch%": 6.53, "SpanAcc%": 24.88, "DialectLeft%": 19.38, "n": 291}
 {"model": "aya-expanse:8b", "mode": "zero", "BLEU": 16.8, "chrF++": 43.7, "ExactMatch%": 4.47, "SpanAcc%": 23.8, "DialectLeft%": 6.87, "n": 291}
+{"model": "aya-expanse:8b", "mode": "rag", "BLEU": 23.38, "chrF++": 51.48, "ExactMatch%": 9.62, "SpanAcc%": 35.34, "DialectLeft%": 4.15, "n": 291}

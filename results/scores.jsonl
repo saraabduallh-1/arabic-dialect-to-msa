@@ -9,3 +9,4 @@
 {"model": "aya-expanse:8b", "mode": "rag_lex", "BLEU": 19.96, "chrF++": 47.94, "ExactMatch%": 7.9, "SpanAcc%": 32.1, "DialectLeft%": 3.12, "n": 291}
 {"model": "command-r7b-arabic:7b", "mode": "zero", "BLEU": 14.61, "chrF++": 42.4, "ExactMatch%": 3.78, "SpanAcc%": 21.52, "DialectLeft%": 6.94, "n": 291}
 {"model": "command-r7b-arabic:7b", "mode": "rag", "BLEU": 28.4, "chrF++": 54.56, "ExactMatch%": 8.93, "SpanAcc%": 34.85, "DialectLeft%": 6.2, "n": 291}
+{"model": "command-r7b-arabic:7b", "mode": "rag_lex", "BLEU": 27.64, "chrF++": 54.24, "ExactMatch%": 9.62, "SpanAcc%": 36.76, "DialectLeft%": 6.25, "n": 291}

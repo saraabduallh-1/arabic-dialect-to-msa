@@ -24,5 +24,6 @@
  "llm command-r7b-arabic:7b rag": "2026-10-22T21:36:33",
  "llm command-r7b-arabic:7b rag_lex": "2026-10-22T21:49:08",
  "llm llama3.1:8b zero": "2026-10-22T22:00:54",
- "llm llama3.1:8b rag": "2026-10-22T22:13:03"
+ "llm llama3.1:8b rag": "2026-10-22T22:13:03",
+ "llm llama3.1:8b rag_lex": "2026-10-22T22:25:10"
 }

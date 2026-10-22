@@ -11,3 +11,4 @@
 {"model": "command-r7b-arabic:7b", "mode": "rag", "BLEU": 28.4, "chrF++": 54.56, "ExactMatch%": 8.93, "SpanAcc%": 34.85, "DialectLeft%": 6.2, "n": 291}
 {"model": "command-r7b-arabic:7b", "mode": "rag_lex", "BLEU": 27.64, "chrF++": 54.24, "ExactMatch%": 9.62, "SpanAcc%": 36.76, "DialectLeft%": 6.25, "n": 291}
 {"model": "llama3.1:8b", "mode": "zero", "BLEU": 12.5, "chrF++": 38.5, "ExactMatch%": 0.69, "SpanAcc%": 6.7, "DialectLeft%": 22.08, "n": 291}
+{"model": "llama3.1:8b", "mode": "rag", "BLEU": 18.61, "chrF++": 45.7, "ExactMatch%": 3.78, "SpanAcc%": 18.04, "DialectLeft%": 11.8, "n": 291}

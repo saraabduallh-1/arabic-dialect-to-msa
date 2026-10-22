@@ -20,5 +20,6 @@
  "llm aya-expanse:8b zero": "2026-10-22T20:46:49",
  "llm aya-expanse:8b rag": "2026-10-22T20:58:53",
  "llm aya-expanse:8b rag_lex": "2026-10-22T21:11:04",
- "llm command-r7b-arabic:7b zero": "2026-10-22T21:23:56"
+ "llm command-r7b-arabic:7b zero": "2026-10-22T21:23:56",
+ "llm command-r7b-arabic:7b rag": "2026-10-22T21:36:33"
 }

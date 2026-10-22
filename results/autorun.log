@@ -15,3 +15,31 @@
 [2026-10-22 18:53:15] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -c import torch; assert torch.cuda.is_available()
 [2026-10-22 18:53:27] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -c import torch; assert torch.cuda.is_available()
 [2026-10-22 18:53:29] $ git add -A src results data README.md .gitignore
+[2026-10-22 18:53:29] $ git commit -q -m Benchmark: install
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+[2026-10-22 18:53:29] $ git remote get-url origin
+https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
+[2026-10-22 18:53:29] $ git push -q -u origin main
+[2026-10-22 18:53:34] === pull gemma3:12b (try 1)
+[2026-10-22 18:53:34] $ C:\Users\saraabduallh\AppData\Local\Programs\Ollama\ollama.exe pull gemma3:12b
+[?2026h[?25l[1Gpulling manifest ⠋ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠙ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠹ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠸ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠼ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠴ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠦ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠧ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠇ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠏ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠋ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠙ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠹ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠸ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠼ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest [K
+pulling 13576eb6dd8d: 100% ▕██████████████████▏ 7.3 GB                         [K
+pulling 4abe4caf8e68: 100% ▕██████████████████▏ 854 MB                         [K
+pulling e0a42594d802: 100% ▕██████████████████▏  358 B                         [K
+pulling dd084c7d92a3: 100% ▕██████████████████▏ 8.4 KB                         [K
+pulling 3116c5225075: 100% ▕██████████████████▏   77 B                         [K
+pulling fe25b92561cf: 100% ▕██████████████████▏  145 B                         [K
+verifying sha256 digest [K
+writing manifest ⠋ [K[?25h[?2026l[?2026h[?25l[A[A[A[A[A[A[A[A[1Gpulling manifest [K
+pulling 13576eb6dd8d: 100% ▕██████████████████▏ 7.3 GB                         [K
+pulling 4abe4caf8e68: 100% ▕██████████████████▏ 854 MB                         [K
+pulling e0a42594d802: 100% ▕██████████████████▏  358 B                         [K
+pulling dd084c7d92a3: 100% ▕██████████████████▏ 8.4 KB                         [K
+pulling 3116c5225075: 100% ▕██████████████████▏   77 B                         [K
+pulling fe25b92561cf: 100% ▕██████████████████▏  145 B                         [K
+verifying sha256 digest [K
+writing manifest [K
+removing unused layers [K
+success [K[?25h[?2026l
+[2026-10-22 18:53:36] $ git add -A src results data README.md .gitignore

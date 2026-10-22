@@ -28,5 +28,6 @@
  "llm llama3.1:8b rag_lex": "2026-10-22T22:25:10",
  "llm qwen3:8b zero": "2026-10-22T22:37:09",
  "llm qwen3:8b rag": "2026-10-22T22:49:19",
- "llm qwen3:8b rag_lex": "2026-10-22T23:01:33"
+ "llm qwen3:8b rag_lex": "2026-10-22T23:01:33",
+ "llm gemma3:4b zero": "2026-10-22T23:13:26"
 }

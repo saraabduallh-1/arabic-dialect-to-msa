@@ -1,0 +1,1 @@
+{"model": "gemma3:12b", "mode": "zero", "BLEU": 18.39, "chrF++": 45.09, "ExactMatch%": 6.19, "SpanAcc%": 27.33, "DialectLeft%": 5.3, "n": 291}

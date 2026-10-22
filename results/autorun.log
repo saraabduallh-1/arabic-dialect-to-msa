@@ -1,0 +1,17 @@
+[2026-10-21 09:33:03] autorun started
+[2026-10-21 09:33:03] waiting for arabic_auto.py to finish
+[2026-10-21 09:36:28] autorun started
+[2026-10-21 09:36:28] waiting for C:\Users\saraabduallh\Documents\kass-layer\logs\gpu-free.flag and for arabic_auto.py to finish
+[2026-10-21 09:44:17] autorun started
+[2026-10-21 09:44:17] waiting for C:\Users\saraabduallh\Documents\kass-layer\logs\gpu-free.flag and for arabic_auto.py to finish
+[2026-10-21 09:57:08] autorun started
+[2026-10-21 09:57:08] waiting for C:\Users\saraabduallh\Documents\kass-layer\logs\gpu-free.flag and for arabic_auto.py to finish
+[2026-10-22 18:23:10] GPU-free flag found and arabic_auto.py not running; waiting 30 min to be sure
+[2026-10-22 18:53:12] === install (try 1)
+[2026-10-22 18:53:12] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -m pip install -q --timeout 120 --retries 10 transformers<5 sentencepiece accelerate protobuf tiktoken peft bitsandbytes
+
+[notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -m pip install --upgrade pip
+[2026-10-22 18:53:15] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -c import torch; assert torch.cuda.is_available()
+[2026-10-22 18:53:27] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe -c import torch; assert torch.cuda.is_available()
+[2026-10-22 18:53:29] $ git add -A src results data README.md .gitignore

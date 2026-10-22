@@ -4,5 +4,6 @@
  "pull gemma3:12b": "2026-10-22T18:53:36",
  "pull qwen2.5:7b": "2026-10-22T18:53:40",
  "pull aya-expanse:8b": "2026-10-22T18:53:43",
- "pull command-r7b-arabic:7b": "2026-10-22T18:54:18"
+ "pull command-r7b-arabic:7b": "2026-10-22T18:54:18",
+ "pull llama3.1:8b": "2026-10-22T18:57:00"
 }

@@ -3,3 +3,4 @@
 {"model": "gemma3:12b", "mode": "rag_lex", "BLEU": 23.28, "chrF++": 52.05, "ExactMatch%": 7.22, "SpanAcc%": 36.11, "DialectLeft%": 4.7, "n": 291}
 {"model": "qwen2.5:7b", "mode": "zero", "BLEU": 12.61, "chrF++": 39.62, "ExactMatch%": 1.72, "SpanAcc%": 11.6, "DialectLeft%": 16.24, "n": 291}
 {"model": "qwen2.5:7b", "mode": "rag", "BLEU": 24.18, "chrF++": 48.69, "ExactMatch%": 6.87, "SpanAcc%": 21.99, "DialectLeft%": 10.28, "n": 291}
+{"model": "qwen2.5:7b", "mode": "rag_lex", "BLEU": 22.58, "chrF++": 48.16, "ExactMatch%": 6.53, "SpanAcc%": 24.88, "DialectLeft%": 19.38, "n": 291}

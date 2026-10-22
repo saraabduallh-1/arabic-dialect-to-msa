@@ -25,3 +25,4 @@
 {"model": "qwen3:14b", "mode": "zero", "BLEU": 17.03, "chrF++": 44.51, "ExactMatch%": 1.37, "SpanAcc%": 9.56, "DialectLeft%": 34.16, "n": 291}
 {"model": "qwen3:14b", "mode": "rag", "BLEU": 26.74, "chrF++": 52.49, "ExactMatch%": 6.53, "SpanAcc%": 23.19, "DialectLeft%": 17.62, "n": 291}
 {"model": "qwen3:14b", "mode": "rag_lex", "BLEU": 23.1, "chrF++": 49.92, "ExactMatch%": 3.78, "SpanAcc%": 25.09, "DialectLeft%": 18.47, "n": 291}
+{"model": "UBC-NLP/AraT5v2-base-1024", "mode": "finetune", "BLEU": 32.7, "chrF++": 55.81, "ExactMatch%": 9.97, "SpanAcc%": 27.9, "DialectLeft%": 16.89, "n": 291}

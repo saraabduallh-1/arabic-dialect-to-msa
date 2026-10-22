@@ -14,3 +14,4 @@
 {"model": "llama3.1:8b", "mode": "rag", "BLEU": 18.61, "chrF++": 45.7, "ExactMatch%": 3.78, "SpanAcc%": 18.04, "DialectLeft%": 11.8, "n": 291}
 {"model": "llama3.1:8b", "mode": "rag_lex", "BLEU": 21.79, "chrF++": 46.91, "ExactMatch%": 4.81, "SpanAcc%": 21.78, "DialectLeft%": 16.38, "n": 291}
 {"model": "qwen3:8b", "mode": "zero", "BLEU": 16.58, "chrF++": 43.54, "ExactMatch%": 1.03, "SpanAcc%": 5.01, "DialectLeft%": 42.17, "n": 291}
+{"model": "qwen3:8b", "mode": "rag", "BLEU": 26.27, "chrF++": 51.5, "ExactMatch%": 4.81, "SpanAcc%": 18.92, "DialectLeft%": 30.86, "n": 291}

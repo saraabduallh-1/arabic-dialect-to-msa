@@ -31,5 +31,6 @@
  "llm qwen3:8b rag_lex": "2026-10-22T23:01:33",
  "llm gemma3:4b zero": "2026-10-22T23:13:26",
  "llm gemma3:4b rag": "2026-10-22T23:25:26",
- "llm gemma3:4b rag_lex": "2026-10-22T23:37:26"
+ "llm gemma3:4b rag_lex": "2026-10-22T23:37:26",
+ "llm qwen3.5:9b zero": "2026-10-22T23:49:36"
 }

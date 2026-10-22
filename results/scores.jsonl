@@ -19,3 +19,4 @@
 {"model": "gemma3:4b", "mode": "zero", "BLEU": 8.67, "chrF++": 36.73, "ExactMatch%": 1.72, "SpanAcc%": 14.03, "DialectLeft%": 6.27, "n": 291}
 {"model": "gemma3:4b", "mode": "rag", "BLEU": 22.32, "chrF++": 48.75, "ExactMatch%": 5.5, "SpanAcc%": 26.43, "DialectLeft%": 9.22, "n": 291}
 {"model": "gemma3:4b", "mode": "rag_lex", "BLEU": 20.87, "chrF++": 48.11, "ExactMatch%": 4.47, "SpanAcc%": 27.23, "DialectLeft%": 11.35, "n": 291}
+{"model": "qwen3.5:9b", "mode": "zero", "BLEU": 11.32, "chrF++": 40.04, "ExactMatch%": 3.09, "SpanAcc%": 18.73, "DialectLeft%": 6.16, "n": 291}

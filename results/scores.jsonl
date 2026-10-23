@@ -31,3 +31,4 @@
 {"model": "Qwen2.5-7B-Instruct-qlora", "mode": "finetune", "BLEU": 28.3, "chrF++": 52.85, "ExactMatch%": 8.93, "SpanAcc%": 24.54, "DialectLeft%": 8.48, "n": 291}
 {"model": "qwen3.8:27b", "mode": "zero", "BLEU": 26.68, "chrF++": 51.31, "ExactMatch%": 6.87, "SpanAcc%": 24.24, "DialectLeft%": 14.75, "n": 291}
 {"model": "qwen3.8:27b", "mode": "rag", "BLEU": 34.84, "chrF++": 58.43, "ExactMatch%": 11.68, "SpanAcc%": 36.26, "DialectLeft%": 7.07, "n": 291}
+{"model": "qwen3.8:27b", "mode": "rag_lex", "BLEU": 33.08, "chrF++": 57.06, "ExactMatch%": 10.65, "SpanAcc%": 37.31, "DialectLeft%": 7.59, "n": 291}

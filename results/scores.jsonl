@@ -30,3 +30,4 @@
 {"model": "google/mt5-base", "mode": "finetune", "BLEU": 23.1, "chrF++": 49.46, "ExactMatch%": 3.09, "SpanAcc%": 16.62, "DialectLeft%": 20.7, "n": 291}
 {"model": "Qwen2.5-7B-Instruct-qlora", "mode": "finetune", "BLEU": 28.3, "chrF++": 52.85, "ExactMatch%": 8.93, "SpanAcc%": 24.54, "DialectLeft%": 8.48, "n": 291}
 {"model": "qwen3.8:27b", "mode": "zero", "BLEU": 26.68, "chrF++": 51.31, "ExactMatch%": 6.87, "SpanAcc%": 24.24, "DialectLeft%": 14.75, "n": 291}
+{"model": "qwen3.8:27b", "mode": "rag", "BLEU": 34.84, "chrF++": 58.43, "ExactMatch%": 11.68, "SpanAcc%": 36.26, "DialectLeft%": 7.07, "n": 291}

@@ -43,5 +43,6 @@
  "finetune google/mt5-base": "2026-10-23T03:11:43",
  "qlora Qwen/Qwen2.5-7B-Instruct": "2026-10-23T18:58:42",
  "report": "2026-10-23T18:58:46",
- "llm qwen3.8:27b zero": "2026-10-23T19:24:32"
+ "llm qwen3.8:27b zero": "2026-10-23T19:24:32",
+ "llm qwen3.8:27b rag": "2026-10-23T19:50:09"
 }

@@ -32819,3 +32819,11 @@ Test set: data/sentences/test.csv (291 sentences). Ranked by chrF++.
 | يعجبني أنه يسنع أموره بنفسه | يعجبني أنه يدير أموره بنفسه | يعجبني أنه ينجز أموره بنفسه |
 
 [2026-10-23 20:15:22] $ git add -A src results data README.md .gitignore
+[2026-10-23 20:15:22] $ git commit -q -m Benchmark: final report
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+[2026-10-23 20:15:22] $ git remote get-url origin
+https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
+[2026-10-23 20:15:22] $ git push -q -u origin main
+[2026-10-23 20:15:24] ALL DONE
+[2026-10-23 20:15:24] $ git add -A src results data README.md .gitignore

@@ -39,5 +39,6 @@
  "llm qwen3:14b rag": "2026-10-23T00:44:08",
  "llm qwen3:14b rag_lex": "2026-10-23T00:58:26",
  "finetune UBC-NLP/AraT5v2-base-1024": "2026-10-23T01:44:19",
- "finetune moussaKam/AraBART": "2026-10-23T01:48:31"
+ "finetune moussaKam/AraBART": "2026-10-23T01:48:31",
+ "finetune google/mt5-base": "2026-10-23T03:11:43"
 }

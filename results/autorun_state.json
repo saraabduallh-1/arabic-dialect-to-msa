@@ -41,5 +41,6 @@
  "finetune UBC-NLP/AraT5v2-base-1024": "2026-10-23T01:44:19",
  "finetune moussaKam/AraBART": "2026-10-23T01:48:31",
  "finetune google/mt5-base": "2026-10-23T03:11:43",
- "qlora Qwen/Qwen2.5-7B-Instruct": "2026-10-23T18:58:42"
+ "qlora Qwen/Qwen2.5-7B-Instruct": "2026-10-23T18:58:42",
+ "report": "2026-10-23T18:58:46"
 }

@@ -3,3 +3,4 @@ __pycache__/
 results/checkpoints/
 *.zip
 results/autorun.lock
+results/best_other_spans.jsonl

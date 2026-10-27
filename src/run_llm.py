@@ -4,12 +4,14 @@ Modes:
   zero     instruction only
   rag      + the k most similar training pairs as few-shot examples
   rag_lex  + dictionary hints for dialect words found in the training lexicon
+  rag_lexf like rag_lex, but drops hints for words used more often as MSA than as dialect
 
 usage: python src/run_llm.py --models qwen2.5:7b gemma3:12b --modes zero rag rag_lex
 """
 import argparse
 import json
 import re
+from collections import Counter
 
 import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -36,31 +38,36 @@ class Retriever:
         self.vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 4), sublinear_tf=True)
         self.mat = self.vec.fit_transform([normalize(r["src"]) for r in train])
         self.lex = lexicon(train)
+        # how often each term is annotated as dialect vs. occurs as a plain word on the MSA side
+        self.as_dialect = Counter(normalize(d) for r in train for d, _ in r["pairs"])
+        self.as_msa = Counter(w for r in train for w in normalize(r["tgt"]).split())
 
     def examples(self, src, k):
         sims = linear_kernel(self.vec.transform([normalize(src)]), self.mat)[0]
         return [self.train[i] for i in sims.argsort()[::-1][:k]][::-1]  # most similar last
 
-    def hints(self, src, max_n=3):
+    def hints(self, src, max_n=3, filtered=False):
         words = normalize(src).split()
         found = []
         for n in range(max_n, 0, -1):
             for i in range(len(words) - n + 1):
                 g = " ".join(words[i:i + n])
                 if g in self.lex and g not in [f[0] for f in found]:
+                    if filtered and self.as_msa[g] > self.as_dialect[g]:  # e.g. common words like ما / عند
+                        continue
                     found.append((g, self.lex[g]))
         return found
 
 
 def build_messages(src, mode, ret, k):
     msgs = [{"role": "system", "content": SYSTEM}]
-    if mode in ("rag", "rag_lex"):
+    if mode in ("rag", "rag_lex", "rag_lexf"):
         for ex in ret.examples(src, k):
             msgs.append({"role": "user", "content": f"العامية: {ex['src']}"})
             msgs.append({"role": "assistant", "content": ex["tgt"]})
     user = f"العامية: {src}"
-    if mode == "rag_lex":
-        h = ret.hints(src)
+    if mode in ("rag_lex", "rag_lexf"):
+        h = ret.hints(src, filtered=mode == "rag_lexf")
         if h:
             user += "\nتلميحات من القاموس (قد لا تنطبق كلها على السياق):\n" + "\n".join(
                 f"- {d} ← {' / '.join(m[:3])}" for d, m in h)

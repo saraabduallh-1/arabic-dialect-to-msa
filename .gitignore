@@ -4,3 +4,4 @@ results/checkpoints/
 *.zip
 results/autorun.lock
 results/best_other_spans.jsonl
+data/generated/**/*.clean.csv

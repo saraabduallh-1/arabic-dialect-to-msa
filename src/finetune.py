@@ -10,6 +10,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, get_linear_schedule_with_warmup
+from transformers.optimization import Adafactor
 
 from data import ROOT, load
 from metrics import score
@@ -45,21 +46,31 @@ def main():
     ap.add_argument("--epochs", type=int, default=15)
     ap.add_argument("--bs", type=int, default=16)
     ap.add_argument("--lr", type=float, default=3e-4)
+    ap.add_argument("--optim", choices=["adamw", "adafactor"], default="adamw", help="adafactor needs far less memory")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, help="use only N rows per split (smoke test)")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--extra", nargs="*", default=[], help="extra training data as dataset/split, e.g. generated/all")
+    ap.add_argument("--tag", default="", help="suffix for output names, e.g. +gen")
     a = ap.parse_args()
     random.seed(a.seed)
     torch.manual_seed(a.seed)
 
     train, dev, test = (load(s)[: a.limit] for s in ("train", "dev", "test"))
+    for e in a.extra:
+        ds, split = e.split("/")
+        train += load(split, ds)[: a.limit]
+    print(f"train {len(train)} dev {len(dev)} test {len(test)}")
     tok = AutoTokenizer.from_pretrained(a.model)
     model = AutoModelForSeq2SeqLM.from_pretrained(a.model).to(a.device)
-    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01)
+    if a.optim == "adafactor":
+        opt = Adafactor(model.parameters(), lr=a.lr, scale_parameter=False, relative_step=False, warmup_init=False)
+    else:
+        opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01)
     steps = a.epochs * ((len(train) + a.bs - 1) // a.bs)
     sched = get_linear_schedule_with_warmup(opt, int(0.06 * steps), steps)
 
-    name = a.model.split("/")[-1]
+    name = a.model.split("/")[-1] + a.tag
     ckpt = ROOT / "results" / "checkpoints" / name
     best = -1
     for ep in range(a.epochs):
@@ -77,11 +88,14 @@ def main():
 
     model = AutoModelForSeq2SeqLM.from_pretrained(ckpt).to(a.device)
     preds = generate(model, tok, test)
+    if a.limit:  # smoke test: don't touch the results
+        print(json.dumps(score(test, preds), ensure_ascii=False))
+        return
     out = ROOT / "results" / "preds" / f"{name}__finetune.jsonl"
     with out.open("w", encoding="utf-8") as f:
         for r, p in zip(test, preds):
             f.write(json.dumps({"id": r["id"], "src": r["src"], "tgt": r["tgt"], "pred": p}, ensure_ascii=False) + "\n")
-    res = {"model": a.model, "mode": "finetune", **score(test, preds)}
+    res = {"model": a.model + a.tag, "mode": "finetune", **score(test, preds)}
     print(json.dumps(res, ensure_ascii=False))
     with (ROOT / "results" / "scores.jsonl").open("a", encoding="utf-8") as f:
         f.write(json.dumps(res, ensure_ascii=False) + "\n")

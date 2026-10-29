@@ -22,3 +22,4 @@
 - 2026-10-29: batch 17 done (Hijazi food/dress/tools, 120 rows; ref: Wiktionary Hijazi). REVIEW: many are loanwords shared across dialects (بنطلون، مكرونة، شمسية). Batch 21 started.
 - 2026-10-29: batch 19 done (Southern food/dress/tools, 120 rows; refs: العقيلي Jazan dictionary, Saudipedia regional food articles). Batch 22 started.
 - 2026-10-29: batch 21 done (Najdi verbs, 120 rows; ref: العبودي). REVIEW: quality drift — many rare/old verbs (هكف، نسع، سمل، كنهر، شنغر) and some plain MSA verbs (مسح، همز، انخرط). Later batch prompts now require terms in common present-day use. Batch 23 started.
+- 2026-10-29: batch 22 done (Hijazi verbs, 120 rows; ref: Wiktionary Hijazi). REVIEW: نط/نقز/ساق already exist in train in other forms — the agent changed inflection to pass the checker, so these are extra examples, not new vocabulary. Later prompts require the lemma (not just the form) to be new. Batch 24 started.

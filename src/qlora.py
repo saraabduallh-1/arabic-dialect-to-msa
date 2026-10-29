@@ -62,11 +62,16 @@ def main():
     ap.add_argument("--lr", type=float, default=2e-4)
     ap.add_argument("--r", type=int, default=16)
     ap.add_argument("--limit", type=int, help="use only N rows per split (smoke test)")
+    ap.add_argument("--extra", nargs="*", default=[], help="extra training data as dataset/split, e.g. generated/all")
+    ap.add_argument("--tag", default="", help="suffix for output names, e.g. +gen")
     a = ap.parse_args()
     random.seed(42)
     torch.manual_seed(42)
 
     train, dev, test = (load(s)[: a.limit] for s in ("train", "dev", "test"))
+    for e in a.extra:
+        ds, split = e.split("/")
+        train += load(split, ds)[: a.limit]
     tok = AutoTokenizer.from_pretrained(a.model)
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
@@ -85,7 +90,7 @@ def main():
     steps = a.epochs * ((len(train) + a.bs - 1) // a.bs)
     sched = get_cosine_schedule_with_warmup(opt, int(0.05 * steps), steps)
 
-    name = a.model.split("/")[-1] + "-qlora"
+    name = a.model.split("/")[-1] + "-qlora" + a.tag
     ckpt = ROOT / "results" / "checkpoints" / name
     best = -1
     model.train()

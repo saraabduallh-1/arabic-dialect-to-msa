@@ -93,9 +93,9 @@ def chat(model, messages):
     return r.json()["message"]["content"]
 
 
-def run(model, mode, rows, ret, k):
+def run(model, mode, rows, ret, k, tag=""):
     PRED_DIR.mkdir(parents=True, exist_ok=True)
-    path = PRED_DIR / f"{model.replace(':', '_').replace('/', '_')}__{mode}.jsonl"
+    path = PRED_DIR / f"{model.replace(':', '_').replace('/', '_')}__{mode}{tag}.jsonl"
     done = {}
     if path.exists():
         done = {d["id"]: d for d in map(json.loads, path.open(encoding="utf-8"))}
@@ -118,14 +118,20 @@ def main():
     ap.add_argument("--split", default="test")
     ap.add_argument("--k", type=int, default=8)
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--extra", nargs="*", default=[], help="extra example/lexicon data as dataset/split, e.g. generated/all")
+    ap.add_argument("--tag", default="", help="suffix for the mode name, e.g. +gen")
     a = ap.parse_args()
 
     train = load("train")
+    for e in a.extra:
+        ds, split = e.split("/")
+        train += load(split, ds)
     rows = load(a.split)[: a.limit]
     ret = Retriever(train)
     for model in a.models:
         for mode in a.modes:
-            res = {"model": model, "mode": mode, **score(rows, run(model, mode, rows, ret, a.k))}
+            preds = run(model, mode, rows, ret, a.k, a.tag)
+            res = {"model": model, "mode": mode + a.tag, **score(rows, preds)}
             print(json.dumps(res, ensure_ascii=False))
             with (ROOT / "results" / "scores.jsonl").open("a", encoding="utf-8") as f:
                 f.write(json.dumps(res, ensure_ascii=False) + "\n")

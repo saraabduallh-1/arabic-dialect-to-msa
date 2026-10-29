@@ -39,6 +39,10 @@ LLMS = ["gemma3:12b", "qwen2.5:7b", "aya-expanse:8b", "command-r7b-arabic:7b",
 BIG_LLMS = ["qwen3.8:27b"]
 SEQ2SEQ = [("UBC-NLP/AraT5v2-base-1024", "3e-4"), ("moussaKam/AraBART", "5e-5"), ("google/mt5-base", "5e-4")]
 QLORA = ["Qwen/Qwen2.5-7B-Instruct"]
+# phase 2: the generated data (data/generated) as extra examples / training data
+GEN_LLMS = ["qwen3.8:27b", "gemma3:12b", "command-r7b-arabic:7b", "aya-expanse:8b"]
+GEN = ["--extra", "generated/all", "--tag", "+gen"]
+JUDGE = "qwen3.8:27b"
 NO_WINDOW =0x08000000  # CREATE_NO_WINDOW
 
 
@@ -190,6 +194,22 @@ def main():
     step("report", lambda: sh([PY, "src/report.py"]), tries=1)
     llm_steps(BIG_LLMS)
     step("final report", lambda: sh([PY, "src/report.py"]), tries=1)
+
+    # phase 2
+    step("merge generated", lambda: sh([PY, "src/merge_generated.py"]), tries=1)
+    for m in GEN_LLMS:
+        for mode, extra in [("rag_lexf", []), ("rag", GEN), ("rag_lexf", GEN)]:
+            step(f"llm {m} {mode}{' +gen' if extra else ''}", lambda m=m, mode=mode, extra=extra: (
+                ollama_up(), sh([PY, "src/run_llm.py", "--models", m, "--modes", mode] + extra, timeout=24 * 3600)))
+    for model, lr in SEQ2SEQ:
+        step(f"finetune {model} +gen", lambda model=model, lr=lr: (
+            unload_ollama(), sh([PY, "src/finetune.py", "--model", model, "--lr", lr] + GEN, timeout=24 * 3600)))
+    for model in QLORA:
+        step(f"qlora {model} +gen", lambda model=model: (
+            unload_ollama(), sh([PY, "src/qlora.py", "--model", model] + GEN, timeout=48 * 3600)))
+    step("report 2", lambda: sh([PY, "src/report.py"]), tries=1)
+    step("analysis 2", lambda: sh([PY, "src/analysis.py"]), tries=1)
+    step("judge", lambda: (ollama_up(), sh([PY, "src/judge.py", "--judge", JUDGE, "--top", "15"], timeout=48 * 3600)))
 
     log("ALL DONE")
     git_sync("Benchmark: all done")

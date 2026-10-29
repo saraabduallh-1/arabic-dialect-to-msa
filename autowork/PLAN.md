@@ -46,8 +46,8 @@ Rules
 | 29 | عامة | الأطفال والمدرسة والعائلة | todo |
 | 30 | عامة | السوق والمال والسيارات | todo |
 
-## B. Merge → data/generated/all.csv (dedupe, check_generated, stats) — todo
+## B. Merge → data/generated/all.csv — script ready (src/merge_generated.py); rerun + commit all.csv after the last batch
 ## C. Mac experiment — dropped: Mac (8GB) needs Adafactor+bs8, ~10x slower and not comparable with the PC baseline; all training moves to the PC package (D)
-## D. PC package: one command for when the user is back (LLM rag with generated pool, rag_lexf, finetunes + QLoRA with generated data, judge) — todo
+## D. PC package — done: autorun.py phase 2 (merge, rag_lexf / rag+gen / rag_lexf+gen for 4 LLMs, 3 seq2seq +gen, QLoRA +gen, report, analysis, judge). User runs: git pull, then .venv\Scripts\python src\autorun.py
 ## E. Analysis: gain on terms covered by generated data vs not; update README, data card, REPORT — todo
 ## F. Final summary for the user in autowork/WORKLOG.md — todo

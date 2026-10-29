@@ -20,3 +20,4 @@
 - 2026-10-29: batch 16 done (Najdi food/dress/tools, 120 rows; refs: العبودي both dictionaries). REVIEW: some MSA sides are descriptive phrases (القشد، الكليجا). Batch 18 started.
 - 2026-10-29: batch 18 done (Eastern/Gulf food/dress, 120 rows; ref: Wiktionary Gulf). Found 20/618 done terms that equal a train term apart from ال/ه (e.g. استكان، كنبه) — harmless extra examples but not new vocabulary; checker now warns on these. Batch 19 started.
 - 2026-10-29: batch 17 done (Hijazi food/dress/tools, 120 rows; ref: Wiktionary Hijazi). REVIEW: many are loanwords shared across dialects (بنطلون، مكرونة، شمسية). Batch 21 started.
+- 2026-10-29: batch 19 done (Southern food/dress/tools, 120 rows; refs: العقيلي Jazan dictionary, Saudipedia regional food articles). Batch 22 started.

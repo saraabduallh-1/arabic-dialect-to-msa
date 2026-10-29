@@ -14,3 +14,4 @@
 - 2026-10-29: batch 9 done (Southern feelings, 105 rows / 35 terms; refs: الشهراني 2024, العقيلي Jazan dictionary). Fell short of 40 rather than fill without references. Batch 11 started.
 - 2026-10-29: batch 10 done but small (Northern feelings, 42 rows / 14 terms; refs: الشمري 2024 Azhar journal on Shammar idioms, العنزي 2022, العبودي). Northern refs exhausted → batches 15/20/25 replaced by Najdi 31/32/33. Batch 12 started.
 - 2026-10-29: batch 11 done (Najdi people/speech, 120 rows; ref: العبودي vols 1-13). REVIEW: several are rare/old Najdi words (يفسكل، يتفنسق). Batch 13 started.
+- 2026-10-29: batch 12 done (Hijazi people, 81 rows / 27 terms; ref: Wiktionary Hijazi). Hijazi references thinning: no usable newspaper/academic lists found. REVIEW: several b12 terms are pan-Arabic colloquial (هلا، سلامات، عقبال) rather than Hijazi-specific. Batch 14 started.

@@ -8,3 +8,4 @@
 - 2026-10-29: batch 3 done (Eastern/Gulf home, 120 rows, ref: Wiktionary Gulf Arabic). REVIEW: some rows use Persian letters چ/پ (Gulf spelling, e.g. چبريت، سچين); Saudi data normally uses ك/ج — decide whether to normalize. Some terms are Kuwaiti-marked in Wiktionary but labelled شرقية. Batch 4 started.
 - 2026-10-29: batch 7 done (Hijazi feelings, 120 rows, ref: Wiktionary Hijazi). Checked all 200 done terms: none in train lexicon, no dupes, no span equal to its MSA. REVIEW: some b07 terms are close to MSA forms (شقي، جيعان، سهران). Batch 8 started.
 - 2026-10-29: batch 4 done (Southern, 120 rows; refs: الشهراني 2024 journal paper on لهجة شهران, العقيلي معجم اللهجة المحلية لمنطقة جازان). Links checked. Batch 5 started.
+- 2026-10-29: batch 8 done (Eastern/Gulf feelings, 120 rows; refs: Wiktionary Gulf Arabic, جلال الحنفي معجم الألفاظ الكويتية 1964). REVIEW: Kuwaiti-source words labelled شرقية; مينون is a sound-change form of مجنون. Batch 9 started.

@@ -10,3 +10,4 @@
 - 2026-10-29: batch 4 done (Southern, 120 rows; refs: الشهراني 2024 journal paper on لهجة شهران, العقيلي معجم اللهجة المحلية لمنطقة جازان). Links checked. Batch 5 started.
 - 2026-10-29: batch 8 done (Eastern/Gulf feelings, 120 rows; refs: Wiktionary Gulf Arabic, جلال الحنفي معجم الألفاظ الكويتية 1964). REVIEW: Kuwaiti-source words labelled شرقية; مينون is a sound-change form of مجنون. Batch 9 started.
 - 2026-10-29: batch 5 done (Northern/Hail, 120 rows; refs: العنزي 2022 HNSJ paper, AlAmmar 2017 Essex PhD thesis, Saudipedia Hail architecture). Only Hail found — no usable refs for Jouf/Tabuk. Batch 10 started.
+- 2026-10-29 ~13:00: hit 5-hour usage limit; batches 9 and 10 interrupted. 14:17: limit reset, both resumed. Battery 25% and still discharging (charger not connected).

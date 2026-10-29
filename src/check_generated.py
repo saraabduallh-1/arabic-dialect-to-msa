@@ -66,6 +66,14 @@ def main(path):
     no_new = sum(all(normalize(v) in lex for v in spans(x).values()) for x in df[DIALECT])
     if no_new:
         warnings.append(f"{no_new} rows have no dialect term that is new to the training lexicon")
+    # same word as a train term apart from the article or a final ه (e.g. استكان / استكانة)
+    base = lambda t: (t[2:] if t.startswith("ال") else t).rstrip("ه")
+    lex_base = {base(k) for k in lex}
+    near = sorted({normalize(v) for x in df[DIALECT] for v in spans(x).values()
+                   if normalize(v) not in lex and base(normalize(v)) in lex_base})
+    if near:
+        warnings.append(f"{len(near)} terms differ from a train term only by ال or ه — swap them if they are "
+                        f"the new term of a row: {', '.join(near)}")
     dup_train = src.isin(train_src).sum()
     if dup_train:
         warnings.append(f"{dup_train} sentences already exist in train")

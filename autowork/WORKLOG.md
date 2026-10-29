@@ -16,3 +16,4 @@
 - 2026-10-29: batch 11 done (Najdi people/speech, 120 rows; ref: العبودي vols 1-13). REVIEW: several are rare/old Najdi words (يفسكل، يتفنسق). Batch 13 started.
 - 2026-10-29: batch 12 done (Hijazi people, 81 rows / 27 terms; ref: Wiktionary Hijazi). Hijazi references thinning: no usable newspaper/academic lists found. REVIEW: several b12 terms are pan-Arabic colloquial (هلا، سلامات، عقبال) rather than Hijazi-specific. Batch 14 started.
 - 2026-10-29: batch 13 done (Eastern/Gulf people, 120 rows; refs: الحنفي 1964, Wiktionary Gulf). REVIEW: rare 1960s Kuwaiti words (درسعة، خماجير، ربربة). Batch 16 started.
+- 2026-10-29: batch 14 done (Southern people, 120 rows; refs: Al Mufarreh 2024 KSU journal on Aseer politeness formulas, العقيلي, الشهراني). REVIEW: many Aseer courtesy formulas are also pan-Saudi. Re-checked all batches: every row has at least one term new to the train lexicon. Batch 17 started.

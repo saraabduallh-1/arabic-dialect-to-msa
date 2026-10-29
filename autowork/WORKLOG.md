@@ -7,3 +7,4 @@
 - 2026-10-29: batch 6 done (Najdi feelings, 120 rows, ref: العبودي vols 1-13 on archive.org). Batch 7 started. Agents now get their own scratchpad subfolder (b06 reported a shared-scratchpad clash).
 - 2026-10-29: batch 3 done (Eastern/Gulf home, 120 rows, ref: Wiktionary Gulf Arabic). REVIEW: some rows use Persian letters چ/پ (Gulf spelling, e.g. چبريت، سچين); Saudi data normally uses ك/ج — decide whether to normalize. Some terms are Kuwaiti-marked in Wiktionary but labelled شرقية. Batch 4 started.
 - 2026-10-29: batch 7 done (Hijazi feelings, 120 rows, ref: Wiktionary Hijazi). Checked all 200 done terms: none in train lexicon, no dupes, no span equal to its MSA. REVIEW: some b07 terms are close to MSA forms (شقي، جيعان، سهران). Batch 8 started.
+- 2026-10-29: batch 4 done (Southern, 120 rows; refs: الشهراني 2024 journal paper on لهجة شهران, العقيلي معجم اللهجة المحلية لمنطقة جازان). Links checked. Batch 5 started.

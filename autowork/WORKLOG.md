@@ -13,3 +13,4 @@
 - 2026-10-29 ~13:00: hit 5-hour usage limit; batches 9 and 10 interrupted. 14:17: limit reset, both resumed. Battery 25% and still discharging (charger not connected).
 - 2026-10-29: batch 9 done (Southern feelings, 105 rows / 35 terms; refs: الشهراني 2024, العقيلي Jazan dictionary). Fell short of 40 rather than fill without references. Batch 11 started.
 - 2026-10-29: batch 10 done but small (Northern feelings, 42 rows / 14 terms; refs: الشمري 2024 Azhar journal on Shammar idioms, العنزي 2022, العبودي). Northern refs exhausted → batches 15/20/25 replaced by Najdi 31/32/33. Batch 12 started.
+- 2026-10-29: batch 11 done (Najdi people/speech, 120 rows; ref: العبودي vols 1-13). REVIEW: several are rare/old Najdi words (يفسكل، يتفنسق). Batch 13 started.

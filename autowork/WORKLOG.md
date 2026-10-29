@@ -19,3 +19,4 @@
 - 2026-10-29: batch 14 done (Southern people, 120 rows; refs: Al Mufarreh 2024 KSU journal on Aseer politeness formulas, العقيلي, الشهراني). REVIEW: many Aseer courtesy formulas are also pan-Saudi. Re-checked all batches: every row has at least one term new to the train lexicon. Batch 17 started.
 - 2026-10-29: batch 16 done (Najdi food/dress/tools, 120 rows; refs: العبودي both dictionaries). REVIEW: some MSA sides are descriptive phrases (القشد، الكليجا). Batch 18 started.
 - 2026-10-29: batch 18 done (Eastern/Gulf food/dress, 120 rows; ref: Wiktionary Gulf). Found 20/618 done terms that equal a train term apart from ال/ه (e.g. استكان، كنبه) — harmless extra examples but not new vocabulary; checker now warns on these. Batch 19 started.
+- 2026-10-29: batch 17 done (Hijazi food/dress/tools, 120 rows; ref: Wiktionary Hijazi). REVIEW: many are loanwords shared across dialects (بنطلون، مكرونة، شمسية). Batch 21 started.

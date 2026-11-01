@@ -255,7 +255,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |
 | D3 | running (batches 23, 24) |
 | D4 | todo (ينتظر D3؛ 4.3 👤) |
-| D5 | todo |
+| D5 | done: `src/clean_train.py` -> `data/sentences_clean/train.csv` + `REPORT.md`; dev/test only reported 👤 |
 | D6 | todo |
 | D7 | todo |
 | R0 | todo (بعد I1) |

@@ -38,8 +38,33 @@ def load(split, dataset="sentences"):
             "tgt": clean(r[MSA]),
             # aligned (dialect, msa) word pairs
             "pairs": [(src_sp[k], tgt_sp[k]) for k in sorted(src_sp) if k in tgt_sp],
+            "span_ids": [k for k in sorted(src_sp) if k in tgt_sp],
         })
+    refs = DATA / dataset / f"{split}_refs.csv"
+    if refs.exists():
+        add_refs(rows, refs)
     return rows
+
+
+def add_refs(rows, path):
+    """Attach approved extra references (PLAN_v2 I2) from e.g. data/sentences/test_refs.csv.
+
+    Columns: Feature 1, مرجع بديل 1..3 (alternative MSA sentences),
+    بدائل الكلمات ("1: بديل / بديل ; 2: بديل" = accepted alternatives per span number).
+    Adds r["refs"] (extra sentences) and r["alts"] (one list of accepted MSA forms per pair).
+    """
+    df = pd.read_csv(path, dtype=str).fillna("")
+    by_id = {int(r["Feature 1"]): r for _, r in df.iterrows()}
+    for r in rows:
+        x = by_id.get(r["id"])
+        r["refs"] = [] if x is None else [clean(x[c]) for c in df.columns if c.startswith("مرجع بديل") and x[c].strip()]
+        alts = {}
+        if x is not None:
+            for part in x.get("بدائل الكلمات", "").split(";"):
+                if ":" in part:
+                    n, words = part.split(":", 1)
+                    alts[int(n.strip())] = [w.strip() for w in words.split("/") if w.strip()]
+        r["alts"] = [[m] + alts.get(k, []) for k, (_, m) in zip(r["span_ids"], r["pairs"])]
 
 
 def lexicon(train_rows):

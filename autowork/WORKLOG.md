@@ -54,3 +54,4 @@
 - 2026-11-01 (PC): D4.1 batch 42 done (Eastern, 40 long sentences, avg 11.7 words, 87 terms; avoided چ-spelled terms). Batch 45 (Hijazi) started.
 - 2026-11-01 (PC): D4.1 batch 45 done (Hijazi, 40 long sentences, avg 13.1 words, 87 terms none of which were in b41). Batch 46 (Eastern) started.
 - 2026-11-01 (PC): D4.1 batch 44 done (Najdi, 40 long sentences, avg 13.0 words, 75 terms none of which were in b40). Batch 47 (Southern) started.
+- 2026-11-01 (PC): D4.1 batch 46 done (Eastern, 40 long sentences, avg 12.9 words, ~80 terms none of which were in b42; no چ or الحنفي terms). Batch 48 (Northern) started.

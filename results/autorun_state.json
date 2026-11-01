@@ -54,5 +54,6 @@
  "llm gemma3:12b rag_lexf": "2026-11-01T12:58:48",
  "llm gemma3:12b rag +gen": "2026-11-01T13:12:39",
  "llm gemma3:12b rag_lexf +gen": "2026-11-01T13:26:30",
- "llm command-r7b-arabic:7b rag_lexf": "2026-11-01T13:39:19"
+ "llm command-r7b-arabic:7b rag_lexf": "2026-11-01T13:39:19",
+ "llm command-r7b-arabic:7b rag +gen": "2026-11-01T13:51:56"
 }

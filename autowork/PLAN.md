@@ -47,7 +47,7 @@ Rules
 | 30 | عامة | السوق والمال والسيارات | done on PC (120 rows; refs: العبودي الكلمات الدخيلة 24, الدرسوني 16) |
 | 31 | نجدية | الزمن والطقس والطبيعة والحيوان (replaces 15) | done on PC (114 rows / 38 terms; refs: العبودي الأصول الفصيحة 31, الدرسوني 7) |
 | 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | done on PC (120 rows; refs: الجهيمان 24, العبودي الأمثال 13, سعوديبيديا 3) |
-| 33 | نجدية | البادية والإبل والرعي (replaces 25) | running (PC) |
+| 33 | نجدية | البادية والإبل والرعي (replaces 25) | done on PC (120 rows / 40 terms, 11 also in b31; refs: العبودي 26, الدرسوني 13, سعوديبيديا 1) |
 
 ## B. Merge → data/generated/all.csv — script ready (src/merge_generated.py); rerun + commit all.csv after the last batch
 ## C. Mac experiment — dropped: Mac (8GB) needs Adafactor+bs8, ~10x slower and not comparable with the PC baseline; all training moves to the PC package (D)

@@ -253,7 +253,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | I6 | todo (ينتظر D3/D4) |
 | D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |
 | D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |
-| D3 | running (batches 23, 24) |
+| D3 | done: batches 23, 24, 26–33 (1,116 rows) |
 | D4 | todo (ينتظر D3؛ 4.3 👤) |
 | D5 | done: `src/clean_train.py` -> `data/sentences_clean/train.csv` + `REPORT.md`; dev/test only reported 👤 |
 | D6 | done (`data/README.md`); update after D2/D3 |

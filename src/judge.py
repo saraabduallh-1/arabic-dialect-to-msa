@@ -78,8 +78,11 @@ def main():
     tag = a.judge.replace(":", "_").replace("/", "_")
 
     # 1. agreement with the hand labels
-    manual = [json.loads(l) for l in (RES / "manual_labels.jsonl").open(encoding="utf-8")]
-    got = judge_all(a.judge, manual, OUT / f"{tag}__manual.jsonl")
+    # human labels (PLAN_v2 I3) replace the Claude-written ones once the user has filled them in
+    human = RES / "human_labels.jsonl"
+    src = human if human.exists() and human.stat().st_size else RES / "manual_labels.jsonl"
+    manual = [json.loads(l) for l in src.open(encoding="utf-8")]
+    got = judge_all(a.judge, manual, OUT / f"{tag}__{'human' if src == human else 'manual'}.jsonl")
     exact = sum(g == m["label"] for g, m in zip(got, manual)) / len(manual)
     binary = sum((g == "correct") == (m["label"] == "correct") for g, m in zip(got, manual)) / len(manual)
     conf = Counter((m["label"], g) for g, m in zip(got, manual))
@@ -104,7 +107,7 @@ def main():
     md = ["# LLM-judge evaluation of dialect spans", "",
           f"Judge: **{a.judge}**. Spans already matching the gold MSA count as correct, spans left in dialect "
           "as wrong; the rest are judged.", "",
-          "## Agreement with the 60 hand-labelled spans", "",
+          f"## Agreement with the {len(manual)} labelled spans ({'human' if src == human else 'Claude-written'} labels, {src.name})", "",
           f"- Exact agreement (3 labels): {100 * exact:.0f}%",
           f"- Agreement on correct vs not: {100 * binary:.0f}%", "",
           "| manual \\ judge | " + " | ".join(LABELS) + " |", "|---" * 4 + "|"]

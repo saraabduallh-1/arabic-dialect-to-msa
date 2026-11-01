@@ -245,9 +245,9 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 ## الحالة
 | البند | الحالة |
 |---|---|
-| I1 | running (autorun phase 2 started 2026-11-01 11:23) |
+| I1 | rag_lexf / +gen runs, seq2seq +gen, report 2, analysis 2 done (2026-11-01 17:42); judge, gemma3:27b, I5, QLoRA +gen running |
 | I2 | code done; candidates ready (`data/sentences/test_refs_candidates.csv`: 265 rows with alt sentences, 696 span alternatives, 22 references flagged); waiting for user review 👤 |
-| I3 | todo (ينتظر I1) |
+| I3 | `results/human_labels_todo.csv` ready (150 spans from top 5) 👤; judge.py uses human_labels.jsonl once imported |
 | I4 | template + instructions + `src/check_real_test.py` ready (`data/real_test/`); collection 👤 |
 | I5 | code ready (`rag_fix`, `rag_lexret`, `--split dev`, `src/tune.py`, AraT5 25 epochs); runs in autorun after gemma3:27b, before QLoRA +gen |
 | I6 | todo (ينتظر D3/D4) |

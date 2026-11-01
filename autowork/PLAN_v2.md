@@ -254,7 +254,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |
 | D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |
 | D3 | done: batches 23, 24, 26–33 (1,116 rows) |
-| D4 | 4.2 script done but not used (≈1/3 ungrammatical swaps; QUESTIONS.md), fold into C2; 4.1 long sentences: running; 4.3 👤 |
+| D4 | 4.1 done (b40–b49: 400 long sentences, avg 12.5 words); 4.2 script done but not used (≈1/3 ungrammatical swaps; QUESTIONS.md), folded into C2; 4.3 👤 (MADAR licence request by the user) |
 | D5 | done: `src/clean_train.py` -> `data/sentences_clean/train.csv` + `REPORT.md`; dev/test only reported 👤 |
 | D6 | done (`data/README.md`); update after D2/D3 |
 | D7 | step 1 done: licences checked (SOURCES.md), `src/check_msa.py` -> 84.4% found, 761 flagged in `msa_check.csv` for review; synonyms for I2 come with the I2 candidates |

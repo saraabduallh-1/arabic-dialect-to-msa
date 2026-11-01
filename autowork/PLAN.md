@@ -70,4 +70,4 @@ Parallel agents always get different dialects (lesson from b31/b33).
 | 46 | شرقية | done (40 sentences, avg 12.9 words, ~80 terms not used in b42) |
 | 47 | جنوبية | done (40 sentences, avg 12.9 words, ~73 terms not used in b43) |
 | 48 | شمالية | done (40 sentences, avg 11.2 words, 48 terms; old house/Shammar terms skipped) |
-| 49 | عامة (mixed terms from all dialects, labelled by the dominant one) | running |
+| 49 | عامة (mixed terms from all dialects, labelled by the dominant one) | done (40 sentences, avg 13.6 words, all 44 عامة terms) |

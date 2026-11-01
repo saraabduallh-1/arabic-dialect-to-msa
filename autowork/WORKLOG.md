@@ -57,3 +57,4 @@
 - 2026-11-01 (PC): D4.1 batch 46 done (Eastern, 40 long sentences, avg 12.9 words, ~80 terms none of which were in b42; no چ or الحنفي terms). Batch 48 (Northern) started.
 - 2026-11-01 (PC): D4.1 batch 47 done (Southern, 40 long sentences, avg 12.9 words, ~73 terms none of which were in b43). Batch 49 (عامة) started.
 - 2026-11-01 (PC): D4.1 batch 48 done (Northern, 40 long sentences, avg 11.2 words, 48 terms). C2 (Claude paraphrases) preparation started.
+- 2026-11-01 (PC): D4.1 complete: batch 49 (عامة, 40 long sentences, avg 13.6 words, all 44 عامة terms). 10 long batches, 400 sentences, avg ≈12.5 words (train averages 5). all2.csv re-merged with b01–b49 for I6 (+gen2).

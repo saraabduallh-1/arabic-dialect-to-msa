@@ -50,3 +50,4 @@
 - 2026-11-01 (PC): R0 (reference ceiling, not ranked): a Claude agent with the run_llm prompts, no references seen: zero chrF++ 64.43 (SpanAcc 48.3%, DialectLeft 5.2%), rag 66.60 (SpanAcc 50.4%); +7.5 chrF++ over the best open system (p<0.001). Even this strong model matches only half the single-reference spans, so the single-reference SpanAcc badly underestimates T1 -> I2 (multi-ref) and I3 (human labels) are needed before T1 can be judged. Output in results/reference/ (kept out of scores.jsonl).
 - 2026-11-01 (PC): D4.1 batch 41 done (Hijazi, 40 long sentences, avg 12.4 words, 92 generated terms reused). Batch 42 (Eastern) started.
 - 2026-11-01 (PC): D4.1 batch 40 done (Najdi, 40 long sentences, avg 12.4 words, 90 terms). Batch 43 (Southern) started.
+- 2026-11-01 (PC): D4.1 batch 43 done (Southern, 40 long sentences, avg 11.2 words, 85 terms, avoided terms flagged as possibly old). Batch 44 (Najdi) started.

@@ -261,7 +261,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | R0 | done (`results/R0.md`): Claude zero 64.43 / rag 66.60 chrF++ vs best open 59.07; SpanAcc 48–50% |
 | R1–R3 | todo (بعد I2 وD3) |
 | C1 | todo (بعد I1 وI3) |
-| C2 | todo (بعد D3) |
+| C2 | running: train split into 8 chunks (`data/c2/input`), prompt `prompts/paraphrase.md`; generated data after; 👤 100-row review before use |
 | C3 | todo (قبل R1) |
 | G1 | todo (ضمن autorun.py بعد المحكّم) |
 | G2 | todo (بعد C2) |

@@ -3,8 +3,10 @@
 Drops duplicate sentences and any row whose dialect or MSA sentence matches a dev/test
 sentence (normalized text). Prints counts only, never dev/test content.
 
-usage: python src/merge_generated.py
+usage: python src/merge_generated.py [--out all2.csv]
+  (--out keeps all.csv unchanged while experiments that use it are still running; PLAN_v2 I6 uses all2.csv)
 """
+import argparse
 from collections import Counter
 
 import pandas as pd
@@ -15,7 +17,11 @@ GEN = DATA / "generated"
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default="all.csv")
+    out = ap.parse_args().out
     files = sorted(p for p in (GEN / "batches").glob("b*.csv") if not p.name.endswith(".clean.csv"))
+    print("output:", GEN / out)
     df = pd.concat([pd.read_csv(p, dtype=str).fillna("").assign(batch=p.stem) for p in files], ignore_index=True)
     n0 = len(df)
     key = lambda x: normalize(clean(x))
@@ -27,7 +33,7 @@ def main():
     df = df[~dup]
     bad = df.apply(lambda r: not spans(r[DIALECT]) or set(spans(r[DIALECT])) != set(spans(r[MSA])), axis=1)
     df = df[~bad]
-    df.drop(columns="batch").to_csv(GEN / "all.csv", index=False, encoding="utf-8")
+    df.drop(columns="batch").to_csv(GEN / out, index=False, encoding="utf-8")
 
     lex = lexicon(load("train"))
     terms = {normalize(v) for x in df[DIALECT] for v in spans(x).values()}

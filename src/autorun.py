@@ -43,6 +43,8 @@ QLORA = ["Qwen/Qwen2.5-7B-Instruct"]
 GEN_LLMS = ["qwen3.8:27b", "gemma3:12b", "command-r7b-arabic:7b", "aya-expanse:8b"]
 GEN = ["--extra", "generated/all", "--tag", "+gen"]
 JUDGE = "qwen3.8:27b"
+# PLAN_v2 G1: larger Gemma, partly on CPU like qwen3.8:27b - after the judge so it can't delay it
+BIG_GEN_LLMS = ["gemma3:27b"]
 NO_WINDOW =0x08000000  # CREATE_NO_WINDOW
 
 
@@ -207,6 +209,11 @@ def main():
     step("report 2", lambda: sh([PY, "src/report.py"]), tries=1)
     step("analysis 2", lambda: sh([PY, "src/analysis.py"]), tries=1)
     step("judge", lambda: (ollama_up(), sh([PY, "src/judge.py", "--judge", JUDGE, "--top", "15"], timeout=48 * 3600)))
+    for m in BIG_GEN_LLMS:
+        step(f"pull {m}", lambda m=m: sh([OLLAMA, "pull", m], timeout=3 * 3600))
+        for mode, extra in [("zero", []), ("rag", []), ("rag_lexf", []), ("rag", GEN), ("rag_lexf", GEN)]:
+            step(f"llm {m} {mode}{' +gen' if extra else ''}", lambda m=m, mode=mode, extra=extra: (
+                ollama_up(), sh([PY, "src/run_llm.py", "--models", m, "--modes", mode] + extra, timeout=24 * 3600)))
     # slowest step (~1-2 days with the generated data) last, so the other results arrive first
     for model in QLORA:
         step(f"qlora {model} +gen", lambda model=model: (

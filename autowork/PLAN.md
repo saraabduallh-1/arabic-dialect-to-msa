@@ -37,7 +37,7 @@ Rules
 | 20 | شمالية | الطعام واللباس والأدوات | skipped (see 32) |
 | 21 | نجدية | الأفعال والحركة والعمل | done (120 rows) |
 | 22 | حجازية | الأفعال والحركة والعمل | done (120 rows) |
-| 23 | شرقية | الأفعال والحركة والعمل | todo (interrupted on Mac by usage limit, nothing saved) |
+| 23 | شرقية | الأفعال والحركة والعمل | done on PC (120 rows; refs: الدرسوني معجم اللهجات المحكية — Qatif/Ahsa sections 33 terms, Wiktionary Gulf 7) |
 | 24 | جنوبية | الأفعال والحركة والعمل | done on PC (120 rows; refs: العقيلي Jazan dictionary 36 terms, الشهراني 2024 4 terms) |
 | 25 | شمالية | الأفعال والحركة والعمل | skipped (see 33) |
 | 26 | عامة | تعابير وأمثال قصيرة شائعة | running (PC) |

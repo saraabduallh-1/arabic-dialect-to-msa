@@ -6,3 +6,4 @@ results/autorun.lock
 results/best_other_spans.jsonl
 data/generated/**/*.clean.csv
 .claude/settings.local.json
+data/lexicons/

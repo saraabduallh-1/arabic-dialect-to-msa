@@ -33,7 +33,9 @@
 
 ## Instructions for the Claude session on the PC
 
-Read this file, then `autowork/PLAN.md` and `autowork/WORKLOG.md`. Python is `.venv\Scripts\python`.
+**The current plan is `autowork/PLAN_v2.md`** (improvement plan + data plan). Use the steps below as the how-to for running things, and follow PLAN_v2 for what to do and in which order.
+
+Read this file, then `autowork/PLAN_v2.md`, `autowork/PLAN.md` and `autowork/WORKLOG.md`. Python is `.venv\Scripts\python`.
 
 ### Step 1 — remaining data batches (optional; ask the user first whether to do them or go straight to Step 2)
 - Remaining: 23, 24, 26–33 (see PLAN.md table).

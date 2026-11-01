@@ -45,7 +45,7 @@ Rules
 | 28 | عامة | الطقس والطبيعة والحيوان | done on PC (93 rows / 31 terms — refs ran out; refs: الدرسوني 21, Wiktionary 10) |
 | 29 | عامة | الأطفال والمدرسة والعائلة | done on PC (120 rows; labelled by region; refs: الدرسوني 26, Wiktionary Hijazi 11 / Gulf 4) |
 | 30 | عامة | السوق والمال والسيارات | done on PC (120 rows; refs: العبودي الكلمات الدخيلة 24, الدرسوني 16) |
-| 31 | نجدية | الزمن والطقس والطبيعة والحيوان (replaces 15) | running (PC) |
+| 31 | نجدية | الزمن والطقس والطبيعة والحيوان (replaces 15) | done on PC (114 rows / 38 terms; refs: العبودي الأصول الفصيحة 31, الدرسوني 7) |
 | 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | done on PC (120 rows; refs: الجهيمان 24, العبودي الأمثال 13, سعوديبيديا 3) |
 | 33 | نجدية | البادية والإبل والرعي (replaces 25) | running (PC) |
 

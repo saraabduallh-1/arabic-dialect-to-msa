@@ -46,3 +46,4 @@
 {"model": "aya-expanse:8b", "mode": "rag_lexf+gen", "BLEU": 21.23, "chrF++": 49.2, "ExactMatch%": 6.19, "SpanAcc%": 33.36, "DialectLeft%": 4.01, "n": 291}
 {"model": "UBC-NLP/AraT5v2-base-1024+gen", "mode": "finetune", "BLEU": 31.6, "chrF++": 55.09, "ExactMatch%": 7.56, "SpanAcc%": 26.76, "DialectLeft%": 12.69, "n": 291}
 {"model": "moussaKam/AraBART+gen", "mode": "finetune", "BLEU": 26.98, "chrF++": 51.26, "ExactMatch%": 6.19, "SpanAcc%": 20.96, "DialectLeft%": 16.24, "n": 291}
+{"model": "google/mt5-base+gen", "mode": "finetune", "BLEU": 24.7, "chrF++": 50.01, "ExactMatch%": 4.12, "SpanAcc%": 19.8, "DialectLeft%": 18.96, "n": 291}

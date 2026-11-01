@@ -256,7 +256,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | D3 | running (batches 23, 24) |
 | D4 | todo (ينتظر D3؛ 4.3 👤) |
 | D5 | done: `src/clean_train.py` -> `data/sentences_clean/train.csv` + `REPORT.md`; dev/test only reported 👤 |
-| D6 | todo |
+| D6 | done (`data/README.md`); update after D2/D3 |
 | D7 | step 1 done: licences checked (SOURCES.md), `src/check_msa.py` -> 84.4% found, 761 flagged in `msa_check.csv` for review; synonyms for I2 come with the I2 candidates |
 | R0 | todo (بعد I1) |
 | R1–R3 | todo (بعد I2 وD3) |

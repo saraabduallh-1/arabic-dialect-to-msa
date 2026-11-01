@@ -59,3 +59,4 @@
 - 2026-11-01 (PC): D4.1 batch 48 done (Northern, 40 long sentences, avg 11.2 words, 48 terms). C2 (Claude paraphrases) preparation started.
 - 2026-11-01 (PC): D4.1 complete: batch 49 (عامة, 40 long sentences, avg 13.6 words, all 44 عامة terms). 10 long batches, 400 sentences, avg ≈12.5 words (train averages 5). all2.csv re-merged with b01–b49 for I6 (+gen2).
 - 2026-11-01 (PC): C2 chunk c01 done (292/300 rows paraphrased, 566 paraphrases). The agent also flagged ~25 train references with grammar errors (missing أن, wrong case endings, e.g. لست حزين -> حزينا) and ~15 doubtful meanings — notes in data/c2/out/c01.csv; relevant to T2 and to D5 (train cleaning). Chunk c03 started.
+- 2026-11-01 (PC): C2 chunk c02 done (294/300 rows, 578 paraphrases; notes flag more train reference errors: missing أن, case endings, typos, ~9 doubtful meanings). Chunk c04 started.

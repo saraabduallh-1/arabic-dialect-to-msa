@@ -32827,3 +32827,20 @@ https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
 [2026-10-23 20:15:22] $ git push -q -u origin main
 [2026-10-23 20:15:24] ALL DONE
 [2026-10-23 20:15:24] $ git add -A src results data README.md .gitignore
+[2026-10-23 20:15:25] $ git commit -q -m Benchmark: all done
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+[2026-10-23 20:15:25] $ git remote get-url origin
+https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
+[2026-10-23 20:15:25] $ git push -q -u origin main
+[2026-10-23 20:15:27] $ schtasks /delete /tn ArabicDialectAutorun /f
+SUCCESS: The scheduled task "ArabicDialectAutorun" was successfully deleted.
+[2026-11-01 11:23:25] autorun started
+[2026-11-01 11:23:27] === merge generated (try 1)
+[2026-11-01 11:23:27] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/merge_generated.py
+20 batches, 2268 rows -> 2268 (dropped 0 dev/test overlaps, 0 duplicates, 0 malformed)
+2707 distinct dialect terms, 2378 new to the training lexicon
+dialects: {'نجدية': 597, 'حجازية': 561, 'شرقية': 480, 'جنوبية': 465, 'شمالية': 162, 'عامة': 3}
+rows per batch: {'b01': 120, 'b02': 120, 'b03': 120, 'b04': 120, 'b05': 120, 'b06': 120, 'b07': 120, 'b08': 120, 'b09': 105, 'b10': 42, 'b11': 120, 'b12': 81, 'b13': 120, 'b14': 120, 'b16': 120, 'b17': 120, 'b18': 120, 'b19': 120, 'b21': 120, 'b22': 120}
+references: 741
+[2026-11-01 11:23:28] $ git add -A src results data README.md .gitignore

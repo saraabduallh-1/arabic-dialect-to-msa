@@ -246,7 +246,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | البند | الحالة |
 |---|---|
 | I1 | running (autorun phase 2 started 2026-11-01 11:23) |
-| I2 | code done (multi-ref metrics, `test_refs.csv` loader); candidates: todo (agent) |
+| I2 | code done; candidates ready (`data/sentences/test_refs_candidates.csv`: 265 rows with alt sentences, 696 span alternatives, 22 references flagged); waiting for user review 👤 |
 | I3 | todo (ينتظر I1) |
 | I4 | template + instructions + `src/check_real_test.py` ready (`data/real_test/`); collection 👤 |
 | I5 | code ready (`rag_fix`, `rag_lexret`, `--split dev`, `src/tune.py`, AraT5 25 epochs); runs in autorun after gemma3:27b, before QLoRA +gen |

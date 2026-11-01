@@ -68,6 +68,6 @@ Parallel agents always get different dialects (lesson from b31/b33).
 | 44 | نجدية | done (40 sentences, avg 13.0 words, 75 terms not used in b40) |
 | 45 | حجازية | done (40 sentences, avg 13.1 words, 87 terms not used in b41) |
 | 46 | شرقية | done (40 sentences, avg 12.9 words, ~80 terms not used in b42) |
-| 47 | جنوبية | running |
+| 47 | جنوبية | done (40 sentences, avg 12.9 words, ~73 terms not used in b43) |
 | 48 | شمالية | running |
-| 49 | عامة (mixed terms from all dialects, labelled by the dominant one) | todo |
+| 49 | عامة (mixed terms from all dialects, labelled by the dominant one) | running |

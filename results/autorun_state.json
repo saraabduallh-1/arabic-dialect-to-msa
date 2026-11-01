@@ -47,5 +47,6 @@
  "llm qwen3.8:27b rag": "2026-10-23T19:50:09",
  "llm qwen3.8:27b rag_lex": "2026-10-23T20:15:18",
  "final report": "2026-10-23T20:15:22",
- "merge generated": "2026-11-01T11:23:28"
+ "merge generated": "2026-11-01T11:23:28",
+ "llm qwen3.8:27b rag_lexf": "2026-11-01T11:54:23"
 }

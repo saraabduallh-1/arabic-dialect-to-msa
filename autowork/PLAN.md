@@ -38,9 +38,9 @@ Rules
 | 21 | نجدية | الأفعال والحركة والعمل | done (120 rows) |
 | 22 | حجازية | الأفعال والحركة والعمل | done (120 rows) |
 | 23 | شرقية | الأفعال والحركة والعمل | todo (interrupted on Mac by usage limit, nothing saved) |
-| 24 | جنوبية | الأفعال والحركة والعمل | todo (interrupted on Mac by usage limit, nothing saved) |
+| 24 | جنوبية | الأفعال والحركة والعمل | done on PC (120 rows; refs: العقيلي Jazan dictionary 36 terms, الشهراني 2024 4 terms) |
 | 25 | شمالية | الأفعال والحركة والعمل | skipped (see 33) |
-| 26 | عامة | تعابير وأمثال قصيرة شائعة | todo |
+| 26 | عامة | تعابير وأمثال قصيرة شائعة | running (PC) |
 | 27 | عامة | الزمن والمكان والأحوال | todo |
 | 28 | عامة | الطقس والطبيعة والحيوان | todo |
 | 29 | عامة | الأطفال والمدرسة والعائلة | todo |

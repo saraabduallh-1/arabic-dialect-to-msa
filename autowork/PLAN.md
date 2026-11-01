@@ -37,8 +37,8 @@ Rules
 | 20 | شمالية | الطعام واللباس والأدوات | skipped (see 32) |
 | 21 | نجدية | الأفعال والحركة والعمل | done (120 rows) |
 | 22 | حجازية | الأفعال والحركة والعمل | done (120 rows) |
-| 23 | شرقية | الأفعال والحركة والعمل | running |
-| 24 | جنوبية | الأفعال والحركة والعمل | running |
+| 23 | شرقية | الأفعال والحركة والعمل | todo (interrupted on Mac by usage limit, nothing saved) |
+| 24 | جنوبية | الأفعال والحركة والعمل | todo (interrupted on Mac by usage limit, nothing saved) |
 | 25 | شمالية | الأفعال والحركة والعمل | skipped (see 33) |
 | 26 | عامة | تعابير وأمثال قصيرة شائعة | todo |
 | 27 | عامة | الزمن والمكان والأحوال | todo |
@@ -52,5 +52,5 @@ Rules
 ## B. Merge → data/generated/all.csv — script ready (src/merge_generated.py); rerun + commit all.csv after the last batch
 ## C. Mac experiment — dropped: Mac (8GB) needs Adafactor+bs8, ~10x slower and not comparable with the PC baseline; all training moves to the PC package (D)
 ## D. PC package — done: autorun.py phase 2 (merge, rag_lexf / rag+gen / rag_lexf+gen for 4 LLMs, 3 seq2seq +gen, QLoRA +gen, report, analysis, judge). User runs: git pull, then .venv\Scripts\python src\autorun.py
-## E. Analysis: gain on terms covered by generated data vs not; update README, data card, REPORT — todo
+## E. Analysis — code done (analysis.py section 8); run on PC after the +gen experiments, then update README — todo (PC)
 ## F. Final summary for the user in autowork/WORKLOG.md — todo

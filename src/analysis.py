@@ -195,6 +195,34 @@ def main():
         ratio = sum(len(p.split()) for p in s["preds"]) / sum(len(r["tgt"].split()) for r in test)
         md.append(f"| {s['name']} | {100 * copy / len(test):.1f} | {ratio:.2f} |")
 
+    # effect of the generated data: test spans covered only by data/generated vs not covered
+    if (ROOT / "data" / "generated" / "all.csv").exists():
+        gen_lex = lexicon(load("all", "generated"))
+        for s in sy:
+            for x in s["spans"]:
+                x["gen"] = not x["seen"] and normalize(x["d"]) in gen_lex
+        n_gen = sum(x["gen"] for x in best["spans"])
+        pairs = []
+        for s in sy:
+            if s["mode"].endswith("+gen"):
+                pairs.append((by.get((s["model"], s["mode"][:-4])), s))
+            elif s["model"].endswith("+gen"):
+                pairs.append((by.get((s["model"][:-4], s["mode"])), s))
+        md += ["", "## 8. Effect of the generated data", "",
+               f"{n_gen} of {n_sp} test spans ({100 * n_gen / n_sp:.0f}%) are unseen in train but occur in the "
+               "generated data. p-value: paired bootstrap on chrF++ against the same system without generated data.", "",
+               "| System | chrF++ | Δ chrF++ | p | Δ correct% covered by generated | Δ correct% not covered | Δ correct% seen in train |",
+               "|---" * 7 + "|"]
+        f = lambda s, k: pct([x for x in s["spans"] if k(x)], "correct")
+        for base, s in pairs:
+            if base is None:
+                continue
+            md.append(f"| {s['name']} | {s['chrF++']} | {s['chrF++'] - base['chrF++']:+.2f} | "
+                      f"{p_value(s['boot']['chrF++'], base['boot']['chrF++']):.3f} | "
+                      f"{f(s, lambda x: x['gen']) - f(base, lambda x: x['gen']):+.1f} | "
+                      f"{f(s, lambda x: not x['gen'] and not x['seen']) - f(base, lambda x: not x['gen'] and not x['seen']):+.1f} | "
+                      f"{f(s, lambda x: x['seen']) - f(base, lambda x: x['seen']):+.1f} |")
+
     text = "\n".join(md) + "\n"
     (RES / "ANALYSIS.md").write_text(text, encoding="utf-8")
     # 'other' spans of the best system, for manual judgement

@@ -204,12 +204,14 @@ def main():
     for model, lr in SEQ2SEQ:
         step(f"finetune {model} +gen", lambda model=model, lr=lr: (
             unload_ollama(), sh([PY, "src/finetune.py", "--model", model, "--lr", lr] + GEN, timeout=24 * 3600)))
-    for model in QLORA:
-        step(f"qlora {model} +gen", lambda model=model: (
-            unload_ollama(), sh([PY, "src/qlora.py", "--model", model] + GEN, timeout=48 * 3600)))
     step("report 2", lambda: sh([PY, "src/report.py"]), tries=1)
     step("analysis 2", lambda: sh([PY, "src/analysis.py"]), tries=1)
     step("judge", lambda: (ollama_up(), sh([PY, "src/judge.py", "--judge", JUDGE, "--top", "15"], timeout=48 * 3600)))
+    # slowest step (~1-2 days with the generated data) last, so the other results arrive first
+    for model in QLORA:
+        step(f"qlora {model} +gen", lambda model=model: (
+            unload_ollama(), sh([PY, "src/qlora.py", "--model", model] + GEN, timeout=72 * 3600)))
+    step("report 3", lambda: (sh([PY, "src/report.py"]), sh([PY, "src/analysis.py"])), tries=1)
 
     log("ALL DONE")
     git_sync("Benchmark: all done")

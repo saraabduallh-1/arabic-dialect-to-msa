@@ -46,8 +46,8 @@ Rules
 | 29 | عامة | الأطفال والمدرسة والعائلة | done on PC (120 rows; labelled by region; refs: الدرسوني 26, Wiktionary Hijazi 11 / Gulf 4) |
 | 30 | عامة | السوق والمال والسيارات | done on PC (120 rows; refs: العبودي الكلمات الدخيلة 24, الدرسوني 16) |
 | 31 | نجدية | الزمن والطقس والطبيعة والحيوان (replaces 15) | running (PC) |
-| 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | running (PC) |
-| 33 | نجدية | البادية والإبل والرعي (replaces 25) | todo |
+| 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | done on PC (120 rows; refs: الجهيمان 24, العبودي الأمثال 13, سعوديبيديا 3) |
+| 33 | نجدية | البادية والإبل والرعي (replaces 25) | running (PC) |
 
 ## B. Merge → data/generated/all.csv — script ready (src/merge_generated.py); rerun + commit all.csv after the last batch
 ## C. Mac experiment — dropped: Mac (8GB) needs Adafactor+bs8, ~10x slower and not comparable with the PC baseline; all training moves to the PC package (D)

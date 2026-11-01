@@ -60,5 +60,6 @@
  "llm aya-expanse:8b rag_lexf": "2026-11-01T14:16:50",
  "llm aya-expanse:8b rag +gen": "2026-11-01T14:28:57",
  "llm aya-expanse:8b rag_lexf +gen": "2026-11-01T14:41:06",
- "finetune UBC-NLP/AraT5v2-base-1024 +gen": "2026-11-01T14:59:13"
+ "finetune UBC-NLP/AraT5v2-base-1024 +gen": "2026-11-01T14:59:13",
+ "finetune moussaKam/AraBART +gen": "2026-11-01T15:05:14"
 }

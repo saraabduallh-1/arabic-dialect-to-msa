@@ -1,1 +1,2 @@
 {"model": "UBC-NLP/AraT5v2-base-1024+gen", "mode": "finetune", "BLEU": 34.28, "chrF++": 57.02, "ExactMatch%": 11.03, "SpanAcc%": 31.08, "DialectLeft%": 12.09, "n": 290, "epoch": 8}
+{"model": "moussaKam/AraBART+gen", "mode": "finetune", "BLEU": 30.96, "chrF++": 54.21, "ExactMatch%": 7.24, "SpanAcc%": 25.09, "DialectLeft%": 16.23, "n": 290, "epoch": 11}

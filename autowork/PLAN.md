@@ -54,3 +54,20 @@ Rules
 ## D. PC package — done: autorun.py phase 2 (merge, rag_lexf / rag+gen / rag_lexf+gen for 4 LLMs, 3 seq2seq +gen, QLoRA +gen, report, analysis, judge). User runs: git pull, then .venv\Scripts\python src\autorun.py
 ## E. Analysis — code done (analysis.py section 8); run on PC after the +gen experiments, then update README — todo (PC)
 ## F. Final summary for the user in autowork/WORKLOG.md — todo
+
+## D4.1 Long compound sentences (PLAN_v2 D4.1; prompts/long_sentences.md)
+40 sentences × 10–20 words, each with 2–3 already-referenced generated terms of one dialect. Batch k → b{k}.csv, ids 100000+k*1000+1…
+Parallel agents always get different dialects (lesson from b31/b33).
+
+| k | dialect | status |
+|---|---|---|
+| 40 | نجدية | running |
+| 41 | حجازية | done (40 sentences, avg 12.4 words, 92 terms) |
+| 42 | شرقية | running |
+| 43 | جنوبية | todo |
+| 44 | نجدية | todo |
+| 45 | حجازية | todo |
+| 46 | شرقية | todo |
+| 47 | جنوبية | todo |
+| 48 | شمالية | todo |
+| 49 | عامة (mixed terms from all dialects, labelled by the dominant one) | todo |

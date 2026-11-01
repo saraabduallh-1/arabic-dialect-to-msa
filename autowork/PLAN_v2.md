@@ -249,7 +249,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | I2 | code done (multi-ref metrics, `test_refs.csv` loader); candidates: todo (agent) |
 | I3 | todo (ينتظر I1) |
 | I4 | template + instructions + `src/check_real_test.py` ready (`data/real_test/`); collection 👤 |
-| I5 | todo (ينتظر I1) |
+| I5 | code ready (`rag_fix`, `rag_lexret`, `--split dev`, `src/tune.py`, AraT5 25 epochs); runs in autorun after gemma3:27b, before QLoRA +gen |
 | I6 | todo (ينتظر D3/D4) |
 | D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |
 | D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |

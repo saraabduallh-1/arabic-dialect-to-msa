@@ -83,8 +83,11 @@ def main():
         s = score(dev, generate(model, tok, dev, beams=1))
         print(f"epoch {ep + 1} loss {loss.item():.3f} dev {s}")
         if s["chrF++"] > best:  # model selection on dev only
-            best = s["chrF++"]
+            best, best_dev = s["chrF++"], {**s, "epoch": ep + 1}
             model.save_pretrained(ckpt), tok.save_pretrained(ckpt)
+    if not a.limit:  # best dev score, for tuning decisions on dev (PLAN_v2 I5)
+        with (ROOT / "results" / "scores_dev.jsonl").open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"model": a.model + a.tag, "mode": "finetune", **best_dev}, ensure_ascii=False) + "\n")
 
     model = AutoModelForSeq2SeqLM.from_pretrained(ckpt).to(a.device)
     preds = generate(model, tok, test)

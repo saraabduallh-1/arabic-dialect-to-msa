@@ -4,7 +4,9 @@ Modes:
   zero     instruction only
   rag      + the k most similar training pairs as few-shot examples
   rag_lex  + dictionary hints for dialect words found in the training lexicon
-  rag_lexf like rag_lex, but drops hints for words used more often as MSA than as dialect
+  rag_lexf     like rag_lex, but drops hints for words used more often as MSA than as dialect
+  rag_lexret   rag_lexf, but half of the examples are training pairs that contain the same dialect terms
+  rag_fix      rag_lexf, then one follow-up turn if dialect terms from the lexicon are left in the answer
 
 usage: python src/run_llm.py --models qwen2.5:7b gemma3:12b --modes zero rag rag_lex
 """
@@ -42,9 +44,27 @@ class Retriever:
         self.as_dialect = Counter(normalize(d) for r in train for d, _ in r["pairs"])
         self.as_msa = Counter(w for r in train for w in normalize(r["tgt"]).split())
 
-    def examples(self, src, k):
+        self.by_term = {}
+        for i, r in enumerate(train):
+            for d, _ in r["pairs"]:
+                self.by_term.setdefault(normalize(d), []).append(i)
+
+    def examples(self, src, k, by_terms=False):
         sims = linear_kernel(self.vec.transform([normalize(src)]), self.mat)[0]
-        return [self.train[i] for i in sims.argsort()[::-1][:k]][::-1]  # most similar last
+        picked = []
+        if by_terms:  # up to k/2 examples that contain the sentence's dialect terms, most similar first
+            for term, _ in self.hints(src, filtered=True):
+                cand = sorted(self.by_term.get(term, []), key=lambda i: -sims[i])
+                picked += [i for i in cand[:2] if i not in picked]
+            picked = picked[: k // 2]
+        picked += [i for i in sims.argsort()[::-1] if i not in picked][: k - len(picked)]
+        return [self.train[i] for i in sorted(picked, key=lambda i: sims[i])]  # most similar last
+
+    def left(self, src, pred):
+        """Dialect terms of src (filtered lexicon hits) still present in pred, with their MSA equivalents."""
+        p = f" {normalize(pred)} "
+        return [(d, m) for d, m in self.hints(src, filtered=True)
+                if f" {d} " in p and not any(f" {normalize(x)} " in p for x in m)]
 
     def hints(self, src, max_n=3, filtered=False):
         words = normalize(src).split()
@@ -61,13 +81,13 @@ class Retriever:
 
 def build_messages(src, mode, ret, k):
     msgs = [{"role": "system", "content": SYSTEM}]
-    if mode in ("rag", "rag_lex", "rag_lexf"):
-        for ex in ret.examples(src, k):
+    if mode in ("rag", "rag_lex", "rag_lexf", "rag_lexret", "rag_fix"):
+        for ex in ret.examples(src, k, by_terms=mode == "rag_lexret"):
             msgs.append({"role": "user", "content": f"العامية: {ex['src']}"})
             msgs.append({"role": "assistant", "content": ex["tgt"]})
     user = f"العامية: {src}"
-    if mode in ("rag_lex", "rag_lexf"):
-        h = ret.hints(src, filtered=mode == "rag_lexf")
+    if mode in ("rag_lex", "rag_lexf", "rag_lexret", "rag_fix"):
+        h = ret.hints(src, filtered=mode != "rag_lex")
         if h:
             user += "\nتلميحات من القاموس (قد لا تنطبق كلها على السياق):\n" + "\n".join(
                 f"- {d} ← {' / '.join(m[:3])}" for d, m in h)
@@ -93,9 +113,26 @@ def chat(model, messages):
     return r.json()["message"]["content"]
 
 
-def run(model, mode, rows, ret, k, tag=""):
+def pred_path(model, mode, tag="", split="test"):
+    # test files keep their old names; tuning runs on dev get an @dev suffix
+    return PRED_DIR / f"{model.replace(':', '_').replace('/', '_')}__{mode}{tag}{'' if split == 'test' else '@' + split}.jsonl"
+
+
+def fix_turn(model, msgs, first, left):
+    """rag_fix: ask once more when dialect terms are left in the first answer."""
+    note = "\n".join(f"- {d} ← {' / '.join(m[:3])}" for d, m in left)
+    msgs = msgs + [{"role": "assistant", "content": first},
+                   {"role": "user", "content": "ما زالت في إجابتك كلمات عامية، استبدلها بمقابلها الفصيح المناسب للسياق:\n"
+                                               f"{note}\nأعد كتابة الجملة الفصحى كاملة في سطر واحد فقط."}]
+    return chat(model, msgs)
+
+
+def run(model, mode, rows, ret, k, tag="", split="test"):
     PRED_DIR.mkdir(parents=True, exist_ok=True)
-    path = PRED_DIR / f"{model.replace(':', '_').replace('/', '_')}__{mode}{tag}.jsonl"
+    path = pred_path(model, mode, tag, split)
+    base = {}
+    if mode == "rag_fix" and pred_path(model, "rag_lexf", tag, split).exists():  # reuse the first answers
+        base = {d["id"]: d for d in map(json.loads, pred_path(model, "rag_lexf", tag, split).open(encoding="utf-8"))}
     done = {}
     if path.exists():
         done = {d["id"]: d for d in map(json.loads, path.open(encoding="utf-8"))}
@@ -103,8 +140,16 @@ def run(model, mode, rows, ret, k, tag=""):
         for r in tqdm(rows, desc=f"{model} {mode}"):
             if r["id"] in done:
                 continue
-            raw = chat(model, build_messages(r["src"], mode, ret, k))
-            d = {"id": r["id"], "src": r["src"], "tgt": r["tgt"], "raw": raw, "pred": postprocess(raw)}
+            msgs = build_messages(r["src"], mode, ret, k)
+            if mode == "rag_fix":
+                first = base[r["id"]]["raw"] if r["id"] in base else chat(model, msgs)
+                left = ret.left(r["src"], postprocess(first))
+                raw = fix_turn(model, msgs, first, left) if left else first
+                d = {"id": r["id"], "src": r["src"], "tgt": r["tgt"], "first": first, "raw": raw,
+                     "fixed": bool(left), "pred": postprocess(raw)}
+            else:
+                raw = chat(model, msgs)
+                d = {"id": r["id"], "src": r["src"], "tgt": r["tgt"], "raw": raw, "pred": postprocess(raw)}
             done[r["id"]] = d
             f.write(json.dumps(d, ensure_ascii=False) + "\n")
             f.flush()
@@ -130,10 +175,13 @@ def main():
     ret = Retriever(train)
     for model in a.models:
         for mode in a.modes:
-            preds = run(model, mode, rows, ret, a.k, a.tag)
+            preds = run(model, mode, rows, ret, a.k, a.tag, a.split)
             res = {"model": model, "mode": mode + a.tag, **score(rows, preds)}
             print(json.dumps(res, ensure_ascii=False))
-            with (ROOT / "results" / "scores.jsonl").open("a", encoding="utf-8") as f:
+            if a.limit:  # smoke runs don't write scores
+                continue
+            out = "scores.jsonl" if a.split == "test" else f"scores_{a.split}.jsonl"
+            with (ROOT / "results" / out).open("a", encoding="utf-8") as f:
                 f.write(json.dumps(res, ensure_ascii=False) + "\n")
 
 

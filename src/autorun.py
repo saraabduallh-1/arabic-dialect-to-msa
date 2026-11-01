@@ -150,6 +150,18 @@ def unload_ollama():
         requests.post("http://localhost:11434/api/generate", json={"model": m["name"], "keep_alive": 0}, timeout=60)
 
 
+def arat5_e25():
+    """AraT5 with 25 instead of 15 epochs, on whichever data (with/without +gen) scored better."""
+    scores = {}
+    for line in (RESULTS / "scores.jsonl").open(encoding="utf-8"):
+        d = json.loads(line)
+        scores[d["model"]] = d["chrF++"]
+    base = "UBC-NLP/AraT5v2-base-1024"
+    gen = scores.get(base + "+gen", -1) > scores.get(base, -1)
+    sh([PY, "src/finetune.py", "--model", base, "--lr", "3e-4", "--epochs", "25"]
+       + (["--extra", "generated/all", "--tag", "+gen_e25"] if gen else ["--tag", "_e25"]), timeout=24 * 3600)
+
+
 def install():
     pip = [PY, "-m", "pip", "install", "-q", "--timeout", "120", "--retries", "10"]
     sh(pip + ["transformers<5", "sentencepiece", "accelerate", "protobuf", "tiktoken", "peft", "bitsandbytes"])
@@ -214,6 +226,9 @@ def main():
         for mode, extra in [("zero", []), ("rag", []), ("rag_lexf", []), ("rag", GEN), ("rag_lexf", GEN)]:
             step(f"llm {m} {mode}{' +gen' if extra else ''}", lambda m=m, mode=mode, extra=extra: (
                 ollama_up(), sh([PY, "src/run_llm.py", "--models", m, "--modes", mode] + extra, timeout=24 * 3600)))
+    # PLAN_v2 I5: tuning on dev, winners on test (src/tune.py), and AraT5 with 25 epochs
+    step("i5 tune", lambda: (ollama_up(), sh([PY, "src/tune.py"], timeout=72 * 3600)))
+    step("finetune AraT5 e25", lambda: (unload_ollama(), arat5_e25()))
     # slowest step (~1-2 days with the generated data) last, so the other results arrive first
     for model in QLORA:
         step(f"qlora {model} +gen", lambda model=model: (

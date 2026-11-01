@@ -48,3 +48,4 @@
 {"model": "moussaKam/AraBART+gen", "mode": "finetune", "BLEU": 26.98, "chrF++": 51.26, "ExactMatch%": 6.19, "SpanAcc%": 20.96, "DialectLeft%": 16.24, "n": 291}
 {"model": "google/mt5-base+gen", "mode": "finetune", "BLEU": 24.7, "chrF++": 50.01, "ExactMatch%": 4.12, "SpanAcc%": 19.8, "DialectLeft%": 18.96, "n": 291}
 {"model": "gemma3:27b", "mode": "zero", "BLEU": 24.19, "chrF++": 51.26, "ExactMatch%": 8.93, "SpanAcc%": 36.59, "DialectLeft%": 2.58, "n": 291}
+{"model": "gemma3:27b", "mode": "rag", "BLEU": 33.16, "chrF++": 58.65, "ExactMatch%": 14.09, "SpanAcc%": 42.03, "DialectLeft%": 4.78, "n": 291}

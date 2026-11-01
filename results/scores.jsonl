@@ -40,3 +40,4 @@
 {"model": "gemma3:12b", "mode": "rag_lexf+gen", "BLEU": 31.24, "chrF++": 56.79, "ExactMatch%": 12.03, "SpanAcc%": 39.5, "DialectLeft%": 4.64, "n": 291}
 {"model": "command-r7b-arabic:7b", "mode": "rag_lexf", "BLEU": 28.62, "chrF++": 54.86, "ExactMatch%": 8.93, "SpanAcc%": 36.13, "DialectLeft%": 7.06, "n": 291}
 {"model": "command-r7b-arabic:7b", "mode": "rag+gen", "BLEU": 26.32, "chrF++": 53.92, "ExactMatch%": 8.25, "SpanAcc%": 35.86, "DialectLeft%": 5.36, "n": 291}
+{"model": "command-r7b-arabic:7b", "mode": "rag_lexf+gen", "BLEU": 28.17, "chrF++": 54.64, "ExactMatch%": 10.65, "SpanAcc%": 38.03, "DialectLeft%": 5.96, "n": 291}

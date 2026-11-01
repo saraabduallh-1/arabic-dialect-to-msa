@@ -245,15 +245,15 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 ## الحالة
 | البند | الحالة |
 |---|---|
-| I1 | todo |
+| I1 | running (autorun phase 2 started 2026-11-01 11:23) |
 | I2 | todo |
 | I3 | todo (ينتظر I1) |
 | I4 | todo 👤 |
 | I5 | todo (ينتظر I1) |
 | I6 | todo (ينتظر D3/D4) |
-| D1 | todo 👤 |
-| D2 | todo 👤 |
-| D3 | todo |
+| D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |
+| D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |
+| D3 | running (batches 23, 24) |
 | D4 | todo (ينتظر D3؛ 4.3 👤) |
 | D5 | todo |
 | D6 | todo |

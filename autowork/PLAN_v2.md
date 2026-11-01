@@ -246,9 +246,9 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | البند | الحالة |
 |---|---|
 | I1 | running (autorun phase 2 started 2026-11-01 11:23) |
-| I2 | todo |
+| I2 | code done (multi-ref metrics, `test_refs.csv` loader); candidates: todo (agent) |
 | I3 | todo (ينتظر I1) |
-| I4 | todo 👤 |
+| I4 | template + instructions + `src/check_real_test.py` ready (`data/real_test/`); collection 👤 |
 | I5 | todo (ينتظر I1) |
 | I6 | todo (ينتظر D3/D4) |
 | D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |

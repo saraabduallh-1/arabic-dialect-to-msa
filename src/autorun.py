@@ -123,7 +123,7 @@ def git_sync(message):
        check=False)
     if sh(["git", "remote", "get-url", "origin"], check=False):
         log("no 'origin' remote configured - committed locally only")
-    elif sh(["git", "push", "-q", "-u", "origin", "main"], timeout=300, check=False):
+    elif sh(["git", "push", "-q", "-u", "origin", "HEAD"], timeout=300, check=False):
         log("push failed (repo missing or offline?) - will retry after the next step")
 
 

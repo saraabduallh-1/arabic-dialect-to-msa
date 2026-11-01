@@ -38,3 +38,4 @@
 - 2026-11-01 (PC): ~14:20 hit the 5-hour usage limit; batches 27 and 28 interrupted, resumed at 16:52 (same agents). GPU path unaffected: all 12 rag_lexf/+gen LLM runs done, seq2seq +gen runs in progress.
 - 2026-11-01 (PC): batch 27 done but small (time/place/states, 69 rows / 23 terms; most common words were already in train). REVIEW: لوين and قبيل are labelled جنوبية (only the South section lists them) though used more widely. Batch 29 started.
 - 2026-11-01 (PC): batch 28 done but small (weather/nature/animals, 93 rows / 31 terms; mixed dialect labels by reference). Batch 30 started.
+- 2026-11-01 (PC): batch 30 done (market/money/cars, 120 rows / 40 terms; 24 loanwords from العبودي «معجم الكلمات الدخيلة» labelled عامة, 16 from الدرسوني by region). REVIEW: many are car-part loanwords (دركسون، شكمان، كبوت) whose MSA equivalents are descriptive. Batch 31 started.

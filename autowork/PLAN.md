@@ -43,10 +43,10 @@ Rules
 | 26 | عامة | تعابير وأمثال قصيرة شائعة | done on PC (120 rows; proverbs; refs: الجهيمان، العبودي الأمثال العامية في نجد، السباعي أمثال الحجاز، سعوديبيديا) |
 | 27 | عامة | الزمن والمكان والأحوال | done on PC (69 rows / 23 terms — refs ran out; labelled by region; refs: الدرسوني 14, Wiktionary 9) |
 | 28 | عامة | الطقس والطبيعة والحيوان | done on PC (93 rows / 31 terms — refs ran out; refs: الدرسوني 21, Wiktionary 10) |
-| 29 | عامة | الأطفال والمدرسة والعائلة | running (PC) |
+| 29 | عامة | الأطفال والمدرسة والعائلة | done on PC (120 rows; labelled by region; refs: الدرسوني 26, Wiktionary Hijazi 11 / Gulf 4) |
 | 30 | عامة | السوق والمال والسيارات | done on PC (120 rows; refs: العبودي الكلمات الدخيلة 24, الدرسوني 16) |
 | 31 | نجدية | الزمن والطقس والطبيعة والحيوان (replaces 15) | running (PC) |
-| 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | todo |
+| 32 | نجدية | التعابير والأمثال القصيرة (replaces 20) | running (PC) |
 | 33 | نجدية | البادية والإبل والرعي (replaces 25) | todo |
 
 ## B. Merge → data/generated/all.csv — script ready (src/merge_generated.py); rerun + commit all.csv after the last batch

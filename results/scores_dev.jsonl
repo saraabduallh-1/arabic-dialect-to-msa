@@ -1,0 +1,1 @@
+{"model": "UBC-NLP/AraT5v2-base-1024+gen", "mode": "finetune", "BLEU": 34.28, "chrF++": 57.02, "ExactMatch%": 11.03, "SpanAcc%": 31.08, "DialectLeft%": 12.09, "n": 290, "epoch": 8}

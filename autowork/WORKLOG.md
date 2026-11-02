@@ -64,3 +64,4 @@
 - 2026-11-02 (PC): G1: gemma3:27b is the best open system: rag_lexf+gen 60.07 chrF++ (SpanAcc 42.3%, DialectLeft ~4.5%).
 - 2026-11-02 (PC): I5 (TUNING.md): dev picks k=16 for gemma3:27b, k=8 for qwen3.8:27b; rag_fix gives nothing on dev (-0.03); rag_lexret small gain. Test: gemma3:27b rag_lexret+gen k16 61.04 (+0.97 vs 60.07, p=0.138) -> not significant, success criterion not met. AraT5 25 epochs: dev 56.74 vs 57.02 for 15 epochs+gen -> no gain. Oracle top-5 gap +7.5 chrF++. QLoRA +gen started 08:41 (slowest step).
 - 2026-11-02 (PC): C2 chunk c03 done (299/300 rows, 582 paraphrases; 31 train references tagged [خطأ نحوي], 10 [معنى]). Chunk c05 started.
+- 2026-11-02 (PC): C2 chunk c04 done (297/300 rows, 586 paraphrases; 30 references tagged [خطأ نحوي], 8 [معنى]). Chunk c06 started.

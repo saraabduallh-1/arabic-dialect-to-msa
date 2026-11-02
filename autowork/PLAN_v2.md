@@ -249,7 +249,7 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | I2 | code done; candidates ready (`data/sentences/test_refs_candidates.csv`: 265 rows with alt sentences, 696 span alternatives, 22 references flagged); waiting for user review 👤 |
 | I3 | `results/human_labels_todo.csv` ready (150 spans from top 5) 👤; judge.py uses human_labels.jsonl once imported |
 | I4 | template + instructions + `src/check_real_test.py` ready (`data/real_test/`); collection 👤 |
-| I5 | code ready (`rag_fix`, `rag_lexret`, `--split dev`, `src/tune.py`, AraT5 25 epochs); runs in autorun after gemma3:27b, before QLoRA +gen |
+| I5 | done (`results/TUNING.md`): best gemma3:27b rag_lexret+gen k=16 61.04 (+0.97, p=0.14, not significant); rag_fix no gain; AraT5 25 epochs worse on dev (56.74 vs 57.02) |
 | I6 | todo (ينتظر D3/D4) |
 | D1 | script + defaults done (`src/clean_generated.py`); waiting for user decisions in QUESTIONS.md before use in training 👤 |
 | D2 | sample ready (`data/generated/review_sample.csv`); waiting for user review 👤 |
@@ -263,6 +263,6 @@ R0 بعد I1 مباشرة. وR1–R3 بعد I2 وD3، حتى يكون عندنا
 | C1 | todo (بعد I1 وI3) |
 | C2 | running: train split into 8 chunks (`data/c2/input`), prompt `prompts/paraphrase.md`; generated data after; 👤 100-row review before use |
 | C3 | todo (قبل R1) |
-| G1 | todo (ضمن autorun.py بعد المحكّم) |
+| G1 | done: gemma3:27b rag_lexf+gen 60.07 = new best open system (qwen3.8:27b 59.07) |
 | G2 | todo (بعد C2) |
 | G3 | todo (بعد I1) |

@@ -1,3 +1,13 @@
 {"model": "UBC-NLP/AraT5v2-base-1024+gen", "mode": "finetune", "BLEU": 34.28, "chrF++": 57.02, "ExactMatch%": 11.03, "SpanAcc%": 31.08, "DialectLeft%": 12.09, "n": 290, "epoch": 8}
 {"model": "moussaKam/AraBART+gen", "mode": "finetune", "BLEU": 30.96, "chrF++": 54.21, "ExactMatch%": 7.24, "SpanAcc%": 25.09, "DialectLeft%": 16.23, "n": 290, "epoch": 11}
 {"model": "google/mt5-base+gen", "mode": "finetune", "BLEU": 23.19, "chrF++": 51.34, "ExactMatch%": 2.76, "SpanAcc%": 18.06, "DialectLeft%": 22.94, "n": 290, "epoch": 13}
+{"model": "gemma3:27b", "mode": "rag_lexf+gen_k4", "BLEU": 35.43, "chrF++": 60.23, "ExactMatch%": 15.86, "SpanAcc%": 42.16, "DialectLeft%": 3.69, "n": 290}
+{"model": "gemma3:27b", "mode": "rag_lexf+gen_k8", "BLEU": 37.91, "chrF++": 62.0, "ExactMatch%": 16.21, "SpanAcc%": 44.11, "DialectLeft%": 3.82, "n": 290}
+{"model": "gemma3:27b", "mode": "rag_lexf+gen_k16", "BLEU": 39.16, "chrF++": 62.57, "ExactMatch%": 16.9, "SpanAcc%": 45.02, "DialectLeft%": 4.22, "n": 290}
+{"model": "gemma3:27b", "mode": "rag_fix+gen_k16", "BLEU": 38.11, "chrF++": 61.97, "ExactMatch%": 16.55, "SpanAcc%": 44.84, "DialectLeft%": 4.22, "n": 290}
+{"model": "gemma3:27b", "mode": "rag_lexret+gen_k16", "BLEU": 38.7, "chrF++": 62.49, "ExactMatch%": 16.9, "SpanAcc%": 45.07, "DialectLeft%": 4.11, "n": 290}
+{"model": "qwen3.8:27b", "mode": "rag_lexf+gen_k4", "BLEU": 31.44, "chrF++": 57.06, "ExactMatch%": 12.41, "SpanAcc%": 34.99, "DialectLeft%": 10.87, "n": 290}
+{"model": "qwen3.8:27b", "mode": "rag_lexf+gen_k8", "BLEU": 34.05, "chrF++": 57.87, "ExactMatch%": 12.76, "SpanAcc%": 35.62, "DialectLeft%": 9.21, "n": 290}
+{"model": "qwen3.8:27b", "mode": "rag_lexf+gen_k16", "BLEU": 32.32, "chrF++": 56.11, "ExactMatch%": 13.1, "SpanAcc%": 35.62, "DialectLeft%": 7.94, "n": 290}
+{"model": "qwen3.8:27b", "mode": "rag_fix+gen_k8", "BLEU": 34.09, "chrF++": 57.84, "ExactMatch%": 12.76, "SpanAcc%": 35.74, "DialectLeft%": 8.86, "n": 290}
+{"model": "qwen3.8:27b", "mode": "rag_lexret+gen_k8", "BLEU": 34.22, "chrF++": 58.07, "ExactMatch%": 12.41, "SpanAcc%": 36.54, "DialectLeft%": 8.63, "n": 290}

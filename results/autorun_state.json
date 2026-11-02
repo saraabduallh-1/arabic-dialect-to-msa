@@ -72,5 +72,6 @@
  "llm gemma3:27b rag_lexf": "2026-11-02T01:30:58",
  "llm gemma3:27b rag +gen": "2026-11-02T02:02:02",
  "llm gemma3:27b rag_lexf +gen": "2026-11-02T02:33:10",
- "i5 tune": "2026-11-02T08:23:47"
+ "i5 tune": "2026-11-02T08:23:47",
+ "finetune AraT5 e25": "2026-11-02T08:41:48"
 }

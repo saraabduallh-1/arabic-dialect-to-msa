@@ -54,4 +54,4 @@ Kept as is by the owner's decision (current reference is right): 15 (1501), 16 (
 | 53 | 875 | row deleted from train (owner's decision) |
 
 Kept as is by the owner: 35, 38, 39, 40, 41, 44, 47, 51, 52 and 54–73 (all of group ج confirmed correct).
-Pending a question: 49 (1059).
+| 49 | 1059 | dialect (ما)2 (تهون علي)3 → (ما تهون علي)2; MSA (لا)2 (أستخف)3 → (تعزّ عليّ)2 (approved 2026-11-03) |

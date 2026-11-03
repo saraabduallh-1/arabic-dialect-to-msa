@@ -55,3 +55,11 @@ Kept as is by the owner's decision (current reference is right): 15 (1501), 16 (
 
 Kept as is by the owner: 35, 38, 39, 40, 41, 44, 47, 51, 52 and 54–73 (all of group ج confirmed correct).
 | 49 | 1059 | dialect (ما)2 (تهون علي)3 → (ما تهون علي)2; MSA (لا)2 (أستخف)3 → (تعزّ عليّ)2 (approved 2026-11-03) |
+
+## Round 4 — grammar, spelling and broken brackets in train (owner: "fix them yourself, make sure every fix is right", 2026-11-03)
+113 fixes, listed one by one with the reason in `grammar_fixes.py` (applied by `apply_fixes.py`, which only changes a row when the old text occurs exactly once):
+- 104 grammar/spelling fixes on the MSA side flagged by the C2 agents in chunks c01–c04 and the partial c06: missing أن, case endings, hamza, agreement, prepositions, فاء in conditional answers.
+- 6 broken-bracket rows on the dialect side (292, 1201, 1187, 1311, 683, 474), renumbered so both sides match.
+- 3 follow-ups the full check found afterwards (1907 and 2844 unmarked, 341 «احرص على»).
+Full check after the fixes: no stray brackets, no one-sided span numbers; only 60 (ريح, kept by the owner) and 1942 (يامال, dialect spelling, kept) remain.
+Not covered yet: train chunks c05, c07, c08 and the rest of c06 (≈1,100 sentences) were never reviewed, so they still contain errors of the same kind.

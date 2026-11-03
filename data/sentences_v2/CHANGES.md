@@ -36,4 +36,4 @@ Not applied: #3 (train 60, «ريح») — the owner said «احذف ٣» (pendi
 Kept as is by the owner's decision (current reference is right): 15 (1501), 16 (1986), 20 (2333), 26 (1096), 28 (263), 29 (2499), 30 (748 الذيبان), 31 (1219), 32 (1210).
 | 12 | 1418 | (وإلا)1 → (أم)1; dialect side (ولاّ) unchanged (approved 2026-11-03) |
 
-Pending a question: 24 (2688).
+24 (2688): kept as is by the owner (يراوي = يتردد is right).

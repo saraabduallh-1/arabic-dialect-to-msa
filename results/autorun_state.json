@@ -75,5 +75,6 @@
  "i5 tune": "2026-11-02T08:23:47",
  "finetune AraT5 e25": "2026-11-02T08:41:48",
  "p3 word gemma3:27b zero": "2026-11-03T11:11:36",
- "p3 word gemma3:27b rag+gen2": "2026-11-03T13:37:57"
+ "p3 word gemma3:27b rag+gen2": "2026-11-03T13:37:57",
+ "p3 word gemma3:27b rag_lexf+gen2": "2026-11-03T16:12:12"
 }

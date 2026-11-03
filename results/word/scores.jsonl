@@ -1,1 +1,2 @@
 {"model": "gemma3:27b", "mode": "zero", "data": "sentences_v2", "k": 8, "WordAcc%": 32.57, "WordLoose%": 35.75, "Copy%": 1.06, "Missing%": 0.0, "spans": 565}
+{"model": "gemma3:27b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 42.3, "WordLoose%": 45.31, "Copy%": 0.88, "Missing%": 0.18, "spans": 565}

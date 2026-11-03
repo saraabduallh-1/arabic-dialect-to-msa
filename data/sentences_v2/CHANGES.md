@@ -37,3 +37,21 @@ Kept as is by the owner's decision (current reference is right): 15 (1501), 16 (
 | 12 | 1418 | (وإلا)1 → (أم)1; dialect side (ولاّ) unchanged (approved 2026-11-03) |
 
 24 (2688): kept as is by the owner (يراوي = يتردد is right).
+
+## Round 3 — train references (approved 2026-11-03)
+| # | Feature 1 | change (MSA side) |
+|---|---|---|
+| 33 | 2463 | (يطمئن)1 (أبدا)2 → (لا يطمئن)1 (إطلاقا)2 |
+| 34 | 1930 | (ا)1 → (أتدلّل)1 |
+| 36 | 2094 | (ظريف)2 → (طائش)2 (owner's meaning) |
+| 37 | 1996 | (أطال الله عمرك)1 → (يا أعزّ الناس)1 |
+| 42 | 1231 | (اندهش)1 → (ارتبك)1 |
+| 43 | 605 | (رحيمة)1 → (لطيفة)1 |
+| 45 | 1089 | (تخفيه)2 → (تدسّه)2 |
+| 46 | 1113 | (ارتبك)1 → (غضب غضبًا شديدًا)1 (owner's meaning; written with the accusative ending) |
+| 48 | 2769 | (سألتهم)1 → (ناديتهم)1 |
+| 50 | 1507 | (اختلطت)1 → (تحيّرت)1 (owner's meaning) |
+| 53 | 875 | row deleted from train (owner's decision) |
+
+Kept as is by the owner: 35, 38, 39, 40, 41, 44, 47, 51, 52 and 54–73 (all of group ج confirmed correct).
+Pending a question: 49 (1059).

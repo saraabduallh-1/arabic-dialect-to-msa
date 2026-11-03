@@ -161,17 +161,18 @@ def main():
     ap.add_argument("--models", nargs="+", required=True)
     ap.add_argument("--modes", nargs="+", default=["zero", "rag", "rag_lex"])
     ap.add_argument("--split", default="test")
+    ap.add_argument("--data", default="sentences", help="sentences (original) or sentences_v2 (corrected)")
     ap.add_argument("--k", type=int, default=8)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--extra", nargs="*", default=[], help="extra example/lexicon data as dataset/split, e.g. generated/all")
     ap.add_argument("--tag", default="", help="suffix for the mode name, e.g. +gen")
     a = ap.parse_args()
 
-    train = load("train")
+    train = load("train", a.data)
     for e in a.extra:
         ds, split = e.split("/")
         train += load(split, ds)
-    rows = load(a.split)[: a.limit]
+    rows = load(a.split, a.data)[: a.limit]
     ret = Retriever(train)
     for model in a.models:
         for mode in a.modes:

@@ -39,6 +39,7 @@ def load(split, dataset="sentences"):
             # aligned (dialect, msa) word pairs
             "pairs": [(src_sp[k], tgt_sp[k]) for k in sorted(src_sp) if k in tgt_sp],
             "span_ids": [k for k in sorted(src_sp) if k in tgt_sp],
+            "src_marked": str(r[DIALECT]),  # with the (word)N markers, for the word-level task
         })
     refs = DATA / dataset / f"{split}_refs.csv"
     if refs.exists():

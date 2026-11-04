@@ -7,3 +7,4 @@
 {"model": "gemma3:12b", "mode": "zero", "data": "sentences_v2", "k": 8, "WordAcc%": 23.89, "WordLoose%": 27.26, "Copy%": 0.35, "Missing%": 0.18, "spans": 565}
 {"model": "gemma3:12b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 40.18, "WordLoose%": 43.19, "Copy%": 1.06, "Missing%": 0.0, "spans": 565}
 {"model": "gemma3:12b", "mode": "rag_lexf+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 38.23, "WordLoose%": 41.42, "Copy%": 1.42, "Missing%": 1.06, "spans": 565}
+{"model": "command-r7b-arabic:7b", "mode": "zero", "data": "sentences_v2", "k": 8, "WordAcc%": 17.35, "WordLoose%": 23.19, "Copy%": 4.07, "Missing%": 0.0, "spans": 565}

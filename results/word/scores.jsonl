@@ -3,3 +3,4 @@
 {"model": "gemma3:27b", "mode": "rag_lexf+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 40.88, "WordLoose%": 43.54, "Copy%": 0.88, "Missing%": 0.18, "spans": 565}
 {"model": "qwen3.8:27b", "mode": "zero", "data": "sentences_v2", "k": 8, "WordAcc%": 21.59, "WordLoose%": 23.19, "Copy%": 13.81, "Missing%": 0.0, "spans": 565}
 {"model": "qwen3.8:27b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 38.05, "WordLoose%": 40.35, "Copy%": 3.89, "Missing%": 0.0, "spans": 565}
+{"model": "qwen3.8:27b", "mode": "rag_lexf+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 38.58, "WordLoose%": 40.18, "Copy%": 3.36, "Missing%": 0.0, "spans": 565}

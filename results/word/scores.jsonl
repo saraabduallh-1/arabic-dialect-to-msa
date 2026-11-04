@@ -9,3 +9,4 @@
 {"model": "gemma3:12b", "mode": "rag_lexf+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 38.23, "WordLoose%": 41.42, "Copy%": 1.42, "Missing%": 1.06, "spans": 565}
 {"model": "command-r7b-arabic:7b", "mode": "zero", "data": "sentences_v2", "k": 8, "WordAcc%": 17.35, "WordLoose%": 23.19, "Copy%": 4.07, "Missing%": 0.0, "spans": 565}
 {"model": "command-r7b-arabic:7b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 33.27, "WordLoose%": 37.88, "Copy%": 3.72, "Missing%": 0.53, "spans": 565}
+{"model": "command-r7b-arabic:7b", "mode": "rag_lexf+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 34.51, "WordLoose%": 38.76, "Copy%": 3.54, "Missing%": 1.95, "spans": 565}

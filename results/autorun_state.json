@@ -86,5 +86,6 @@
  "p3 word command-r7b-arabic:7b zero": "2026-11-04T10:11:20",
  "p3 word command-r7b-arabic:7b rag+gen2": "2026-11-04T10:42:28",
  "p3 word command-r7b-arabic:7b rag_lexf+gen2": "2026-11-04T11:13:59",
- "p3 word gemma3:27b rag_lexf+gen2 k16": "2026-11-04T22:54:42"
+ "p3 word gemma3:27b rag_lexf+gen2 k16": "2026-11-04T22:54:42",
+ "p3 sentence gemma3:27b rag_lexret v2": "2026-11-05T07:49:09"
 }

@@ -46616,3 +46616,11 @@ Test: 291 sentences, 565 dialect spans. Judge: **qwen3.8:27b** (agrees 87% with 
 | gemma3:27b | rag+gen | 42.3 |
 | qwen3.8:27b | rag_lexf+gen | 37.0 |
 [2026-11-05 16:03:35] $ git add -A src results data README.md .gitignore
+[2026-11-05 16:03:35] $ git commit -q -m Benchmark: p3 word report
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+[2026-11-05 16:03:36] $ git remote get-url origin
+https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
+[2026-11-05 16:03:36] $ git push -q -u origin HEAD
+[2026-11-05 16:03:39] PHASE 3 DONE
+[2026-11-05 16:03:39] $ git add -A src results data README.md .gitignore

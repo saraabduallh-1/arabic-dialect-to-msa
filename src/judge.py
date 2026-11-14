@@ -73,6 +73,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--judge", required=True, help="Ollama model used as judge")
     ap.add_argument("--top", type=int, help="only the N best systems by chrF++")
+    ap.add_argument("--agreement-only", action="store_true", help="only check the judge against the labels")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     tag = a.judge.replace(":", "_").replace("/", "_")
@@ -86,6 +87,15 @@ def main():
     exact = sum(g == m["label"] for g, m in zip(got, manual)) / len(manual)
     binary = sum((g == "correct") == (m["label"] == "correct") for g, m in zip(got, manual)) / len(manual)
     conf = Counter((m["label"], g) for g, m in zip(got, manual))
+    if a.agreement_only:
+        text = "\n".join([
+            f"# Judge {a.judge} vs {len(manual)} {'human' if src == human else 'Claude-written'} labels ({src.name})", "",
+            f"- Exact agreement (3 labels): {100 * exact:.0f}%", f"- Agreement on correct vs not: {100 * binary:.0f}%", "",
+            "| label \\ judge | " + " | ".join(LABELS) + " |", "|---" * 4 + "|"]
+            + [f"| {m} | " + " | ".join(str(conf[(m, g)]) for g in LABELS) + " |" for m in LABELS]) + "\n"
+        (RES / f"JUDGE_AGREEMENT_{tag}.md").write_text(text, encoding="utf-8")
+        print(text)
+        return
 
     # 2. judge every undecided span of every system
     train, test = load("train"), load("test")

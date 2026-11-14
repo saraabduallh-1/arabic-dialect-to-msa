@@ -29,6 +29,10 @@ def main():
     gen3 = ["--extra", "generated/verified", "--tag", "+gen3"]
     for m in ("gemma3:27b", "allam:7b"):
         step(f"p4 word {m} rag+gen3", lambda m=m: word(m, "rag", gen3))
+    # baseline without the generated data, to separate the effect of fine-tuning from that of the data
+    step("p4 qlora word ALLaM-AI/ALLaM-7B-Instruct-preview train only", lambda: (unload_ollama(), sh(
+        [PY, "src/qlora.py", "--model", "ALLaM-AI/ALLaM-7B-Instruct-preview", "--task", "word", "--data", "sentences_v2"],
+        timeout=48 * 3600)))
     for m in ("ALLaM-AI/ALLaM-7B-Instruct-preview", "Qwen/Qwen2.5-7B-Instruct"):
         step(f"p4 qlora word {m}", lambda m=m: (unload_ollama(), sh(
             [PY, "src/qlora.py", "--model", m, "--task", "word", "--data", "sentences_v2",

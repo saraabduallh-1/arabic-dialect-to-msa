@@ -147,6 +147,8 @@ def main():
     s, _ = evaluate(test, outs)
     res = {"model": name, "mode": "finetune", **({"data": a.data, "k": 0} if TASK == "word" else {}), **s}
     print(json.dumps(res, ensure_ascii=False))
+    if a.limit:  # smoke runs don't write scores
+        return
     with (res_dir / "scores.jsonl").open("a", encoding="utf-8") as f:
         f.write(json.dumps(res, ensure_ascii=False) + "\n")
 

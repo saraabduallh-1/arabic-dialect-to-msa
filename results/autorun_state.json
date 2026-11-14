@@ -89,5 +89,6 @@
  "p3 word gemma3:27b rag_lexf+gen2 k16": "2026-11-04T22:54:42",
  "p3 sentence gemma3:27b rag_lexret v2": "2026-11-05T07:49:09",
  "p3 word report": "2026-11-05T16:03:35",
- "p4 judge agreement human": "2026-11-14T17:46:41"
+ "p4 judge agreement human": "2026-11-14T17:46:41",
+ "p4 word allam:7b zero": "2026-11-14T18:01:09"
 }

@@ -93,5 +93,6 @@
  "p4 word allam:7b zero": "2026-11-14T18:01:09",
  "p4 word allam:7b rag+gen2": "2026-11-14T18:15:42",
  "p4 word gemma3:27b rag+gen3": "2026-11-14T18:59:53",
- "p4 word allam:7b rag+gen3": "2026-11-14T19:14:33"
+ "p4 word allam:7b rag+gen3": "2026-11-14T19:14:33",
+ "p4 qlora word ALLaM-AI/ALLaM-7B-Instruct-preview train only": "2026-11-14T19:47:31"
 }

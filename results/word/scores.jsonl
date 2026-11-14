@@ -15,3 +15,4 @@
 {"model": "allam:7b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 32.39, "WordLoose%": 36.99, "Copy%": 2.83, "Missing%": 0.18, "spans": 565}
 {"model": "gemma3:27b", "mode": "rag+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 41.59, "WordLoose%": 43.72, "Copy%": 0.88, "Missing%": 0.35, "spans": 565}
 {"model": "allam:7b", "mode": "rag+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 33.81, "WordLoose%": 36.99, "Copy%": 3.01, "Missing%": 0.18, "spans": 565}
+{"model": "ALLaM-7B-Instruct-preview-qlora-word", "mode": "finetune", "data": "sentences_v2", "k": 0, "WordAcc%": 45.13, "WordLoose%": 47.96, "Copy%": 0.88, "Missing%": 0.0, "spans": 565}

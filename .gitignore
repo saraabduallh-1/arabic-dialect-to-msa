@@ -8,3 +8,5 @@ data/generated/**/*.clean.csv
 .claude/settings.local.json
 data/lexicons/
 data/external/
+data/generated/lbatches/*.cands.jsonl
+data/generated/lbatches/pool.json

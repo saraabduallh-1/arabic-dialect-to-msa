@@ -46880,3 +46880,60 @@ https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
 [2026-11-16 06:24:44] $ git push -q -u origin HEAD
 [2026-11-16 06:24:47] PHASE 5 DONE
 [2026-11-16 06:24:47] $ git add -A src results data README.md .gitignore
+[2026-11-16 06:24:48] $ git commit -q -m Phase 5: all done
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+[2026-11-16 06:24:48] $ git remote get-url origin
+https://github.com/saraabduallh-1/arabic-dialect-to-msa.git
+[2026-11-16 06:24:48] $ git push -q -u origin HEAD
+[2026-11-16 21:58:38] phase 6 started
+[2026-11-16 21:58:38] === p6 qlora word ALLaM +gen3 +lex (try 1)
+[2026-11-16 21:58:40] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\qlora.py", line 34
+    u += "
+         ^
+SyntaxError: unterminated string literal (detected at line 34)
+[2026-11-16 21:58:41] Traceback (most recent call last):
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 136, in step
+    fn()
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\phase6.py", line 6, in <lambda>
+    step("p6 qlora word ALLaM +gen3 +lex", lambda: (unload_ollama(), sh(
+                                                                     ^^^
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 65, in sh
+    raise RuntimeError(f"exit code {p.returncode}: {' '.join(cmd)}")
+RuntimeError: exit code 1: C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+
+[2026-11-16 22:00:41] === p6 qlora word ALLaM +gen3 +lex (try 2)
+[2026-11-16 22:00:43] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\qlora.py", line 34
+    u += "
+         ^
+SyntaxError: unterminated string literal (detected at line 34)
+[2026-11-16 22:00:43] Traceback (most recent call last):
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 136, in step
+    fn()
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\phase6.py", line 6, in <lambda>
+    step("p6 qlora word ALLaM +gen3 +lex", lambda: (unload_ollama(), sh(
+                                                                     ^^^
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 65, in sh
+    raise RuntimeError(f"exit code {p.returncode}: {' '.join(cmd)}")
+RuntimeError: exit code 1: C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+
+[2026-11-16 22:04:43] === p6 qlora word ALLaM +gen3 +lex (try 3)
+[2026-11-16 22:04:45] $ C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\qlora.py", line 34
+    u += "
+         ^
+SyntaxError: unterminated string literal (detected at line 34)
+[2026-11-16 22:04:45] Traceback (most recent call last):
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 136, in step
+    fn()
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\phase6.py", line 6, in <lambda>
+    step("p6 qlora word ALLaM +gen3 +lex", lambda: (unload_ollama(), sh(
+                                                                     ^^^
+  File "C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\src\autorun.py", line 65, in sh
+    raise RuntimeError(f"exit code {p.returncode}: {' '.join(cmd)}")
+RuntimeError: exit code 1: C:\Users\saraabduallh\Documents\arabic-dialect-to-msa\.venv\Scripts\python.exe src/qlora.py --model ALLaM-AI/ALLaM-7B-Instruct-preview --task word --data sentences_v2 --extra generated/verified --lex --tag +gen4+lex
+
+[2026-11-16 22:10:45] !!! giving up on p6 qlora word ALLaM +gen3 +lex, continuing with the next step
+[2026-11-16 22:10:45] $ git add -A src results data README.md .gitignore

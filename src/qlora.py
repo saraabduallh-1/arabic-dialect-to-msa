@@ -31,10 +31,7 @@ def user_word(r):
         h = [(k, LEX.hint(d)) for k, (d, _) in zip(r["span_ids"], r["pairs"])]
         h = [f"{k}: {x[0]} = {x[1]}" for k, x in h if x]
         if h:
-            u += "
-معاني من معجم اللهجات (آلية، قد تخطئ أو لا تناسب السياق):
-" + "
-".join(h)
+            u += "\nمعاني من معجم اللهجات (آلية، قد تخطئ أو لا تناسب السياق):\n" + "\n".join(h)
     return u
 
 

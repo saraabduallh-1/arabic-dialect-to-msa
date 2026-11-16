@@ -96,5 +96,6 @@
  "p4 word allam:7b rag+gen3": "2026-11-14T19:14:33",
  "p4 qlora word ALLaM-AI/ALLaM-7B-Instruct-preview train only": "2026-11-14T19:47:31",
  "p4 qlora word ALLaM-AI/ALLaM-7B-Instruct-preview": "2026-11-14T20:21:07",
- "p4 qlora word Qwen/Qwen2.5-7B-Instruct": "2026-11-16T04:11:58"
+ "p4 qlora word Qwen/Qwen2.5-7B-Instruct": "2026-11-16T04:11:58",
+ "p4 word report": "2026-11-16T05:16:07"
 }

@@ -22,11 +22,25 @@ import run_word
 from run_llm import SYSTEM, postprocess
 
 TASK = "sentence"  # set from --task
+LEX = None  # lexicon.Lexicon when --lex: dictionary meanings of the marked words go into the word prompt
+
+
+def user_word(r):
+    u = f"الجملة: {r['src_marked']}"
+    if LEX:
+        h = [(k, LEX.hint(d)) for k, (d, _) in zip(r["span_ids"], r["pairs"])]
+        h = [f"{k}: {x[0]} = {x[1]}" for k, x in h if x]
+        if h:
+            u += "
+معاني من معجم اللهجات (آلية، قد تخطئ أو لا تناسب السياق):
+" + "
+".join(h)
+    return u
 
 
 def prompt(tok, r):
     if TASK == "word":
-        msgs = [{"role": "system", "content": run_word.SYSTEM}, {"role": "user", "content": f"الجملة: {r['src_marked']}"}]
+        msgs = [{"role": "system", "content": run_word.SYSTEM}, {"role": "user", "content": user_word(r)}]
     else:
         msgs = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"العامية: {r['src']}"}]
     return tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
@@ -88,9 +102,13 @@ def main():
     ap.add_argument("--tag", default="", help="suffix for output names, e.g. +gen")
     ap.add_argument("--task", choices=["sentence", "word"], default="sentence")
     ap.add_argument("--data", default="sentences", help="sentences (original) or sentences_v2 (corrected)")
+    ap.add_argument("--lex", action="store_true", help="word task: add dictionary meanings (src/lexicon.py)")
     a = ap.parse_args()
-    global TASK
+    global TASK, LEX
     TASK = a.task
+    if a.lex:
+        from lexicon import Lexicon
+        LEX = Lexicon()
     random.seed(42)
     torch.manual_seed(42)
 

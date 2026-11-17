@@ -19,3 +19,4 @@
 {"model": "ALLaM-7B-Instruct-preview-qlora-word+gen3", "mode": "finetune", "data": "sentences_v2", "k": 0, "WordAcc%": 46.9, "WordLoose%": 48.85, "Copy%": 1.59, "Missing%": 0.18, "spans": 565}
 {"model": "Qwen2.5-7B-Instruct-qlora-word+gen3", "mode": "finetune", "data": "sentences_v2", "k": 0, "WordAcc%": 29.91, "WordLoose%": 30.97, "Copy%": 2.3, "Missing%": 0.0, "spans": 565}
 {"model": "ALLaM-7B-Instruct-preview-qlora-word+gen4", "mode": "finetune", "data": "sentences_v2", "k": 0, "WordAcc%": 44.96, "WordLoose%": 46.19, "Copy%": 1.59, "Missing%": 0.0, "spans": 565}
+{"model": "ALLaM-7B-Instruct-preview-qlora-word+gen4+lex", "mode": "finetune", "data": "sentences_v2", "k": 0, "WordAcc%": 48.32, "WordLoose%": 49.91, "Copy%": 2.65, "Missing%": 0.0, "spans": 565}

@@ -100,6 +100,7 @@ def main():
     ap.add_argument("--task", choices=["sentence", "word"], default="sentence")
     ap.add_argument("--data", default="sentences", help="sentences (original) or sentences_v2 (corrected)")
     ap.add_argument("--lex", action="store_true", help="word task: add dictionary meanings (src/lexicon.py)")
+    ap.add_argument("--predict", help="skip training, run the saved adapter on this split (e.g. dev)")
     a = ap.parse_args()
     global TASK, LEX
     TASK = a.task
@@ -129,12 +130,25 @@ def main():
     model = get_peft_model(base, lora)
     model.print_trainable_parameters()
 
+    name = a.model.split("/")[-1] + "-qlora" + ("-word" if TASK == "word" else "") + a.tag
+    ckpt = ROOT / "results" / "checkpoints" / name
+    if a.predict:  # no training: the saved best adapter on another split
+        set_peft_model_state_dict(model, load_file(ckpt / "adapter_model.safetensors"))
+        rows = load(a.predict, a.data)[: a.limit]
+        outs = generate(model, tok, rows)
+        res_dir = ROOT / "results" / ("word" if TASK == "word" else "")
+        with (res_dir / "preds" / f"{name}__finetune@{a.predict}.jsonl").open("w", encoding="utf-8") as f:
+            for r, o in zip(rows, outs):
+                pred = {str(k): v for k, v in run_word.parse(o).items()} if TASK == "word" else postprocess(o)
+                f.write(json.dumps({"id": r["id"], "src": r["src_marked"] if TASK == "word" else r["src"],
+                                    "tgt": r["tgt"], "raw": o, "pred": pred}, ensure_ascii=False) + "\n")
+        print(json.dumps(evaluate(rows, outs)[0], ensure_ascii=False))
+        return
+
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=a.lr)
     steps = a.epochs * ((len(train) + a.bs - 1) // a.bs)
     sched = get_cosine_schedule_with_warmup(opt, int(0.05 * steps), steps)
 
-    name = a.model.split("/")[-1] + "-qlora" + ("-word" if TASK == "word" else "") + a.tag
-    ckpt = ROOT / "results" / "checkpoints" / name
     best = -1
     model.train()
     for ep in range(a.epochs):

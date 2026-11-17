@@ -1,0 +1,55 @@
+{
+ "split": "dev",
+ "min_n": 2,
+ "min_c": 0.8,
+ "spans": 555,
+ "ALLaM alone exact%": 48.1,
+ "all": {
+  "n": 555,
+  "share%": 100.0,
+  "exact%": 48.5,
+  "loose%": 51.5
+ },
+ "review": {
+  "n": 309,
+  "share%": 55.7,
+  "exact%": 27.8,
+  "loose%": 30.4
+ },
+ "suggested": {
+  "n": 246,
+  "share%": 44.3,
+  "exact%": 74.4,
+  "loose%": 78.0
+ },
+ "review / allam": {
+  "n": 299,
+  "share%": 53.9,
+  "exact%": 27.8,
+  "loose%": 30.4
+ },
+ "review / nocopy:dict": {
+  "n": 1,
+  "share%": 0.2,
+  "exact%": 0.0,
+  "loose%": 0.0
+ },
+ "review / nocopy:gemma": {
+  "n": 9,
+  "share%": 1.6,
+  "exact%": 33.3,
+  "loose%": 33.3
+ },
+ "suggested / agree": {
+  "n": 193,
+  "share%": 34.8,
+  "exact%": 69.9,
+  "loose%": 74.1
+ },
+ "suggested / dict": {
+  "n": 53,
+  "share%": 9.5,
+  "exact%": 90.6,
+  "loose%": 92.5
+ }
+}

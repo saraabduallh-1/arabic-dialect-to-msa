@@ -61,3 +61,14 @@ for human marking (correct / partial / wrong). A 200-row sample is enough for th
 
 - Advice 4 (short MSA equivalent per lexicon entry): needs model review per entry; postponed.
 - Advice 6 (detector prior from train marking ratio): the cheap corpus version failed; the train-ratio feature remains to try.
+
+## Human review of 200 dev answers that differ from the reference (one annotator, blind to the system)
+
+| system | n | correct | partial | wrong |
+|---|---|---|---|---|
+| ALLaM +gen3 | 99 | 71 (71.7%) | 15 | 13 |
+| gemma3:27b | 101 | 67 | 19 | 15 |
+| all | 200 | 138 (69%) | 34 (17%) | 28 (14%) |
+
+ALLaM dev: 48.1% exact + 51.9% non-exact × 71.7% judged correct by the human ≈ **85% correct by meaning** (sample of 99, rough 95% interval ±5 points).
+Exact match against one reference therefore underestimates the system by ~37 points. Caveats: one annotator, who is also the data author; needs a second annotator and kappa.

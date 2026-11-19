@@ -89,6 +89,7 @@ def main():
     ap.add_argument("--extra", default="", help="extra training csv under data/, e.g. generated/verified")
     ap.add_argument("--epochs", type=int, default=5)
     ap.add_argument("--lr", type=float, default=3e-5)
+    ap.add_argument("--save", default="", help="directory to save the trained tagger (used by mine_tweets.py)")
     a = ap.parse_args()
     random.seed(0)
     torch.manual_seed(0)
@@ -122,6 +123,9 @@ def main():
             tot += loss.item()
         print(f"epoch {ep + 1}: loss {tot / (len(data) / 16):.4f}", flush=True)
     model.eval()
+    if a.save:
+        model.save_pretrained(a.save)
+        tok.save_pretrained(a.save)
 
     # what train says about each form
     as_dia, as_fus = set(), set()

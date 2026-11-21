@@ -72,3 +72,19 @@ for human marking (correct / partial / wrong). A 200-row sample is enough for th
 
 ALLaM dev: 48.1% exact + 51.9% non-exact × 71.7% judged correct by the human ≈ **85% correct by meaning** (sample of 99, rough 95% interval ±5 points).
 Exact match against one reference therefore underestimates the system by ~37 points. Caveats: one annotator, who is also the data author; needs a second annotator and kappa.
+
+## Tweet vocabulary (human-verified) as a lexicon for the tiers (dev only)
+
+gemma3:27b proposed MSA equivalents for the 2,300 most frequent tweet-mined dialect forms; 2,074 it judged Saudi/Gulf dialect.
+Human review of the 391 most frequent: 357 correct (91.3%; 10 of them with a corrected equivalent), 25 wrong equivalent, 9 not Saudi.
+
+| use of the 357 verified words on dev | dev spans touched | effect |
+|---|---|---|
+| override (vocab answer replaces ALLaM) | 14 | exact 28.6% vs ALLaM 71% on the same spans: worse |
+| confirm only (vocab == ALLaM → suggested) | 1 | none (agreement with gemma already catches them) |
+| same with all 2,074 unreviewed proposals | 1 | none |
+
+A fixed lexicon entry ignores context and inflection (قاعد → يجلس, but the sentence needs جالس; حاط → يضع vs وضعت),
+and ALLaM already translates these frequent words correctly in context. The verified vocabulary therefore does not raise
+dev accuracy; it is kept as a resource (data/external/tweet_dialect/verified_vocab.json) and the override is not used.
+The remaining errors are not missing everyday words: see the human review (exact match underestimates by ~37 points).

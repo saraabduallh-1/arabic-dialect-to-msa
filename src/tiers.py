@@ -39,7 +39,17 @@ def train_dict():
     return d
 
 
-def decide(d, m, a, g, dic, min_n, min_c):
+def vocab(path):
+    """Human-verified tweet vocabulary {normalized form: msa} (src/propose_equivalents.py + review page)."""
+    if not path:
+        return {}
+    if path.endswith(".jsonl"):  # unreviewed gemma proposals (saudi and dialect)
+        rows = [json.loads(l) for l in open(path, encoding="utf-8")]
+        return {normalize(v["form"]): v["msa"] for v in rows if v["saudi"] and v["dialect"] and v["msa"]}
+    return {normalize(v["form"]): v["msa"] for v in json.load(open(path, encoding="utf-8"))}
+
+
+def decide(d, m, a, g, dic, min_n, min_c, voc=None):
     """(tier, answer, source) for one span."""
     nd = normalize(d)
     c = dic.get(nd)
@@ -51,7 +61,12 @@ def decide(d, m, a, g, dic, min_n, min_c):
     a_copy, g_copy = normalize(a) in ("", nd), normalize(g) in ("", nd)
     if not a_copy and normalize(a) == normalize(g):
         return "suggested", a, "agree"
+    # a fixed lexicon entry ignores context and inflection (قاعد: يجلس/جالس), so it only confirms ALLaM
+    if voc and not a_copy and normalize(a) == normalize(voc.get(nd, "")):
+        return "suggested", a, "agree_vocab"
     if a_copy:  # no-copy rule
+        if voc and nd in voc:
+            return "review", voc[nd], "nocopy:vocab"
         if top:
             return "review", top, "nocopy:dict"
         if not g_copy:
@@ -60,7 +75,7 @@ def decide(d, m, a, g, dic, min_n, min_c):
     return "review", a, "allam"
 
 
-def run(split, min_n, min_c, verbose=True):
+def run(split, min_n, min_c, verbose=True, voc=None):
     rows = load(split, "sentences_v2")
     A, G, dic = preds(ALLAM, split), preds(GEMMA, split), train_dict()
     st = Counter()
@@ -69,7 +84,7 @@ def run(split, min_n, min_c, verbose=True):
             if normalize(d) == normalize(m):
                 continue
             a, g = A[r["id"]].get(str(k), ""), G[r["id"]].get(str(k), "")
-            tier, ans, src = decide(d, m, a, g, dic, min_n, min_c)
+            tier, ans, src = decide(d, m, a, g, dic, min_n, min_c, voc)
             x, y = normalize(ans), normalize(m)
             ok = bool(x) and x == y
             loose = bool(x) and (ok or f" {y} " in f" {x} " or f" {x} " in f" {y} ")
@@ -96,6 +111,7 @@ def main():
     ap.add_argument("--split", default="dev")
     ap.add_argument("--min_n", type=int, default=2)
     ap.add_argument("--min_c", type=float, default=0.8)
+    ap.add_argument("--vocab", default="", help="verified tweet vocabulary json (dev to choose)")
     ap.add_argument("--sweep", action="store_true", help="dev only: grid over min_n x min_c")
     a = ap.parse_args()
     out = ROOT / "results" / "advice"
@@ -111,8 +127,8 @@ def main():
         print("\n".join(lines))
         (out / f"tiers_sweep_{a.split}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
         return
-    r = run(a.split, a.min_n, a.min_c)
-    (out / f"tiers_{a.split}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
+    r = run(a.split, a.min_n, a.min_c, voc=vocab(a.vocab))
+    (out / f"tiers_{a.split}{'_vocab' if a.vocab else ''}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

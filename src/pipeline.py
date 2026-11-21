@@ -3,9 +3,9 @@
 
 1. find the dialect words: MARBERT BIO tagger (src/tag_dialect.py --save)
 2. replace them: ALLaM-7B QLoRA word model (+gen3, chosen on dev), prompt of src/run_word.py
-3. tier: suggested = train dictionary form seen >= 2 times with the same MSA in >= 80%  (src/tiers.py thresholds,
-   chosen on dev); everything else = review. (The gemma agreement of tiers.py is left out: a second 27B model
-   is too heavy for a tool.)
+3. tier: suggested = train dictionary form seen >= 2 times with the same MSA in >= 80% (src/tiers.py thresholds,
+   chosen on dev), or ALLaM and a second word model (Qwen2.5-7B QLoRA +gen3) give the same answer; everything else =
+   review. Qwen replaces gemma3:27b of tiers.py (4x smaller; on dev 38% suggested at 73.7% exact vs gemma 44% / 74.4%).
 
 usage:
   python src/pipeline.py --text "وش تبي تسوي الحين"
@@ -13,6 +13,7 @@ usage:
 Writes results/pipeline/<split>.jsonl and results/pipeline/<split>.md for --eval.
 """
 import argparse
+import gc
 import json
 import re
 from collections import Counter
@@ -30,6 +31,7 @@ from tiers import train_dict
 
 BASE = "ALLaM-AI/ALLaM-7B-Instruct-preview"
 ADAPTER = ROOT / "results" / "checkpoints" / "ALLaM-7B-Instruct-preview-qlora-word+gen3"
+SECOND = ("Qwen/Qwen2.5-7B-Instruct", ROOT / "results" / "checkpoints" / "Qwen2.5-7B-Instruct-qlora-word+gen3")
 TAGGER = ROOT / "results" / "checkpoints" / "tagger_marbert"
 OUT = ROOT / "results" / "pipeline"
 
@@ -38,20 +40,27 @@ class Pipeline:
     def __init__(self, min_n=2, min_c=0.8):
         self.ttok = AutoTokenizer.from_pretrained(TAGGER)
         self.tagger = AutoModelForTokenClassification.from_pretrained(TAGGER).cuda().eval().half()
-        self.tok = AutoTokenizer.from_pretrained(BASE)
+        self.dic, self.min_n, self.min_c = train_dict(), min_n, min_c
+
+    def load_llm(self, base_id, adapter):
+        self.tok = AutoTokenizer.from_pretrained(base_id)
         if self.tok.pad_token is None:
             self.tok.pad_token = self.tok.eos_token
         self.tok.padding_side = "left"
         bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_use_double_quant=True,
                                  bnb_4bit_compute_dtype=torch.bfloat16)
-        base = AutoModelForCausalLM.from_pretrained(BASE, quantization_config=bnb, device_map={"": 0},
+        base = AutoModelForCausalLM.from_pretrained(base_id, quantization_config=bnb, device_map={"": 0},
                                                     dtype=torch.bfloat16)
         lora = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, task_type="CAUSAL_LM",
                           target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
         self.llm = get_peft_model(base, lora)
-        set_peft_model_state_dict(self.llm, load_file(ADAPTER / "adapter_model.safetensors"))
+        set_peft_model_state_dict(self.llm, load_file(adapter / "adapter_model.safetensors"))
         self.llm.eval()
-        self.dic, self.min_n, self.min_c = train_dict(), min_n, min_c
+
+    def unload_llm(self):
+        del self.llm
+        gc.collect()
+        torch.cuda.empty_cache()
 
     def tag(self, words):
         enc = self.ttok(words, is_split_into_words=True, truncation=True, max_length=128, return_tensors="pt").to("cuda")
@@ -87,26 +96,34 @@ class Pipeline:
                 out[j] = run_word.parse(t)
         return out
 
-    def tier(self, d, a):
+    def tier(self, d, a, q):
         c = self.dic.get(normalize(d))
         if c:
             top, k = c.most_common(1)[0]
             if sum(c.values()) >= self.min_n and k / sum(c.values()) >= self.min_c:
                 return "suggested", top
-        if not a or normalize(a) == normalize(d):  # no-copy rule
-            return "review", c.most_common(1)[0][0] if c else ""
+        a_copy, q_copy = normalize(a) in ("", normalize(d)), normalize(q) in ("", normalize(d))
+        if not a_copy and normalize(a) == normalize(q):  # the two models agree
+            return "suggested", a
+        if a_copy:  # no-copy rule
+            return "review", c.most_common(1)[0][0] if c else ("" if q_copy else q)
         return "review", a
 
     def __call__(self, sentences):
         items = [(clean(s).split(), None) for s in sentences]
         items = [(w, self.tag(w)) for w, _ in items]
+        self.load_llm(BASE, ADAPTER)
         answers = self.replace(items)
+        self.unload_llm()
+        self.load_llm(*SECOND)
+        second = self.replace(items)
+        self.unload_llm()
         res = []
-        for (w, sp), ans in zip(items, answers):
+        for (w, sp), ans, ans2 in zip(items, answers, second):
             words, reps, pos = [], [], 0
             for k, (s, e) in enumerate(sp, 1):
                 d = " ".join(w[s:e])
-                t, m = self.tier(d, ans.get(k, ""))
+                t, m = self.tier(d, ans.get(k, ""), ans2.get(k, ""))
                 reps.append({"span": [s, e], "dialect": d, "msa": m, "tier": t})
                 words += w[pos:s] + [m or d]
                 pos = e
@@ -116,7 +133,8 @@ class Pipeline:
 
 def evaluate(p, split):
     rows = load(split, "sentences_v2")
-    out = p([r["src"] for r in rows])
+    # the gold tokenisation of the marked sentence, so that spans can be compared one to one
+    out = p([" ".join(t for t, _ in tokens(r["src_marked"])) for r in rows])
     st = Counter()
     for r, o in zip(rows, out):
         gold_tok = tokens(r["src_marked"])
@@ -146,7 +164,7 @@ def evaluate(p, split):
             f.write(json.dumps(o, ensure_ascii=False) + "\n")
     P, R = st["hit"] / max(st["pred"], 1), st["hit"] / max(st["gold"], 1)
     pct = lambda a, b: f"{100 * a / max(b, 1):.1f}"
-    lines = [f"# End-to-end pipeline on {split} (tagger + ALLaM +gen3 + dictionary tier)", "",
+    lines = [f"# End-to-end pipeline on {split} (tagger + ALLaM +gen3 + dictionary / Qwen-agreement tier)", "",
              f"Sentences: {len(rows)}; tokenisation mismatches: {st['tok_mismatch']}.", "",
              "| step | value |", "|---|---|",
              f"| dialect span detection P / R / F1 (exact boundaries) | {100*P:.1f} / {100*R:.1f} / {200*P*R/max(P+R,1e-9):.1f} |",
@@ -163,9 +181,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--text", nargs="*")
     ap.add_argument("--eval", nargs="*", help="splits, e.g. dev test")
+    ap.add_argument("--final", action="store_true", help="allow test (once, settings fixed on dev)")
     a = ap.parse_args()
     p = Pipeline()
     for s in a.eval or []:
+        assert s == "dev" or a.final, "settings are chosen on dev; pass --final to run test once"
         evaluate(p, s)
     if a.text:
         for o in p(a.text):

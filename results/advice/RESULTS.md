@@ -88,3 +88,10 @@ A fixed lexicon entry ignores context and inflection (قاعد → يجلس, but
 and ALLaM already translates these frequent words correctly in context. The verified vocabulary therefore does not raise
 dev accuracy; it is kept as a resource (data/external/tweet_dialect/verified_vocab.json) and the override is not used.
 The remaining errors are not missing everyday words: see the human review (exact match underestimates by ~37 points).
+
+## End-to-end pipeline (`src/pipeline.py`): raw sentence → dialect tagger → ALLaM → tiers
+
+The earlier pipeline numbers (73% found) were lowered by a tokenisation mismatch in the evaluation; fixed (gold tokenisation).
+Second model for the agreement tier: Qwen2.5-7B QLoRA +gen3 instead of gemma3:27b (dev, gold spans: 38.4% suggested at 73.7% exact vs 44.3% / 74.4%).
+Train-ratio / tweet-vocab boost of the tagger: +0.6 recall on dev, not used (`results/pipeline/tagger_boost_dev.md`).
+Settings fixed on dev; test run once. See `results/pipeline/dev.md`, `test.md`.

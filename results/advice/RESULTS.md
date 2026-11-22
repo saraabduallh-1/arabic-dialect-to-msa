@@ -95,3 +95,15 @@ The earlier pipeline numbers (73% found) were lowered by a tokenisation mismatch
 Second model for the agreement tier: Qwen2.5-7B QLoRA +gen3 instead of gemma3:27b (dev, gold spans: 38.4% suggested at 73.7% exact vs 44.3% / 74.4%).
 Train-ratio / tweet-vocab boost of the tagger: +0.6 recall on dev, not used (`results/pipeline/tagger_boost_dev.md`).
 Settings fixed on dev; test run once. See `results/pipeline/dev.md`, `test.md`.
+
+### Pipeline on test judged by meaning (`src/judge_pipeline.py`, judge qwen3.8:27b)
+
+| | share of spans that need a change | correct | partial | wrong |
+|---|---|---|---|---|
+| suggested | 27.8% | **89.8%** | 2.5% | 7.6% |
+| review | 51.7% | 53.8% | 7.9% | 38.4% |
+| missed by the tagger | 20.5% | | | |
+| all | 100% | 52.7% | 4.8% | |
+
+The judge is much stricter than the human: on the 200 dev answers the user labelled it calls 36% correct where she called 69%
+(agreement correct-vs-not only 58%). These judged numbers are therefore a lower bound; the "suggested" tier stays near 90% even so.

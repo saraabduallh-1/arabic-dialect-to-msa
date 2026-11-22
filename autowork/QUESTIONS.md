@@ -88,3 +88,6 @@ HANDOFF يقول اسأل قبل الدفعات الباقية، لكن PLAN_v2 
 - 584: ما تعتمد ← (ما تعتمد)N → (لا تعتمد)N
 - 833: ما يعجبني ← (ما يعجبني)N → (لا يعجبني)N
 القرار: لم أعدّلها (4 صفوف من 2,326، أثرها لا يُقاس). تنتظر موافقة صاحبة البيانات.
+
+## 2026-11-22: MARBERT tagger not published
+UBC-NLP/MARBERTv2 declares no license on the Hub, so the fine-tuned tagger (results/checkpoints/tagger_marbert) was not uploaded (safest choice). Only the ALLaM and Qwen adapters (Apache-2.0 bases) are published by src/publish_hf.py. Publish the tagger only after checking the MARBERT terms.

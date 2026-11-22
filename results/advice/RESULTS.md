@@ -80,7 +80,7 @@ Human review of the 391 most frequent: 357 correct (91.3%; 10 of them with a cor
 
 | use of the 357 verified words on dev | dev spans touched | effect |
 |---|---|---|
-| override (vocab answer replaces ALLaM) | 14 | exact 28.6% vs ALLaM 71% on the same spans: worse |
+| override (vocab answer replaces ALLaM) | 14 | exact 28.6% vs ALLaM 57.1% (8/14) on the same spans: worse |
 | confirm only (vocab == ALLaM → suggested) | 1 | none (agreement with gemma already catches them) |
 | same with all 2,074 unreviewed proposals | 1 | none |
 

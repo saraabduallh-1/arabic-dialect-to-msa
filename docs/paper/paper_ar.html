@@ -246,6 +246,8 @@ ol.refs { direction:ltr; text-align:left; padding-left:7mm; padding-right:0; fon
 <li><b>موارد خارجية أخرى:</b> قسنا تغطيتها للكلمات العامية غير المعروفة في dev (363 كلمة وعبارة)، فغطّت SauDial ‏21 منها (5.8%)، وقاموس «رد العامي للفصيح» ‏3 (0.8%)، مقابل 164 (45.2%) لكل المرشحين من التغريدات.</li>
 <li><b>تعزيز الاكتشاف بقاموس التدريب وبالمفردات الموثقة:</b> رفع الاستدعاء على dev أقل من نقطة، وخفض الدقة قليلًا.</li>
 <li><b>Qwen2.5-7B نموذجًا رئيسيًا:</b> بلغت مطابقته على الاختبار 29.9%، واستغرق تدريبه نحو 36 ساعة لامتلاء ذاكرة البطاقة؛ فاستعملناه نموذجًا ثانيًا للاتفاق فقط.</li>
+<li><b>بدائل خفيفة دون نموذج توليدي:</b> جرّبنا على dev ‏(555 كلمة) قاموس التدريب وحده، ثم القاموس مع أقرب صيغة في التدريب بتمثيلات الحروف (char n-gram TF-IDF)، ثم أقرب كلمة في التدريب بتمثيلات MARBERT السياقية (embeddings). بلغت المطابقة الحرفية 19.6% <span class="ltr">[16.5–23.1]</span> للقاموس، و21.3% <span class="ltr">[18.1–24.9]</span> مع تمثيلات الحروف، و15.0% للتمثيلات السياقية، مقابل 48.1% <span class="ltr">[44.0–52.3]</span> لـ ALLaM. ويرجع الفرق إلى الكلمات غير الواردة في التدريب (65% من dev): أصاب فيها ALLaM ‏38.4%، ولم تتجاوز البدائل 2.5%، لأنها لا تولّد مقابلًا جديدًا، ولأن التمثيلات تقيس التقارب في السياق لا الترادف. وحتى في الكلمات الواردة في التدريب كان ALLaM أدق (66.3% مقابل 56.5%)، لأن القاموس يعطي مقابلًا واحدًا مهما اختلف السياق أو التصريف.</li>
+<li><b>نماذج أصغر بالوصفة نفسها:</b> ضبطنا Qwen2.5-3B وQwen2.5-1.5B بـ QLoRA على البيانات نفسها، فبلغت مطابقتهما على dev ‏27.4% <span class="ltr">[23.8–31.2]</span> و22.5% <span class="ltr">[19.2–26.2]</span>. فتصغير النموذج يوفّر الذاكرة لكنه يخسر نحو نصف الصواب، ولم نعتمده.</li>
 </ol>
 
 <h2>9. النقاش</h2>
@@ -325,6 +327,8 @@ ol.refs { direction:ltr; text-align:left; padding-left:7mm; padding-right:0; fon
 <tr><td class="r">التحكيم بالمعنى ومعايرته</td><td><code>judge_pipeline.py --split test</code></td><td><code>results/pipeline/judged_test.md</code></td></tr>
 <tr><td class="r">استخراج كلمات التغريدات واقتراح مقابلاتها</td><td><code>mine_tweets.py</code>, <code>propose_equivalents.py</code></td><td><code>results/advice/mine_tweets_dev.md</code></td></tr>
 <tr><td class="r">تغطية الموارد الخارجية</td><td><code>coverage_external.py</code></td><td><code>results/advice/coverage_external_dev.md</code></td></tr>
+<tr><td class="r">البدائل الخفيفة (القاموس والتمثيلات)</td><td><code>embed_baseline.py</code></td><td><code>results/advice/embed_baseline_dev.md</code></td></tr>
+<tr><td class="r">النماذج الأصغر</td><td><code>qlora.py --model Qwen/Qwen2.5-3B-Instruct --task word --data sentences_v2 --extra generated/verified --tag +gen3</code></td><td><code>results/advice/small_models_dev.md</code></td></tr>
 <tr><td class="r">الدلالة الإحصائية</td><td><code>word_signif.py</code></td><td><code>results/word/</code></td></tr>
 <tr><td class="r">ملخص كل التجارب اللاحقة</td><td>—</td><td><code>results/advice/RESULTS.md</code></td></tr>
 </table>

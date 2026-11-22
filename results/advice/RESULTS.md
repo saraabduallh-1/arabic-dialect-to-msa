@@ -107,3 +107,6 @@ Settings fixed on dev; test run once. See `results/pipeline/dev.md`, `test.md`.
 
 The judge is much stricter than the human: on the 200 dev answers the user labelled it calls 36% correct where she called 69%
 (agreement correct-vs-not only 58%). These judged numbers are therefore a lower bound; the "suggested" tier stays near 90% even so.
+
+## Light baselines and smaller models (dev, 2026-11-22)
+Dictionary 19.6%, dictionary+char-kNN 21.3%, contextual MARBERT kNN 15.0%, Qwen2.5-3B 27.4%, Qwen2.5-1.5B 22.5% vs ALLaM 48.1% exact. See embed_baseline_dev.md, small_models_dev.md. Not adopted.

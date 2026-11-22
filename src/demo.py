@@ -12,12 +12,18 @@ from pipeline import ADAPTER, BASE, SECOND, Pipeline
 
 
 class Demo(Pipeline):
-    def __init__(self):
+    def __init__(self, single=False):
         super().__init__()
         self.load_llm(BASE, ADAPTER)
         self.m1 = (self.tok, self.llm)
-        self.load_llm(*SECOND)
-        self.m2 = (self.tok, self.llm)
+        if single:  # ALLaM only (half the GPU memory): no agreement tier, "suggested" comes from the dictionary only
+            self.m2 = (self.tok, None)
+        else:
+            self.load_llm(*SECOND)
+            self.m2 = (self.tok, self.llm)
+
+    def replace(self, items):
+        return [{} for _ in items] if self.llm is None else super().replace(items)
 
     def load_llm(self, base_id, adapter):
         """At start-up: really load. While serving: switch to the model already in memory."""
@@ -53,8 +59,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--share", action="store_true")
     ap.add_argument("--password")
+    ap.add_argument("--single", action="store_true", help="load ALLaM only (frees the GPU for other work)")
     a = ap.parse_args()
-    p = Demo()
+    p = Demo(a.single)
 
     def run(text):
         lines = [l.strip() for l in (text or "").splitlines() if l.strip()][:10]

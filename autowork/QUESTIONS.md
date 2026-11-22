@@ -91,3 +91,5 @@ HANDOFF يقول اسأل قبل الدفعات الباقية، لكن PLAN_v2 
 
 ## 2026-11-22: MARBERT tagger not published
 UBC-NLP/MARBERTv2 declares no license on the Hub, so the fine-tuned tagger (results/checkpoints/tagger_marbert) was not uploaded (safest choice). Only the ALLaM and Qwen adapters (Apache-2.0 bases) are published by src/publish_hf.py. Publish the tagger only after checking the MARBERT terms.
+
+- 2026-11-22: أوقفت الواجهة التجريبية (gradio) لتحرير كرت الشاشة لتدريب Qwen2.5-1.5B/3B (طلب «جرب» نموذجًا أصغر). الاختيار بين الأحجام على dev فقط؛ السكربت يطبع test أيضًا كما في البروتوكول السابق ولا يُستعمل للاختيار.

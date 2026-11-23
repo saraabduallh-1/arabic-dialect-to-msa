@@ -88,7 +88,7 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
 <section class="scene" data-start="0" data-end="6" style="align-items:center;justify-content:center;text-align:center">
   <div data-in="0.2" class="wordmark">خصص<svg viewBox="0 0 48 48"><path fill="currentColor" d="M20 2c1.5 9 4 12.5 13 14-9 1.5-11.5 5-13 14-1.5-9-4-12.5-13-14 9-1.5 11.5-5 13-14z"/><path fill="currentColor" opacity=".8" d="M37 26c.8 4.6 2 6.4 6.5 7.2-4.5.8-5.7 2.6-6.5 7.2-.8-4.6-2-6.4-6.5-7.2 4.5-.8 5.7-2.6 6.5-7.2z"/></svg></div>
   <div data-in="0.9" style="font-family:var(--display);font-weight:700;font-size:64px;color:var(--ink);margin-top:10px">من العامية السعودية إلى الفصحى</div>
-  <div data-in="1.6" class="sub" style="margin-top:22px;font-size:38px">كيف نحدّد الكلمة العامية ونستبدلها؟</div>
+  <div data-in="1.6" data-type="1.8" class="sub" style="margin-top:22px;font-size:38px">كيف نحدّد الكلمة العامية ونستبدلها؟</div>
 </section>
 
 <!-- 2. overview -->
@@ -134,8 +134,8 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
   <h2 data-in="0">نموذجان يقترحان المقابل الفصيح</h2>
   <div class="card marked" data-in="0.6">أهل <span class="m">(الفريج)</span><span class="s">1</span> كلهم حضروا عرس <span class="m">(أخوي)</span><span class="s">2</span></div>
   <div class="models">
-    <div class="card model" data-in="1.6"><h3>ALLaM-7B + QLoRA</h3><div class="k">النموذج الرئيسي</div><div class="out" data-in="3.0">1: الحي<br>2: أخي</div></div>
-    <div class="card model" data-in="2.0"><h3>Qwen2.5-7B + QLoRA</h3><div class="k">نموذج ثانٍ مستقل للتحقق</div><div class="out" data-in="3.6">1: الحي<br>2: أخي</div></div>
+    <div class="card model" data-in="1.6"><h3>ALLaM-7B + QLoRA</h3><div class="k">النموذج الرئيسي</div><div class="out" data-in="2.8" data-type="3.0">1: الحي<br>2: أخي</div></div>
+    <div class="card model" data-in="2.0"><h3>Qwen2.5-7B + QLoRA</h3><div class="k">نموذج ثانٍ مستقل للتحقق</div><div class="out" data-in="3.6" data-type="3.8">1: الحي<br>2: أخي</div></div>
   </div>
   <div class="prompt" data-in="5.0"><b>التعليمة:</b> «اكتب لكل رقم مقابله في الفصحى المناسب لمعنى الجملة وسياقها، بنفس الصيغة النحوية».
     والإجابة سطر لكل رقم، فيُستبدل كل مقطع في موضعه.<br>
@@ -158,7 +158,7 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
 <section class="scene" data-start="52" data-end="61">
   <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 4: العرض</div></div>
   <h2 data-in="0">النتيجة أمام المستخدم</h2>
-  <div class="card final" data-in="0.6">أهل <span class="u-g">الحي</span> كلهم حضروا عرس <span class="u-g">أخي</span></div>
+  <div class="card final" data-in="0.6" data-type="0.9">أهل <span class="u-g">الحي</span> كلهم حضروا عرس <span class="u-g">أخي</span></div>
   <div class="card" data-in="1.8" style="margin-top:30px">
     <table><tr><th>العامية</th><th>الفصحى</th><th>المستوى</th><th>المصدر</th></tr>
       <tr><td>الفريج</td><td>الحي</td><td style="color:var(--replace);font-weight:700">مقترح</td><td>اتفاق النموذجين</td></tr>
@@ -206,6 +206,44 @@ const DUR = 81, FADE = 0.5;
 const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
 const scenes = [...document.querySelectorAll('.scene')];
 window.DUR = DUR;
+const CPS = 16;
+function cut(html, n) {  // first n visible characters of an HTML string, tags kept
+  let out = '', i = 0;
+  while (i < html.length && n > 0) {
+    if (html[i] === '<') { const j = html.indexOf('>', i); out += html.slice(i, j + 1); i = j + 1; continue; }
+    if (html[i] === '&') { const j = html.indexOf(';', i); out += html.slice(i, j + 1); i = j + 1; n--; continue; }
+    out += html[i++]; n--;
+  }
+  return out + '<span style="display:inline-block;width:3px;height:1em;background:var(--green);vertical-align:middle;opacity:' + (n === 0 && i < html.length ? 1 : 0) + '"></span>';
+}
+function typeAll(s, loc) {
+  for (const e of s.querySelectorAll('[data-type]')) {
+    e._html = e._html || e.innerHTML;
+    const n = Math.max(0, Math.floor((loc - parseFloat(e.dataset.type)) * CPS));
+    e.innerHTML = cut(e._html, n);
+  }
+}
+// sound events for the renderer: [time, kind]
+window.events = () => {
+  const ev = [];
+  for (const s of scenes) {
+    const a = +s.dataset.start;
+    if (a > 0) ev.push([a, 'whoosh']);
+    for (const e of s.querySelectorAll('[data-in]')) {
+      const t = a + parseFloat(e.dataset.in);
+      if (e.dataset.type) continue;
+      ev.push([t, e.dataset.w ? 'rise' : e.classList.contains('pill') ? 'click' : e.classList.contains('tag') ? 'tick' : 'pop']);
+    }
+    for (const e of s.querySelectorAll('[data-on]')) ev.push([a + parseFloat(e.dataset.on), 'click']);
+    for (const e of s.querySelectorAll('[data-type]')) {
+      const txt = (e._html || e.innerHTML).replace(/<[^>]+>/g, '').replace(/&[^;]+;/g, 'x');
+      const t0 = a + parseFloat(e.dataset.type);
+      [...txt].forEach((c, k) => { if (c.trim()) ev.push([t0 + k / CPS, 'key']); });
+    }
+  }
+  return ev;
+};
+
 window.render = t => {
   for (const s of scenes) {
     const a = +s.dataset.start, b = +s.dataset.end, loc = t - a;
@@ -220,6 +258,7 @@ window.render = t => {
       e.style.transform = `translateY(${(1 - p) * 26}px)`;
     }
     for (const e of s.querySelectorAll('[data-on]')) e.classList.toggle('on', loc >= parseFloat(e.dataset.on));
+    typeAll(s, loc);
   }
 };
 const q = new URLSearchParams(location.search).get('t');

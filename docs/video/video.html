@@ -43,7 +43,7 @@ h2{font-family:var(--display);font-weight:800;font-size:64px;color:var(--green);
 .w.ok .t{background:var(--replace-bg);border-color:var(--replace);color:var(--green)}
 .marked{font-size:50px;text-align:center;font-weight:600}
 .marked .m{color:var(--review);font-weight:700}
-.marked .s{font-family:var(--mono);font-size:30px;vertical-align:super;color:var(--review)}
+.marked .s{font-family:var(--mono);font-size:.6em;vertical-align:super;color:var(--review)}
 .models{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:34px}
 .model h3{font-family:var(--display);font-size:38px;color:var(--green);margin:0 0 6px}
 .model .k{font-size:24px;color:var(--muted);margin-bottom:22px}
@@ -79,20 +79,68 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
 .chain{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;font-size:34px;font-weight:600}
 .chain span.c{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px 24px}
 .chain span.a{color:var(--green-2);font-size:40px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kh{font-family:var(--display);font-weight:700;font-size:30px;color:var(--green);margin-bottom:14px}
+.big{font-size:54px;font-weight:600;text-align:center;padding:10px 0}
+.pts{margin:0;padding-inline-start:34px;font-size:29px;line-height:1.9}
+.pts b{color:var(--green)}
+.tb{font-size:28px}.tb td,.tb th{padding:12px 16px}
+.mono{font-size:36px;font-weight:600;background:var(--bg-2);border-radius:14px;padding:12px 22px;margin-bottom:12px}
+.small{font-size:26px;color:var(--muted);line-height:1.75;margin:8px 0 0}
+.kv{display:flex;justify-content:space-between;gap:24px;font-size:26px;padding:10px 0;border-bottom:1px solid var(--line)}
+.kv span{color:var(--muted)}.kv b{font-weight:600;text-align:left}
+.stack{display:flex;height:84px;border-radius:16px;overflow:hidden;font-family:var(--display);font-weight:700;font-size:28px}
+.seg{display:grid;place-items:center;color:#fff}.seg.g{background:var(--replace)}.seg.o{background:var(--review)}.seg.m{background:#9aa7a0}
 </style>
 </head>
 <body>
 <div class="deco"><i style="--s:110px;top:8%;right:3%"></i><i style="--s:70px;top:36%;right:9%"></i><i style="--s:140px;top:70%;right:2%"></i><i style="--s:90px;top:10%;left:5%"></i><i style="--s:130px;top:46%;left:2%"></i><i style="--s:60px;top:80%;left:11%"></i></div>
 
-<!-- 1. title -->
-<section class="scene" data-start="0" data-end="6" style="align-items:center;justify-content:center;text-align:center">
+<section class="scene" data-dur="6" style="align-items:center;justify-content:center;text-align:center">
   <div data-in="0.2" class="wordmark">خصص<svg viewBox="0 0 48 48"><path fill="currentColor" d="M20 2c1.5 9 4 12.5 13 14-9 1.5-11.5 5-13 14-1.5-9-4-12.5-13-14 9-1.5 11.5-5 13-14z"/><path fill="currentColor" opacity=".8" d="M37 26c.8 4.6 2 6.4 6.5 7.2-4.5.8-5.7 2.6-6.5 7.2-.8-4.6-2-6.4-6.5-7.2 4.5-.8 5.7-2.6 6.5-7.2z"/></svg></div>
   <div data-in="0.9" style="font-family:var(--display);font-weight:700;font-size:64px;color:var(--ink);margin-top:10px">من العامية السعودية إلى الفصحى</div>
   <div data-in="1.6" data-type="1.8" class="sub" style="margin-top:22px;font-size:38px">كيف نحدّد الكلمة العامية ونستبدلها؟</div>
 </section>
-
-<!-- 2. overview -->
-<section class="scene" data-start="6" data-end="15">
+<section class="scene" data-dur="10">
+  <div class="top"><div class="brand">خصص</div><div class="step">تعريف المهمة</div></div>
+  <h2 data-in="0">استبدال المصطلح العامي، لا إعادة كتابة الجملة</h2>
+  <p class="sub" data-in="0.4">المدخل جملة عامية، والمخرج الجملة نفسها بعد استبدال المقاطع العامية وحدها.</p>
+  <div class="two">
+    <div class="card" data-in="1.0"><div class="kh">المدخل</div><div class="big">(مدري) (وش) صار</div></div>
+    <div class="card" data-in="1.6"><div class="kh">المخرج</div><div class="big"><span class="u-g">لا أدري</span> <span class="u-g">ماذا</span> صار</div></div>
+  </div>
+  <div class="card" data-in="2.6" style="margin-top:28px">
+    <ul class="pts">
+      <li>المهمة مقسومة إلى مهمتين: <b>اكتشاف المقطع</b> (span detection)، ثم <b>استبداله</b> بمقابله الفصيح في سياقه.</li>
+      <li>المقطع قد يكون كلمة أو عبارة («ما صدقت»). الكلمات الفصيحة حولها تبقى كما هي.</li>
+      <li>لا تُعدّ تصحيحات الهمزة والإملاء وحدها استبدالًا.</li>
+    </ul>
+  </div>
+</section>
+<section class="scene" data-dur="13">
+  <div class="top"><div class="brand">خصص</div><div class="step">البيانات</div></div>
+  <h2 data-in="0">جمل متوازية معلّمة على مستوى المقطع</h2>
+  <div class="two" style="grid-template-columns:1.25fr 1fr">
+    <div class="card" data-in="0.6">
+      <table class="tb"><tr><th>المجموعة</th><th>جمل</th><th>مقاطع</th><th>الاستعمال</th></tr>
+        <tr><td>train</td><td>2,325</td><td>4,669</td><td>التدريب</td></tr>
+        <tr><td>مولّدة ومراجعة</td><td>770</td><td>1,891</td><td>التدريب فقط</td></tr>
+        <tr><td>dev</td><td>290</td><td>563</td><td>اختيار كل الإعدادات</td></tr>
+        <tr><td><b>test</b></td><td><b>291</b></td><td><b>567</b></td><td><b>محجوبة، مرة واحدة</b></td></tr></table>
+    </div>
+    <div class="card" data-in="1.6">
+      <div class="kh">صيغة التعليم</div>
+      <div class="mono marked" style="font-size:36px;text-align:right"><span class="m">(مدري)</span><span class="s">1</span> <span class="m">(وش)</span><span class="s">2</span> صار</div>
+      <div class="mono marked" style="font-size:36px;text-align:right"><span class="m">(لا أدري)</span><span class="s">1</span> <span class="m">(ماذا)</span><span class="s">2</span> صار</div>
+      <p class="small">الرقم نفسه في الجانبين يربط المقطع العامي بمقابله، فتنتج أزواج <span class="ltr">(dialect, MSA)</span> محاذاة.</p>
+      <div class="kh" style="margin-top:14px">التطبيع قبل المقارنة</div>
+      <p class="small">حذف التشكيل، توحيد أ/إ/آ ← ا، ى ← ي، ة ← ه، ؤ ← و، ئ ← ي، وحذف الترقيم.</p>
+    </div>
+  </div>
+</section>
+<section class="scene" data-dur="9">
   <div class="top"><div class="brand">خصص</div><div class="step">نظرة عامة</div></div>
   <h2 data-in="0">أربع مراحل متكاملة</h2>
   <p class="sub" data-in="0.4">كل مرحلة تأخذ ناتج التي قبلها، ولا يُستبدل شيء دون تحديد مستوى الثقة.</p>
@@ -106,9 +154,7 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
     <div class="box" data-in="4.0"><div class="n">4</div><h3>العرض</h3><p>«مقترح» أو «للمراجعة»<br>والقرار للمستخدم</p></div>
   </div>
 </section>
-
-<!-- 3. detection -->
-<section class="scene" data-start="15" data-end="26">
+<section class="scene" data-dur="11">
   <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 1: الاكتشاف</div></div>
   <h2 data-in="0">تحديد الكلمة العامية</h2>
   <p class="sub" data-in="0.4">نقطّع الجملة إلى كلمات، ثم يعطي المُعلِّم كل كلمة وسمًا.</p>
@@ -127,9 +173,30 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
     بفضل <span class="ltr">I</span> يلتقط العبارات متعددة الكلمات مثل «ما صدقت»، لا الكلمات المفردة فقط.
   </div>
 </section>
-
-<!-- 4. replacement -->
-<section class="scene" data-start="26" data-end="39">
+<section class="scene" data-dur="13">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 1: التفاصيل</div></div>
+  <h2 data-in="0">المُعلِّم: وسم تسلسلي على MARBERTv2</h2>
+  <div class="two">
+    <div class="card" data-in="0.6">
+      <div class="kh">الإعداد</div>
+      <div class="kv"><span>المهمة</span><b>token classification، ثلاثة وسوم B / I / O</b></div>
+      <div class="kv"><span>الوسم الفرعي</span><b>أول sub-token فقط، والباقي مُهمَل في الخسارة</b></div>
+      <div class="kv"><span>الطول الأقصى</span><b class="ltr">128 tokens</b></div>
+      <div class="kv"><span>المُحسِّن</span><b class="ltr">AdamW, lr 3e-5, wd 0.01</b></div>
+      <div class="kv"><span>الجدولة</span><b>إحماء 10% ثم تناقص خطي، <span class="ltr">5 epochs</span></b></div>
+    </div>
+    <div class="card" data-in="1.6">
+      <div class="kh">النتيجة على test (حدود المقطع بالضبط)</div>
+      <div class="kv"><span>Precision / Recall / F1</span><b class="ltr">81.2 / 79.2 / 80.2</b></div>
+      <div class="kv"><span>مقاطع تحتاج تغييرًا وُجدت</span><b>79.5% من 565</b></div>
+      <div class="kh" style="margin-top:16px">الاستدعاء بحسب نوع الكلمة</div>
+      <div class="kv"><span>كلمة لم ترد في التدريب</span><b>93.4%</b></div>
+      <div class="kv"><span>وردت عامية في التدريب</span><b>86.9%</b></div>
+      <div class="kv"><span>وردت فصيحة ثم جاءت بمعنى عامي</span><b style="color:var(--review)">35.3%</b></div>
+    </div>
+  </div>
+</section>
+<section class="scene" data-dur="13">
   <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 2: الاستبدال</div></div>
   <h2 data-in="0">نموذجان يقترحان المقابل الفصيح</h2>
   <div class="card marked" data-in="0.6">أهل <span class="m">(الفريج)</span><span class="s">1</span> كلهم حضروا عرس <span class="m">(أخوي)</span><span class="s">2</span></div>
@@ -141,9 +208,29 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
     والإجابة سطر لكل رقم، فيُستبدل كل مقطع في موضعه.<br>
     <b>QLoRA:</b> النموذج مكمَّم إلى 4 بت، ونضبط محوّلات LoRA صغيرة (<span class="ltr">r = 16</span>) على 3,095 جملة معلّمة، فيعمل على بطاقة رسومية بذاكرة 10 جيجابايت.</div>
 </section>
-
-<!-- 5. tiers -->
-<section class="scene" data-start="39" data-end="52">
+<section class="scene" data-dur="15">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 2: التفاصيل</div></div>
+  <h2 data-in="0">ضبط ALLaM-7B بـ QLoRA</h2>
+  <div class="two">
+    <div class="card" data-in="0.6">
+      <div class="kh">النموذج والتكميم</div>
+      <div class="kv"><span>الأساس</span><b class="ltr">ALLaM-AI/ALLaM-7B-Instruct-preview</b></div>
+      <div class="kv"><span>التكميم</span><b class="ltr">4-bit NF4, double quant, bf16 compute</b></div>
+      <div class="kv"><span>LoRA</span><b class="ltr">r 16, α 32, dropout 0.05</b></div>
+      <div class="kv"><span>الطبقات</span><b class="ltr">q, k, v, o, gate, up, down</b></div>
+      <div class="kv"><span>التدريب</span><b class="ltr">3 epochs, lr 2e-4, batch 4, cosine</b></div>
+    </div>
+    <div class="card" data-in="1.6">
+      <div class="kh">الخسارة والتوليد</div>
+      <div class="kv"><span>الخسارة</span><b>على رموز الإجابة فقط، والتعليمة مُهمَلة</b></div>
+      <div class="kv"><span>اختيار النسخة</span><b>أفضل epoch على dev</b></div>
+      <div class="kv"><span>الترميز</span><b class="ltr">greedy, max 96 new tokens, batch 16</b></div>
+      <div class="kv"><span>التحليل</span><b>تعبير نمطي لكل سطر «رقم: مقابل»، ثم يعود كل مقابل إلى مقطعه بالرقم</b></div>
+      <div class="kv"><span>النموذج الثاني</span><b><span class="ltr">Qwen2.5-7B-Instruct</span> بالوصفة نفسها</b></div>
+    </div>
+  </div>
+</section>
+<section class="scene" data-dur="13">
   <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 3: مستوى الثقة</div></div>
   <h2 data-in="0">متى نثق بالإجابة؟</h2>
   <p class="sub" data-in="0.4">تُفحص القواعد بالترتيب، وأول قاعدة تنطبق تحدد المستوى.</p>
@@ -153,9 +240,7 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
     <div class="rule" data-in="5.4"><div class="i">3</div><div><h4>غير ذلك</h4><p>تُعرض إجابة <span class="ltr">ALLaM</span>. وإن نسخ الكلمة العامية نفسها، أخذنا مقابل القاموس أو إجابة النموذج الثاني.</p></div><div class="pill o" data-in="6.6">للمراجعة</div></div>
   </div>
 </section>
-
-<!-- 6. output -->
-<section class="scene" data-start="52" data-end="61">
+<section class="scene" data-dur="9">
   <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 4: العرض</div></div>
   <h2 data-in="0">النتيجة أمام المستخدم</h2>
   <div class="card final" data-in="0.6" data-type="0.9">أهل <span class="u-g">الحي</span> كلهم حضروا عرس <span class="u-g">أخي</span></div>
@@ -166,9 +251,25 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
   </div>
   <div class="note" data-in="3.0" style="margin-top:26px">الخط <b style="color:var(--replace)">الأخضر</b> «مقترح»، و<b style="color:var(--review)">البرتقالي</b> «للمراجعة». يظهر كل استبدال مع مستواه، ويبقى القرار للمستخدم.</div>
 </section>
-
-<!-- 7. results -->
-<section class="scene" data-start="61" data-end="73">
+<section class="scene" data-dur="14">
+  <div class="top"><div class="brand">خصص</div><div class="step">منهجية التقييم</div></div>
+  <h2 data-in="0">كيف نقيس</h2>
+  <div class="grid3">
+    <div class="card" data-in="0.6"><div class="kh">المطابقة الحرفية</div><p class="small">المقابل يساوي المرجع بعد التطبيع. صارمة، لأن للمقطع غالبًا أكثر من مقابل صحيح.</p></div>
+    <div class="card" data-in="1.2"><div class="kh">الصواب بالمعنى</div><p class="small">محكّم آلي محلي <span class="ltr">qwen3.8:27b</span> عبر <span class="ltr">Ollama</span>، يحكم بثلاث درجات: صحيح، جزئي، خطأ.</p></div>
+    <div class="card" data-in="1.8"><div class="kh">فترات الثقة</div><p class="small">‏Wilson 95% لكل نسبة. كل الإعدادات اختيرت على dev، وtest شُغّلت مرة واحدة.</p></div>
+  </div>
+  <div class="card" data-in="2.8" style="margin-top:28px">
+    <div class="kh">معايرة المحكّم على 200 إجابة حكمنا عليها بشريًا</div>
+    <div class="bars" style="margin-top:14px">
+      <div class="bar"><span>اتفاق المحكّم مع الإنسان</span><div class="track"><div class="fill" data-w="58" data-in="3.4"></div></div><span class="num">58%</span></div>
+      <div class="bar"><span>«صحيح» عند المحكّم</span><div class="track"><div class="fill" data-w="36" data-in="3.7"></div></div><span class="num">36%</span></div>
+      <div class="bar main"><span>«صحيح» عند الإنسان</span><div class="track"><div class="fill" data-w="69" data-in="4.0"></div></div><span class="num">69%</span></div>
+    </div>
+    <p class="small" data-in="4.8" style="margin-top:14px">المحكّم أشد من الإنسان، فكل رقم «بالمعنى» حد أدنى.</p>
+  </div>
+</section>
+<section class="scene" data-dur="12">
   <div class="top"><div class="brand">خصص</div><div class="step">النتائج</div></div>
   <h2 data-in="0">على مجموعة اختبار محجوبة</h2>
   <p class="sub" data-in="0.3">291 جملة و565 كلمة تحتاج تغييرًا، لم نستعملها في أي اختيار.</p>
@@ -187,9 +288,77 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
     </div>
   </div>
 </section>
-
-<!-- 8. closing -->
-<section class="scene" data-start="73" data-end="81" style="justify-content:center;text-align:center">
+<section class="scene" data-dur="14">
+  <div class="top"><div class="brand">خصص</div><div class="step">النتائج بالتفصيل (test)</div></div>
+  <h2 data-in="0">أين تذهب كل كلمة؟</h2>
+  <div class="card" data-in="0.6">
+    <div class="stack">
+      <div class="seg g" style="width:27.8%" data-in="1.0">مقترح 27.8%</div>
+      <div class="seg o" style="width:51.7%" data-in="1.4">للمراجعة 51.7%</div>
+      <div class="seg m" style="width:20.5%" data-in="1.8">لم تُكتشف 20.5%</div>
+    </div>
+    <div class="kv" style="margin-top:20px"><span>صواب «مقترح» بالمعنى</span><b>89.8% <span class="ltr">[84.1–93.6]</span></b></div>
+    <div class="kv"><span>صواب «للمراجعة» بالمعنى</span><b>53.8%</b></div>
+    <div class="kv"><span>الأداة كاملة، من 565 مقطعًا</span><b>52.7% بالمعنى، و37.0% مطابقة حرفية</b></div>
+  </div>
+  <div class="card" data-in="2.8" style="margin-top:24px">
+    <div class="kh">الاستبدال وحده (المقاطع معطاة)</div>
+    <table class="tb"><tr><th>النظام</th><th>حرفية</th><th>بالمعنى</th></tr>
+      <tr><td><b class="ltr">ALLaM-7B QLoRA + gen3</b></td><td>46.9 <span class="ltr">[42.8–51.0]</span></td><td>65.1 <span class="ltr">[61.1–68.9]</span></td></tr>
+      <tr><td class="ltr">gemma3:27b + retrieved examples</td><td>42.3 <span class="ltr">[38.3–46.4]</span></td><td>63.4 <span class="ltr">[59.3–67.2]</span></td></tr>
+      <tr><td class="ltr">allam:7b, no fine-tuning</td><td>10.3</td><td>لم يُحكَّم</td></tr></table>
+  </div>
+</section>
+<section class="scene" data-dur="12">
+  <div class="top"><div class="brand">خصص</div><div class="step">تحليل الأخطاء</div></div>
+  <h2 data-in="0">النموذج يحفظ ما رآه، ويضعف في الجديد</h2>
+  <div class="card" data-in="0.6">
+    <div class="kh">صواب ALLaM بحسب ورود الكلمة في التدريب (test)</div>
+    <div class="bars" style="margin-top:14px">
+      <div class="bar main"><span>وردت بالمقابل نفسه (21.8%)</span><div class="track"><div class="fill" data-w="94" data-in="1.2"></div></div><span class="num">94%</span></div>
+      <div class="bar"><span>وردت بمقابل آخر (11.0%)</span><div class="track"><div class="fill" data-w="56" data-in="1.5"></div></div><span class="num">56%</span></div>
+      <div class="bar"><span>لم ترد أبدًا (64.4%)</span><div class="track"><div class="fill" data-w="56" data-in="1.8"></div></div><span class="num">56%</span></div>
+    </div>
+  </div>
+  <div class="card" data-in="2.8" style="margin-top:24px">
+    <div class="kh">أنماط الخطأ الباقية</div>
+    <ul class="pts">
+      <li>أخذ المعنى الفصيح للصيغة: «عفت الموضوع» ← «تركت»، والمرجع «كرهت».</li>
+      <li>معنى قريب غير دقيق: «تودي الأشياء» ← «تصحب»، والمرجع «توصل».</li>
+      <li>نقل حرفي للتعبير: «بعدين معاك» ← «لاحقًا».</li>
+    </ul>
+  </div>
+</section>
+<section class="scene" data-dur="13">
+  <div class="top"><div class="brand">خصص</div><div class="step">التشغيل</div></div>
+  <h2 data-in="0">من الكود إلى الواجهة</h2>
+  <div class="two">
+    <div class="card" data-in="0.6">
+      <div class="kh">مسار الطلب</div>
+      <div class="mono" style="font-size:27px;line-height:2">tag(words) → BIO spans<br>ALLaM.replace(spans)<br>Qwen.replace(spans)<br>tier(dialect, a, q) → suggested | review</div>
+      <p class="small">‏<span class="ltr">src/pipeline.py</span>، وواجهة Gradio في <span class="ltr">src/demo.py</span>، وتقبل حتى 10 جمل في الطلب.</p>
+    </div>
+    <div class="card" data-in="1.6">
+      <div class="kh">الموارد والترخيص</div>
+      <div class="kv"><span>الذاكرة</span><b>النموذجان محمّلان معًا بـ 4 بت على بطاقة 10 جيجابايت</b></div>
+      <div class="kv"><span>ما ننشره</span><b>محوّلات LoRA فقط، والنموذج الأصلي يُحمّل من مصدره</b></div>
+      <div class="kv"><span>ALLaM</span><b>سدايا (NCAI)، <span class="ltr">Apache-2.0</span></b></div>
+      <div class="kv"><span>المُعلِّم</span><b>لا يُنشر، لأن MARBERTv2 لا يعلن ترخيصًا</b></div>
+      <div class="kv"><span>الخصوصية</span><b>التدريب والاستدلال والتحكيم كلها محلية</b></div>
+    </div>
+  </div>
+</section>
+<section class="scene" data-dur="11">
+  <div class="top"><div class="brand">خصص</div><div class="step">القيود والخطوات القادمة</div></div>
+  <h2 data-in="0">ما لا تقوله الأرقام بعد</h2>
+  <div class="grid3">
+    <div class="card" data-in="0.6"><div class="kh">محكّم بشري واحد</div><p class="small">لا معامل اتفاق (كابا) بعد. نحتاج محكّمًا ثانيًا على عينة من test.</p></div>
+    <div class="card" data-in="1.2"><div class="kh">تدريب ببذرة واحدة</div><p class="small">ندرّب الآن بذرتين إضافيتين لنعرض المتوسط والانحراف المعياري.</p></div>
+    <div class="card" data-in="1.8"><div class="kh">اختبار صغير</div><p class="small">567 مقطعًا: الفترات بعرض ±4 إلى ±8 نقاط، تكفي للفروق الكبيرة فقط.</p></div>
+  </div>
+  <div class="card" data-in="2.8" style="margin-top:28px"><p class="small" style="margin:0">ثلثا مقاطع الاختبار لم ترد في التدريب. لذلك يرفع الصوابَ جمعُ جمل حقيقية جديدة مراجعة، لا زيادةُ البيانات المولّدة: جرّبنا 770 جملة إضافية مولّدة من المعاجم (gen4)، فنزلت المطابقة على test من 46.9% إلى 45.0%، لأن كلماتها نادرة.</p></div>
+</section>
+<section class="scene" data-dur="8" style="justify-content:center;text-align:center">
   <h2 data-in="0" style="font-size:58px">التكامل في سطر واحد</h2>
   <div class="chain" data-in="0.6" style="margin-top:40px">
     <span class="c">الجملة</span><span class="a">←</span>
@@ -202,9 +371,12 @@ th{font-family:var(--display);color:var(--green);font-size:28px}
 </section>
 
 <script>
-const DUR = 81, FADE = 0.5;
+const FADE = 0.5;
 const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
 const scenes = [...document.querySelectorAll('.scene')];
+let acc = 0;
+for (const s of scenes) { s.dataset.start = acc; acc += +s.dataset.dur; s.dataset.end = acc; }
+const DUR = acc;
 window.DUR = DUR;
 const CPS = 16;
 function cut(html, n) {  // first n visible characters of an HTML string, tags kept

@@ -110,3 +110,6 @@ The judge is much stricter than the human: on the 200 dev answers the user label
 
 ## Light baselines and smaller models (dev, 2026-11-22)
 Dictionary 19.6%, dictionary+char-kNN 21.3%, contextual MARBERT kNN 15.0%, Qwen2.5-3B 27.4%, Qwen2.5-1.5B 22.5% vs ALLaM 48.1% exact. See embed_baseline_dev.md, small_models_dev.md. Not adopted.
+
+## Seeds (2026-11-23)
+ALLaM+gen3 test exact over seeds 42/1/2: 46.9/45.3/46.6, mean 46.3 sd 0.8; dev 46.0 sd 1.9. See seeds_dev_test.md.

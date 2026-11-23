@@ -100,6 +100,7 @@ def main():
     ap.add_argument("--task", choices=["sentence", "word"], default="sentence")
     ap.add_argument("--data", default="sentences", help="sentences (original) or sentences_v2 (corrected)")
     ap.add_argument("--lex", action="store_true", help="word task: add dictionary meanings (src/lexicon.py)")
+    ap.add_argument("--seed", type=int, default=42, help="42 = the original runs; others go in --tag, e.g. +gen3+s1")
     ap.add_argument("--predict", help="skip training, run the saved adapter on this split (e.g. dev)")
     a = ap.parse_args()
     global TASK, LEX
@@ -107,8 +108,8 @@ def main():
     if a.lex:
         from lexicon import Lexicon
         LEX = Lexicon()
-    random.seed(42)
-    torch.manual_seed(42)
+    random.seed(a.seed)
+    torch.manual_seed(a.seed)
 
     train, dev, test = (load(s, a.data)[: a.limit] for s in ("train", "dev", "test"))
     for e in a.extra:

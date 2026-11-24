@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>خصص: العامية إلى الفصحى</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#f6f7f2;--bg-2:#eef2ea;--surface:#fff;--ink:#14231d;--muted:#5b6b63;--line:#dde5dd;--green:#0b4b33;--green-2:#12633f;
+--mint:#e5efe7;--mint-2:#d5e6da;--replace:#1b7448;--replace-bg:#e1f1e7;--review:#94620a;--review-bg:#f8edd6;--std:#3d5d74;--std-bg:#e4ecf2;
+--display:"Alexandria","IBM Plex Sans Arabic",Tahoma,sans-serif;--body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;--mono:"IBM Plex Mono",Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--body)}
+.deco{position:absolute;inset:0;pointer-events:none}
+.deco i{position:absolute;width:var(--s);height:var(--s);background:var(--green);opacity:.06;transform:rotate(45deg);border-radius:8px}
+.scene{position:absolute;inset:0;padding:90px 140px;opacity:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.brand{font-family:var(--display);font-weight:800;font-size:44px;color:var(--green);display:flex;gap:6px;align-items:flex-start}
+.brand svg{width:20px;height:20px;margin-top:4px}
+.step{font-family:var(--display);font-weight:700;font-size:26px;color:var(--green-2);background:var(--mint);padding:10px 24px;border-radius:999px}
+h2{font-family:var(--display);font-weight:800;font-size:64px;color:var(--green);margin:0 0 14px}
+.sub{font-size:32px;color:var(--muted);margin:0 0 40px;line-height:1.7}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:34px 40px;box-shadow:0 10px 30px rgba(11,75,51,.06)}
+.note{font-size:28px;color:var(--muted);line-height:1.8}
+.note b{color:var(--ink)}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+/* title */
+.wordmark{font-family:var(--display);font-weight:800;font-size:220px;color:var(--green);line-height:1.05;display:inline-flex;gap:14px;align-items:flex-start}
+.wordmark svg{width:92px;height:92px;margin-top:30px}
+/* pipeline */
+.flow{display:flex;gap:26px;align-items:stretch;margin-top:30px}
+.box{flex:1;background:var(--surface);border:2px solid var(--line);border-radius:26px;padding:30px 26px;text-align:center}
+.box .n{width:62px;height:62px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--display);font-weight:700;font-size:30px;display:grid;place-items:center;margin:0 auto 18px}
+.box h3{font-family:var(--display);font-size:36px;margin:0 0 12px;color:var(--green)}
+.box p{font-size:25px;color:var(--muted);margin:0;line-height:1.6}
+.arrow{align-self:center;font-size:54px;color:var(--green-2)}
+/* words */
+.sent{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+.w{display:flex;flex-direction:column;align-items:center;gap:16px}
+.w .t{font-size:60px;font-weight:600;padding:8px 22px;border-radius:18px;border:3px solid transparent;transition:none}
+.w .tag{font-family:var(--mono);font-size:34px;font-weight:500;color:var(--muted);background:var(--bg-2);border-radius:12px;padding:4px 18px;opacity:0}
+.w.on .t{background:var(--review-bg);border-color:var(--review);color:#5c3d05}
+.w.on .tag{color:#fff;background:var(--review)}
+.w.ok .t{background:var(--replace-bg);border-color:var(--replace);color:var(--green)}
+.marked{font-size:50px;text-align:center;font-weight:600}
+.marked .m{color:var(--review);font-weight:700}
+.marked .s{font-family:var(--mono);font-size:30px;vertical-align:super;color:var(--review)}
+.models{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:34px}
+.model h3{font-family:var(--display);font-size:38px;color:var(--green);margin:0 0 6px}
+.model .k{font-size:24px;color:var(--muted);margin-bottom:22px}
+.out{font-family:var(--body);font-weight:600;font-size:40px;background:var(--bg-2);border-radius:16px;padding:16px 26px;line-height:1.7;direction:rtl}
+.prompt{font-size:26px;color:var(--muted);line-height:1.7;background:var(--std-bg);border-inline-start:6px solid var(--std);border-radius:14px;padding:18px 24px;margin-top:26px}
+/* rules */
+.rules{display:flex;flex-direction:column;gap:22px}
+.rule{display:grid;grid-template-columns:70px 1fr 300px;gap:24px;align-items:center;background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:24px 30px}
+.rule .i{width:62px;height:62px;border-radius:16px;background:var(--mint);color:var(--green);font-family:var(--display);font-weight:800;font-size:30px;display:grid;place-items:center}
+.rule h4{font-family:var(--display);font-size:34px;margin:0 0 6px}
+.rule p{margin:0;font-size:26px;color:var(--muted);line-height:1.6}
+.pill{font-family:var(--display);font-weight:700;font-size:30px;padding:12px 22px;border-radius:999px;text-align:center}
+.pill.g{background:var(--replace-bg);color:var(--replace)}
+.pill.o{background:var(--review-bg);color:var(--review)}
+/* output */
+.final{font-size:72px;font-weight:600;text-align:center;line-height:2}
+.u-g{border-bottom:8px solid var(--replace);padding:0 6px}
+.u-o{border-bottom:8px solid var(--review);padding:0 6px}
+table{border-collapse:collapse;width:100%;font-size:32px}
+th,td{padding:16px 22px;border-bottom:2px solid var(--line);text-align:right}
+th{font-family:var(--display);color:var(--green);font-size:28px}
+/* results */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.stat{background:var(--surface);border:2px solid var(--line);border-radius:26px;padding:32px}
+.stat .v{font-family:var(--display);font-weight:800;font-size:88px;color:var(--green);line-height:1.1}
+.stat .l{font-size:27px;color:var(--muted);line-height:1.6;margin-top:10px}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.bar{display:grid;grid-template-columns:420px 1fr 110px;gap:20px;align-items:center;font-size:28px}
+.bar .track{height:34px;background:var(--bg-2);border-radius:10px;overflow:hidden}
+.bar .fill{height:100%;background:var(--mint-2);border-radius:10px;width:0}
+.bar.main .fill{background:var(--green)}
+.bar .num{font-family:var(--display);font-weight:700;color:var(--green)}
+.chain{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;font-size:34px;font-weight:600}
+.chain span.c{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px 24px}
+.chain span.a{color:var(--green-2);font-size:40px}
+.stack{display:flex;height:70px;border-radius:16px;overflow:hidden;background:var(--bg-2);margin:16px 0 22px}
+.stack div{height:100%;width:0;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:700;font-size:28px;white-space:nowrap;overflow:hidden}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.legend .card{padding:24px 28px}
+.legend .v{font-family:var(--display);font-weight:800;font-size:54px;line-height:1.2}
+.legend .l{font-size:25px;color:var(--muted);line-height:1.6}
+.pieces{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.piece{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:26px 24px}
+.piece h3{font-family:var(--display);font-size:32px;color:var(--green);margin:0 0 10px}
+.piece p{font-size:24px;color:var(--muted);margin:0;line-height:1.6}
+.piece .wt{margin-top:16px;font-family:var(--display);font-weight:700;font-size:26px;color:var(--replace);background:var(--replace-bg);border-radius:12px;padding:8px 14px;display:inline-block}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+</style>
+</head>
+<body>
+<div class="deco"><i style="--s:110px;top:8%;right:3%"></i><i style="--s:70px;top:36%;right:9%"></i><i style="--s:140px;top:70%;right:2%"></i><i style="--s:90px;top:10%;left:5%"></i><i style="--s:130px;top:46%;left:2%"></i><i style="--s:60px;top:80%;left:11%"></i></div>
+
+<!-- 1. title -->
+<section class="scene" data-start="0" data-end="6" style="align-items:center;justify-content:center;text-align:center">
+  <div data-in="0.2" class="wordmark">خصص<svg viewBox="0 0 48 48"><path fill="currentColor" d="M20 2c1.5 9 4 12.5 13 14-9 1.5-11.5 5-13 14-1.5-9-4-12.5-13-14 9-1.5 11.5-5 13-14z"/><path fill="currentColor" opacity=".8" d="M37 26c.8 4.6 2 6.4 6.5 7.2-4.5.8-5.7 2.6-6.5 7.2-.8-4.6-2-6.4-6.5-7.2 4.5-.8 5.7-2.6 6.5-7.2z"/></svg></div>
+  <div data-in="0.9" style="font-family:var(--display);font-weight:700;font-size:64px;color:var(--ink);margin-top:10px">من العامية السعودية إلى الفصحى</div>
+  <div data-in="1.6" data-type="1.8" class="sub" style="margin-top:22px;font-size:38px">كيف نحدّد الكلمة العامية ونستبدلها؟</div>
+</section>
+
+<!-- 2. overview -->
+<section class="scene" data-start="6" data-end="15">
+  <div class="top"><div class="brand">خصص</div><div class="step">نظرة عامة</div></div>
+  <h2 data-in="0">أربع مراحل متكاملة</h2>
+  <p class="sub" data-in="0.4">كل مرحلة تأخذ ناتج التي قبلها، ولا يُستبدل شيء دون تحديد مستوى الثقة.</p>
+  <div class="flow">
+    <div class="box" data-in="1.0"><div class="n">1</div><h3>الاكتشاف</h3><p>أي الكلمات عامية؟<br><span class="ltr">MARBERTv2</span></p></div>
+    <div class="arrow" data-in="1.6">←</div>
+    <div class="box" data-in="2.0"><div class="n">2</div><h3>الاستبدال</h3><p>القاموس أولًا، ثم<br><span class="ltr">ALLaM-7B</span> و <span class="ltr">Qwen2.5-7B</span></p></div>
+    <div class="arrow" data-in="2.6">←</div>
+    <div class="box" data-in="3.0"><div class="n">3</div><h3>مستوى الثقة</h3><p>هل نثق بالإجابة؟<br>قاموس التدريب واتفاق النموذجين</p></div>
+    <div class="arrow" data-in="3.6">←</div>
+    <div class="box" data-in="4.0"><div class="n">4</div><h3>العرض</h3><p>«مقترح» أو «للمراجعة»<br>والقرار للمستخدم</p></div>
+  </div>
+</section>
+
+<!-- 3. detection -->
+<section class="scene" data-start="15" data-end="30">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 1: الاكتشاف</div></div>
+  <h2 data-in="0">تحديد الكلمة العامية</h2>
+  <p class="sub" data-in="0.4">نقطّع الجملة إلى كلمات، ثم تعطي طبقة الاكتشاف كل كلمة وسمًا.</p>
+  <div class="card" data-in="0.9" style="padding:40px">
+    <div class="sent">
+      <div class="w"><div class="t">أهل</div><div class="tag" data-in="2.0">O</div></div>
+      <div class="w" data-on="3.6"><div class="t">الفريج</div><div class="tag" data-in="2.2">B</div></div>
+      <div class="w"><div class="t">كلهم</div><div class="tag" data-in="2.4">O</div></div>
+      <div class="w"><div class="t">حضروا</div><div class="tag" data-in="2.6">O</div></div>
+      <div class="w"><div class="t">عرس</div><div class="tag" data-in="2.8">O</div></div>
+      <div class="w" data-on="3.8"><div class="t">أخوي</div><div class="tag" data-in="3.0">B</div></div>
+    </div>
+  </div>
+  <div class="split" style="margin-top:28px">
+    <div class="card" data-in="4.6"><div class="note" style="font-size:27px"><b>أساس التصنيف هو تعليمنا نحن.</b> تعلّم نموذج <span class="ltr">MARBERTv2</span> من 3,095 جملة علّمناها ما نسمّيه عاميًا: ‏<span class="ltr">B</span> بداية عبارة عامية، ‏<span class="ltr">I</span> استمرارها، ‏<span class="ltr">O</span> كلمة فصيحة.</div></div>
+    <div class="card" data-in="7.0"><div class="note" style="font-size:27px"><b>يتعرّف على العامية حتى لو لم يرَ الكلمة.</b> التقط <b style="color:var(--green)">93.4%</b> من الكلمات العامية الجديدة التي لم ترد في التدريب، لأن صورتها غير فصيحة.</div></div>
+  </div>
+</section>
+
+<!-- 4. dictionary first -->
+<section class="scene" data-start="30" data-end="39">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 2: الاستبدال</div></div>
+  <h2 data-in="0">أولًا: القاموس قبل النموذج</h2>
+  <p class="sub" data-in="0.4">الكلمة التي يحسمها قاموس التدريب لا نرسلها إلى <span class="ltr">ALLaM</span> أصلًا.</p>
+  <div class="flow" style="margin-top:10px">
+    <div class="box" data-in="1.2"><h3>أخوي</h3><p>وردت في التدريب مرتين،<br>وبالمقابل نفسه كل مرة</p></div>
+    <div class="arrow" data-in="1.8">←</div>
+    <div class="box" data-in="2.2" style="border-color:var(--replace)"><h3 style="color:var(--replace)">أخي</h3><p>من القاموس مباشرة،<br>بلا استدعاء للنموذج</p></div>
+  </div>
+  <div class="note" data-in="3.6" style="margin-top:34px">هذا يقلل عدد الاستدعاءات بدون أن تتغير النتيجة، لأن القاموس يتقدم على النموذج في قواعد الثقة أصلًا.<br>وما لا يحسمه القاموس يذهب إلى النموذجين.</div>
+</section>
+
+<!-- 5. replacement -->
+<section class="scene" data-start="39" data-end="52">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 2: الاستبدال</div></div>
+  <h2 data-in="0">ثانيًا: نموذجان يقترحان المقابل الفصيح</h2>
+  <div class="card marked" data-in="0.6">أهل <span class="m">(الفريج)</span><span class="s">1</span> كلهم حضروا عرس أخي</div>
+  <div class="models">
+    <div class="card model" data-in="1.6"><h3>ALLaM-7B + QLoRA</h3><div class="k">النموذج الرئيسي</div><div class="out" data-in="2.8" data-type="3.0">1: الحي</div></div>
+    <div class="card model" data-in="2.0"><h3>Qwen2.5-7B + QLoRA</h3><div class="k">نموذج ثانٍ مستقل للتحقق</div><div class="out" data-in="3.6" data-type="3.8">1: الحي</div></div>
+  </div>
+  <div class="prompt" data-in="5.0"><b>التعليمة:</b> «اكتب لكل رقم مقابله في الفصحى المناسب لمعنى الجملة وسياقها، بنفس الصيغة النحوية».
+    والإجابة سطر لكل رقم، فيُستبدل كل مقطع في موضعه.<br>
+    <b>QLoRA:</b> النموذج مكمَّم إلى 4 بت، ونضبط محوّلات LoRA صغيرة (<span class="ltr">r = 16</span>) على 3,095 جملة معلّمة، فيعمل على بطاقة رسومية بذاكرة 10 جيجابايت.</div>
+</section>
+
+<!-- 6. tiers -->
+<section class="scene" data-start="52" data-end="65">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 3: مستوى الثقة</div></div>
+  <h2 data-in="0">متى نثق بالإجابة؟</h2>
+  <p class="sub" data-in="0.4">تُفحص القواعد بالترتيب، وأول قاعدة تنطبق تحدد المستوى.</p>
+  <div class="rules">
+    <div class="rule" data-in="1.0"><div class="i">1</div><div><h4>قاموس التدريب</h4><p>وردت الصيغة مرتين على الأقل، وبالمقابل نفسه في 80% منها أو أكثر.<br><b style="color:var(--ink)">أخوي ← أخي</b> (مرتان من مرتين)</p></div><div class="pill g" data-in="2.4">مقترح</div></div>
+    <div class="rule" data-in="3.2"><div class="i">2</div><div><h4>اتفاق النموذجين</h4><p>أعطى <span class="ltr">ALLaM</span> و <span class="ltr">Qwen</span> الإجابة نفسها بعد التطبيع.<br><b style="color:var(--ink)">الفريج ← الحي</b> (الحي = الحي)</p></div><div class="pill g" data-in="4.6">مقترح</div></div>
+    <div class="rule" data-in="5.4"><div class="i">3</div><div><h4>غير ذلك</h4><p>يُعرض اقتراح <span class="ltr">ALLaM</span> بمستوى «للمراجعة». وإن أعاد الكلمة العامية كما هي، نأخذ مقابل القاموس أو اقتراح <span class="ltr">Qwen</span>.</p></div><div class="pill o" data-in="6.6">للمراجعة</div></div>
+  </div>
+</section>
+
+<!-- 7. output -->
+<section class="scene" data-start="65" data-end="78">
+  <div class="top"><div class="brand">خصص</div><div class="step">المرحلة 4: العرض</div></div>
+  <h2 data-in="0">النتيجة أمام المستخدم</h2>
+  <div class="card" data-in="0.5" style="font-size:40px;text-align:center;color:var(--muted);padding:20px">شكله مدهمل و مو مرتب</div>
+  <div class="card final" data-in="1.2" data-type="1.5" style="margin-top:16px;font-size:64px;line-height:1.8"><span class="u-g">يبدو أنه</span> <span class="u-o">مهمل</span> و <span class="u-o">غير</span> مرتب</div>
+  <div class="split" style="margin-top:26px">
+    <div class="card" data-in="3.6" style="border-color:var(--replace)"><div class="note"><b style="color:var(--replace)">الأخضر «مقترح»:</b> غالبًا صحيح، <b>9 من كل 10</b>.<br>يستطيع المستخدم اعتماده مباشرة.</div></div>
+    <div class="card" data-in="5.0" style="border-color:var(--review)"><div class="note"><b style="color:var(--review)">البرتقالي «للمراجعة»:</b> صحيح في <b>نحو نصف</b> الحالات.<br>الأداة وجدت الكلمة واقترحت بداية، والقرار للمستخدم.</div></div>
+  </div>
+  <div class="note" data-in="7.0" style="margin-top:20px;font-size:25px">في هذا المثال من الاختبار، المرجع البشري لـ«مدهمل» هو «غير مهندم»، فمراجعة البرتقالي هنا في محلها.</div>
+</section>
+
+<!-- 8. results -->
+<section class="scene" data-start="78" data-end="92">
+  <div class="top"><div class="brand">خصص</div><div class="step">النتائج</div></div>
+  <h2 data-in="0">ماذا يحدث لكل 100 كلمة عامية؟</h2>
+  <p class="sub" data-in="0.3" style="margin-bottom:10px">على اختبار محجوب: 291 جملة لم نستعملها في التدريب ولا في أي اختيار.</p>
+  <div class="stack" data-in="0.8">
+    <div data-w="27.8" data-in="1.2" style="background:var(--replace)">مقترح 28</div>
+    <div data-w="51.7" data-in="1.8" style="background:var(--review)">للمراجعة 52</div>
+    <div data-w="20.5" data-in="2.4" style="background:#9aa79f">فاتت الأداة 20</div>
+  </div>
+  <div class="legend">
+    <div class="card" data-in="3.2"><div class="v" style="color:var(--replace)">25 من 28</div><div class="l">صحيحة في الأخضر (89.8%).<br>دقيق جدًا، لكنه يشمل نحو ربع الكلمات فقط.</div></div>
+    <div class="card" data-in="4.2"><div class="v" style="color:var(--review)">28 من 52</div><div class="l">صحيحة في البرتقالي (53.8%).<br>لذلك نطلب مراجعته.</div></div>
+    <div class="card" data-in="5.2"><div class="v" style="color:#6b7a72">20 كلمة</div><div class="l">لم تكتشفها الأداة أصلًا، فبقيت كما هي.</div></div>
+  </div>
+  <div class="note" data-in="6.6" style="margin-top:22px">المجموع: <b>53 من 100</b> صحيحة (52.7%). وهو حد أدنى، لأن المصحّح نموذج آلي أشد من الإنسان.</div>
+</section>
+
+<!-- 9. why an LLM -->
+<section class="scene" data-start="92" data-end="105">
+  <div class="top"><div class="brand">خصص</div><div class="step">لماذا نموذج لغوي؟</div></div>
+  <h2 data-in="0">لماذا لا نكتفي بإضافة كلمات إلى قاموس؟</h2>
+  <p class="sub" data-in="0.4" style="margin-bottom:16px">لأن نحو ثلثي الكلمات (65% في dev) لم ترد في التدريب أصلًا.</p>
+  <div class="card" data-in="1.0" style="padding:24px 36px">
+    <div style="font-family:var(--display);font-size:30px;color:var(--green);margin-bottom:12px">البديل الصحيح للكلمات الجديدة فقط (dev)</div>
+    <div class="bars">
+      <div class="bar"><span>أفضل طريقة خفيفة (قاموس أو embeddings)</span><div class="track"><div class="fill" data-w="2.5" data-in="1.6"></div></div><span class="num">2.5%</span></div>
+      <div class="bar main"><span>ALLaM-7B + QLoRA</span><div class="track"><div class="fill" data-w="38.4" data-in="2.0"></div></div><span class="num">38.4%</span></div>
+    </div>
+  </div>
+  <div class="card" data-in="3.4" style="margin-top:18px;padding:24px 36px">
+    <div style="font-family:var(--display);font-size:30px;color:var(--green);margin-bottom:12px">كل الكلمات، المطابقة الحرفية (dev)</div>
+    <div class="bars">
+      <div class="bar"><span>قاموس التدريب وحده</span><div class="track"><div class="fill" data-w="19.6" data-in="4.0"></div></div><span class="num">19.6%</span></div>
+      <div class="bar"><span>نموذج أصغر (Qwen2.5-3B)</span><div class="track"><div class="fill" data-w="27.4" data-in="4.3"></div></div><span class="num">27.4%</span></div>
+      <div class="bar main"><span>ALLaM-7B + QLoRA</span><div class="track"><div class="fill" data-w="48.1" data-in="4.6"></div></div><span class="num">48.1%</span></div>
+    </div>
+  </div>
+  <div class="note" data-in="6.0" style="margin-top:14px;font-size:25px">القاموس يكفي للكلمات المحفوظة، والنموذج اللغوي ضروري للجديدة. وأعدنا تدريب ALLaM ثلاث مرات، فكانت نتيجته ثابتة: <b>46.3%</b> على test بانحراف <b>0.8</b> نقطة.</div>
+</section>
+
+<!-- 10. inside Saleem -->
+<section class="scene" data-start="105" data-end="119">
+  <div class="top"><div class="brand">خصص</div><div class="step">داخل «سليم»</div></div>
+  <h2 data-in="0">تصوّر خفيف على «سليم»</h2>
+  <p class="sub" data-in="0.4">خدمة مستقلة بجانب خدماته، لا تمس نموذجه اللغوي ولا تدريبه.</p>
+  <div class="pieces">
+    <div class="piece" data-in="1.0"><h3>الاكتشاف</h3><p>نموذج <span class="ltr">MARBERTv2</span> صغير، يعمل حتى على المعالج (CPU)، في جزء من الثانية للجملة.</p><div class="wt">نحو 620 ميجابايت</div></div>
+    <div class="piece" data-in="1.8"><h3>الاستبدال</h3><p>محوّل LoRA على نموذج <span class="ltr">Qwen</span> الموجود، فلا يتكرر النموذج الكبير.</p><div class="wt">نحو 150 ميجابايت</div></div>
+    <div class="piece" data-in="2.6"><h3>التحقق</h3><p>نموذج <span class="ltr">Gemma</span> الموجود بالتعليمات فقط، بلا تدريب ولا إضافة.</p><div class="wt">لا شيء جديد</div></div>
+    <div class="piece" data-in="3.4"><h3>مستوى الثقة</h3><p>قواعد بسيطة في الكود: القاموس والاتفاق.</p><div class="wt">موارد لا تُذكر</div></div>
+  </div>
+  <div class="card" data-in="5.0" style="margin-top:26px;border-color:var(--review)"><div class="note" style="font-size:26px"><b>والبديل إن لم يتوفر Qwen:</b> نموذج <span class="ltr">ALLaM</span> مضغوط على معالج الخادم. وهو الأثقل: نحو 5 إلى 6 جيجابايت من الذاكرة، وعدة ثوانٍ لكل طلب (تقدير لم يُقس بعد).</div></div>
+</section>
+
+<!-- 11. closing -->
+<section class="scene" data-start="119" data-end="127" style="justify-content:center;text-align:center">
+  <h2 data-in="0" style="font-size:58px">التكامل في سطر واحد</h2>
+  <div class="chain" data-in="0.6" style="margin-top:40px">
+    <span class="c">الجملة</span><span class="a">←</span>
+    <span class="c"><span class="ltr">MARBERTv2</span> يحدد الكلمات</span><span class="a">←</span>
+    <span class="c">القاموس أولًا</span><span class="a">←</span>
+    <span class="c"><span class="ltr">ALLaM</span> و <span class="ltr">Qwen</span> يقترحان</span><span class="a">←</span>
+    <span class="c">مقترح / للمراجعة</span>
+  </div>
+  <div data-in="2.4" class="wordmark" style="font-size:150px;margin:70px auto 0">خصص<svg viewBox="0 0 48 48" style="width:62px;height:62px;margin-top:22px"><path fill="currentColor" d="M20 2c1.5 9 4 12.5 13 14-9 1.5-11.5 5-13 14-1.5-9-4-12.5-13-14 9-1.5 11.5-5 13-14z"/><path fill="currentColor" opacity=".8" d="M37 26c.8 4.6 2 6.4 6.5 7.2-4.5.8-5.7 2.6-6.5 7.2-.8-4.6-2-6.4-6.5-7.2 4.5-.8 5.7-2.6 6.5-7.2z"/></svg></div>
+</section>
+
+<script>
+const DUR = 127, FADE = 0.5;
+const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
+const scenes = [...document.querySelectorAll('.scene')];
+window.DUR = DUR;
+const CPS = 16;
+function cut(html, n) {  // first n visible characters of an HTML string, tags kept
+  let out = '', i = 0;
+  while (i < html.length && n > 0) {
+    if (html[i] === '<') { const j = html.indexOf('>', i); out += html.slice(i, j + 1); i = j + 1; continue; }
+    if (html[i] === '&') { const j = html.indexOf(';', i); out += html.slice(i, j + 1); i = j + 1; n--; continue; }
+    out += html[i++]; n--;
+  }
+  return out + '<span style="display:inline-block;width:3px;height:1em;background:var(--green);vertical-align:middle;opacity:' + (n === 0 && i < html.length ? 1 : 0) + '"></span>';
+}
+function typeAll(s, loc) {
+  for (const e of s.querySelectorAll('[data-type]')) {
+    e._html = e._html || e.innerHTML;
+    const n = Math.max(0, Math.floor((loc - parseFloat(e.dataset.type)) * CPS));
+    e.innerHTML = cut(e._html, n);
+  }
+}
+// sound events for the renderer: [time, kind]
+window.events = () => {
+  const ev = [];
+  for (const s of scenes) {
+    const a = +s.dataset.start;
+    if (a > 0) ev.push([a, 'whoosh']);
+    for (const e of s.querySelectorAll('[data-in]')) {
+      const t = a + parseFloat(e.dataset.in);
+      if (e.dataset.type) continue;
+      ev.push([t, e.dataset.w ? 'rise' : e.classList.contains('pill') ? 'click' : e.classList.contains('tag') ? 'tick' : 'pop']);
+    }
+    for (const e of s.querySelectorAll('[data-on]')) ev.push([a + parseFloat(e.dataset.on), 'click']);
+    for (const e of s.querySelectorAll('[data-type]')) {
+      const txt = (e._html || e.innerHTML).replace(/<[^>]+>/g, '').replace(/&[^;]+;/g, 'x');
+      const t0 = a + parseFloat(e.dataset.type);
+      [...txt].forEach((c, k) => { if (c.trim()) ev.push([t0 + k / CPS, 'key']); });
+    }
+  }
+  return ev;
+};
+
+window.render = t => {
+  for (const s of scenes) {
+    const a = +s.dataset.start, b = +s.dataset.end, loc = t - a;
+    const vis = Math.min(ease(loc / FADE), ease((b - t) / FADE));
+    s.style.opacity = vis;
+    s.style.visibility = vis > 0 ? 'visible' : 'hidden';
+    if (vis <= 0) continue;
+    for (const e of s.querySelectorAll('[data-in]')) {
+      const p = ease((loc - parseFloat(e.dataset.in)) / 0.6);
+      if (e.dataset.w) { e.style.width = (p * e.dataset.w) + '%'; continue; }
+      e.style.opacity = p;
+      e.style.transform = `translateY(${(1 - p) * 26}px)`;
+    }
+    for (const e of s.querySelectorAll('[data-on]')) e.classList.toggle('on', loc >= parseFloat(e.dataset.on));
+    typeAll(s, loc);
+  }
+};
+const q = new URLSearchParams(location.search).get('t');
+if (q !== null) render(+q);
+else { const t0 = performance.now(); (function f() { render(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(f); })(); }
+</script>
+</body>
+</html>

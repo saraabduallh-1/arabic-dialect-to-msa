@@ -75,9 +75,9 @@ def decide(d, m, a, g, dic, min_n, min_c, voc=None):
     return "review", a, "allam"
 
 
-def run(split, min_n, min_c, verbose=True, voc=None):
+def run(split, min_n, min_c, verbose=True, voc=None, second=GEMMA):
     rows = load(split, "sentences_v2")
-    A, G, dic = preds(ALLAM, split), preds(GEMMA, split), train_dict()
+    A, G, dic = preds(ALLAM, split), preds(second, split), train_dict()
     st = Counter()
     for r in rows:
         for k, (d, m) in zip(r["span_ids"], r["pairs"]):
@@ -112,6 +112,7 @@ def main():
     ap.add_argument("--min_n", type=int, default=2)
     ap.add_argument("--min_c", type=float, default=0.8)
     ap.add_argument("--vocab", default="", help="verified tweet vocabulary json (dev to choose)")
+    ap.add_argument("--second", default=GEMMA, help="second system for the agreement tier (preds name)")
     ap.add_argument("--sweep", action="store_true", help="dev only: grid over min_n x min_c")
     a = ap.parse_args()
     out = ROOT / "results" / "advice"
@@ -127,7 +128,7 @@ def main():
         print("\n".join(lines))
         (out / f"tiers_sweep_{a.split}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
         return
-    r = run(a.split, a.min_n, a.min_c, voc=vocab(a.vocab))
+    r = run(a.split, a.min_n, a.min_c, voc=vocab(a.vocab), second=a.second)
     (out / f"tiers_{a.split}{'_vocab' if a.vocab else ''}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
 
 

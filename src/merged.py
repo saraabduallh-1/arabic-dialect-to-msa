@@ -44,6 +44,28 @@ TAGGER = ROOT / "results" / "checkpoints" / "tagger_merged"
 GEMMA = "gemma4:12b"
 LATIN = re.compile(r"[A-Za-z]")
 CACHE = OUT / "gemma_cache.jsonl"
+FSYSTEM = (
+    "أنت خبير في اللغة العربية الفصحى. "
+    "ستُعطى جملة عربية فيها كلمات أو عبارات أعجمية (منقولة من الإنجليزية أو غيرها بحروف عربية أو لاتينية) بين قوسين وبعد كل منها رقم. "
+    "اكتب لكل رقم مقابله في العربية الفصحى المناسب لمعنى الجملة وسياقها، بنفس الصيغة النحوية قدر الإمكان. "
+    "أجب بسطر واحد لكل رقم بالشكل «الرقم: المقابل الفصيح» فقط، بدون شرح."
+)
+
+
+def foreign_rows(rows):
+    """Foreign rows in the shape of data.load (marked sentence + pairs), for retrieval of worked examples."""
+    out = []
+    for r in rows:
+        if r["source"] != "annotated" or not r["spans"]:
+            continue
+        w, marked, pos = r["words"], [], 0
+        for n, (s, e, _) in enumerate(r["spans"], 1):
+            marked += w[pos:s] + [f"({' '.join(w[s:e])}){n}"]
+            pos = e
+        marked += w[pos:]
+        out.append({"src": r["src"], "tgt": r["tgt"], "src_marked": " ".join(marked),
+                    "pairs": [(" ".join(w[s:e]), m) for s, e, m in r["spans"]], "span_ids": list(range(1, len(r["spans"]) + 1))})
+    return out
 
 
 def aligned(src, hyp, a, b):
@@ -74,14 +96,17 @@ def outside_changes(src, hyp, spans):
 
 
 class Layer:
-    def __init__(self, mode="rag", k=8, min_n=2, min_c=0.8, variant="gemma", device="cpu", gemma=GEMMA):
+    def __init__(self, mode="rag", k=8, min_n=2, min_c=0.8, variant="gemma", device="cpu", gemma=GEMMA, foreign="gemma"):
         self.mode, self.k, self.min_n, self.min_c, self.variant, self.dev, self.gemma = mode, k, min_n, min_c, variant, device, gemma
+        self.foreign = foreign  # "gemma": Gemma answers foreign spans, the foreign model is a witness; "m2m": the model answers
         self.ttok = AutoTokenizer.from_pretrained(TAGGER)
         self.tagger = AutoModelForTokenClassification.from_pretrained(TAGGER).to(device).eval()
         self.mtok = load_tokenizer()
         self.m2m = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR).to(device).eval()
         self.ddic = train_dict()
-        self.fdic = foreign_dict(load_splits()["train"])
+        ftrain = load_splits()["train"]
+        self.fdic = foreign_dict(ftrain)
+        self.fret = Retriever(foreign_rows(ftrain))
         train = load("train", "sentences_v2") + load("verified", "generated")  # +gen3, as the best word systems
         self.ret = Retriever(train)
         self.cache = {}
@@ -133,14 +158,21 @@ class Layer:
         return out
 
     # --- step 3: Gemma for the dialect spans
-    def ask_gemma(self, words, dspans):
+    def ask_gemma(self, words, dspans, kind="dialect"):
         marked, pos = [], 0
         for n, (s, e) in enumerate(dspans, 1):
             marked += words[pos:s] + [f"({' '.join(words[s:e])}){n}"]
             pos = e
         marked += words[pos:]
         r = {"src": " ".join(words), "src_marked": " ".join(marked), "pairs": [(" ".join(words[s:e]), "") for s, e in dspans]}
-        msgs = run_word.build(r, self.mode, self.ret, self.k)
+        if kind == "dialect":
+            msgs = run_word.build(r, self.mode, self.ret, self.k)
+        else:  # same word prompt, foreign instruction, examples retrieved from the foreign project's annotated pairs
+            msgs = [{"role": "system", "content": FSYSTEM}]
+            for ex in self.fret.examples(r["src"], self.k):
+                msgs += [{"role": "user", "content": f"الجملة: {ex['src_marked']}"},
+                         {"role": "assistant", "content": run_word.answer(ex)}]
+            msgs.append({"role": "user", "content": f"الجملة: {r['src_marked']}"})
         key = hashlib.sha1(json.dumps([self.gemma, msgs], ensure_ascii=False).encode()).hexdigest()
         if key not in self.cache:
             self.cache[key] = chat(self.gemma, msgs)
@@ -165,6 +197,16 @@ class Layer:
         top = self.confident(dic, w)
         if top:
             return top, "suggested", "dictionary"
+        if kind == "foreign" and self.foreign == "gemma":
+            c = dic.get(normalize(w))
+            if not copy(g) and not copy(m) and normalize(g) == normalize(m):
+                return g, "suggested", "gemma+foreign_model"
+            if not copy(g) and c and normalize(g) == normalize(c.most_common(1)[0][0]):
+                return g, "suggested", "gemma+dictionary"
+            for x, src in ((g, "gemma"), (m, "foreign_model")):
+                if not copy(x):
+                    return x, "review", src
+            return (c.most_common(1)[0][0], "review", "dictionary") if c else (w, "review", "none")
         if kind == "foreign":
             c = dic.get(normalize(w))
             if not copy(m) and c and normalize(m) == normalize(c.most_common(1)[0][0]):
@@ -184,7 +226,8 @@ class Layer:
         c = dic.get(normalize(w))
         return (c.most_common(1)[0][0], "review", "dictionary") if c else (w, "review", "none")
 
-    def run(self, sentences, free=False):
+    def run(self, sentences, free=False, ask_foreign=None):
+        ask_foreign = self.foreign == "gemma" if ask_foreign is None else ask_foreign
         if free:
             self.to_gpu()
         words = [clean(s).split() for s in sentences]
@@ -196,6 +239,9 @@ class Layer:
         for w, sp, h in zip(words, spans, hyps):
             dsp = [(s, e) for s, e, t in sp if t == "dialect"]
             gans = dict(zip(dsp, self.ask_gemma(w, dsp))) if dsp else {}
+            fsp = [(s, e) for s, e, t in sp if t == "foreign"]
+            if fsp and ask_foreign:
+                gans.update(zip(fsp, self.ask_gemma(w, fsp, "foreign")))
             reps, out, pos = [], [], 0
             for s, e, t in sp:
                 span = " ".join(w[s:e])
@@ -226,7 +272,7 @@ def span_stats(st, kind, gold, pred, need):
         ok = normalize(x["msa"]) == normalize(gold[sp])
         st[f"{kind}_{x['tier']}"] += 1; st[f"{kind}_{x['tier']}_ok"] += ok; st[kind + "_ok"] += ok
         for alt, val in (("foreign_model", x["foreign_model"]), ("gemma", x["gemma"])):
-            if val is not None and kind == "dialect":
+            if val is not None:
                 st[f"{kind}_{alt}_given"] += 1
                 st[f"{kind}_{alt}_changed"] += bool(val) and normalize(val) != normalize(x["word"])
                 st[f"{kind}_{alt}_ok"] += normalize(val) == normalize(gold[sp])
@@ -285,6 +331,44 @@ def eval_foreign(layer, split):
     return st, len(rows), {"copy": bleu_copy, "raw": bleu_raw, "layer": bleu_layer}
 
 
+def eval_foreign_variants(layer, split):
+    """Foreign spans: the foreign model's answer (m2m) vs Gemma's with the model as witness (gemma).
+    Nearly all foreign data was in the foreign model's training, so there is no clean dev set: the test file is cut in
+    two halves (A = even rows, B = odd rows); the choice is made on A and reported on B."""
+    rows = load_splits()[split]
+    outs = layer.run([r["src"] for r in rows], free=True, ask_foreign=True)
+    subsets = {"all": range(len(rows)), "A": range(0, len(rows), 2), "B": range(1, len(rows), 2)}
+    L = [f"# Foreign spans: foreign model vs Gemma ({split})", "",
+         "| variant | subset | found | end-to-end exact | suggested share / exact | review exact | Gemma exact / model exact on found | BLEU |",
+         "|---|---|---|---|---|---|---|---|"]
+    for v in ("m2m", "gemma"):
+        layer.foreign = v
+        for o in outs:
+            for x in o["replacements"]:
+                x["msa"], x["tier"], x["source"] = layer.decide(x["type"], x["word"], x["foreign_model"], x["gemma"])
+            w, out, pos = o["src"].split(), [], 0
+            for x in o["replacements"]:
+                out += w[pos:x["span"][0]] + [x["msa"]]
+                pos = x["span"][1]
+            o["msa"] = " ".join(out + w[pos:])
+        dump(OUT / f"foreign_{split}_{v}.jsonl", [dict(o, id=r["id"], ref=r["tgt"]) for r, o in zip(rows, outs)])
+        for name, idx in subsets.items():
+            st = Counter()
+            for i in idx:
+                r, o = rows[i], outs[i]
+                gold = {(s, e): m for s, e, m in r["spans"]}
+                need = [sp for sp, m in gold.items() if normalize(" ".join(r["words"][sp[0]:sp[1]])) != normalize(m)]
+                span_stats(st, "foreign", gold, {tuple(x["span"]): x for x in o["replacements"] if x["type"] == "foreign"}, need)
+            found = st["foreign_suggested"] + st["foreign_review"]
+            bleu = sacrebleu.corpus_bleu([outs[i]["msa"] for i in idx], [[rows[i]["tgt"] for i in idx]]).score
+            L.append(f"| {v} | {name} ({len(idx)}) | {pct(found, st['foreign_need'])}% | {pct(st['foreign_ok'], st['foreign_need'])}% | "
+                     f"{pct(st['foreign_suggested'], found)}% / {pct(st['foreign_suggested_ok'], st['foreign_suggested'])}% | "
+                     f"{pct(st['foreign_review_ok'], st['foreign_review'])}% | "
+                     f"{pct(st['foreign_gemma_ok'], st['foreign_gemma_given'])}% / {pct(st['foreign_foreign_model_ok'], st['foreign_foreign_model_given'])}% | {bleu:.2f} |")
+    (OUT / f"foreign_gemma_{split}.md").write_text(chr(10).join(L) + chr(10), encoding="utf-8")
+    print(chr(10).join(L))
+
+
 def dump(path, rows):
     with path.open("w", encoding="utf-8") as f:
         for o in rows:
@@ -341,6 +425,7 @@ def main():
     ap.add_argument("--mode", default="rag")
     ap.add_argument("--variant", default="gemma")
     ap.add_argument("--variants", nargs="*", default=["gemma", "m2m_first"])
+    ap.add_argument("--foreign_eval", nargs="*", help="compare foreign model vs Gemma on foreign spans, e.g. dev test")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     for s in a.eval or []:
@@ -350,6 +435,8 @@ def main():
         layer.variant = a.variant
         fst, n_for, bleu = eval_foreign(layer, s)
         report(s, dia, n_dia, fst, n_for, bleu, layer)
+    for s in a.foreign_eval or []:
+        eval_foreign_variants(Layer(mode=a.mode), s)
     if a.text:
         layer = Layer(mode=a.mode, variant=a.variant)
         for o in layer.run(a.text, free=True):

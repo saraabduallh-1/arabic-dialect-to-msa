@@ -1,1 +1,3 @@
 {"model": "gemma3:27b", "mode": "rag+gen2", "data": "sentences_v2", "k": 8, "WordAcc%": 40.36, "WordLoose%": 44.68, "Copy%": 0.54, "Missing%": 0.18, "spans": 555}
+{"model": "gemma4:12b", "mode": "rag+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 44.86, "WordLoose%": 48.47, "Copy%": 1.8, "Missing%": 0.0, "spans": 555}
+{"model": "gemma4:12b", "mode": "rag_lexf+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 45.59, "WordLoose%": 49.37, "Copy%": 2.34, "Missing%": 0.0, "spans": 555}

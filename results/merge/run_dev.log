@@ -1,0 +1,51 @@
+{"model": "gemma4:12b", "mode": "rag+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 44.86, "WordLoose%": 48.47, "Copy%": 1.8, "Missing%": 0.0, "spans": 555}
+{"model": "gemma4:12b", "mode": "rag_lexf+gen3", "data": "sentences_v2", "k": 8, "WordAcc%": 45.59, "WordLoose%": 49.37, "Copy%": 2.34, "Missing%": 0.0, "spans": 555}
+# Merged layer on dev
+
+Tagger: MARBERTv2, dialect + foreign (src/tag_merged.py). Foreign model: m2m100 fine-tune, unchanged. Dialect: dictionary + gemma4:12b (rag, k=8, +gen3 examples). Tier thresholds min_n=2, min_c=0.8.
+
+## Dialect sentences (dev, 290)
+
+### variant: gemma
+
+| step | value |
+|---|---|
+| dialect span detection P / R / F1 | 81.5 / 81.3 / 81.4 |
+| spans that need a change, found | 82.2% of 555 |
+| end-to-end exact | 36.2% |
+| suggested tier: share of found / exact | 14.7% / 89.6% |
+| review tier: exact | 36.2% |
+| foreign spans wrongly found in dialect sentences | 2 |
+
+### variant: m2m_first
+
+| step | value |
+|---|---|
+| dialect span detection P / R / F1 | 81.5 / 81.3 / 81.4 |
+| spans that need a change, found | 82.2% of 555 |
+| end-to-end exact | 27.4% |
+| suggested tier: share of found / exact | 14.7% / 89.6% |
+| review tier: exact | 23.7% |
+| foreign spans wrongly found in dialect sentences | 2 |
+
+### The two sources on the found dialect spans that need a change
+
+| source | changed the word | exact |
+|---|---|---|
+| foreign_model | 98.9% | 13.1% |
+| gemma | 99.1% | 44.3% |
+
+## Foreign sentences (dev, 300)
+
+| step | value |
+|---|---|
+| foreign span detection P / R / F1 | 84.9 / 83.9 / 84.4 |
+| spans that need a change, found | 83.9% of 322 |
+| end-to-end exact | 65.2% |
+| suggested tier: share of found / exact | 0.7% / 100.0% |
+| review tier: exact | 77.6% |
+| dialect spans wrongly found in foreign sentences | 1 |
+| words outside the foreign words changed: foreign model alone / merged layer | 0.2% / 1.3% of 1279 |
+| sentence BLEU: copy input / foreign model alone / merged layer | 43.74 / 88.75 / 84.83 |
+
+Exact match against one reference underestimates (a human review of 200 dialect dev answers found ~37 points more acceptable).

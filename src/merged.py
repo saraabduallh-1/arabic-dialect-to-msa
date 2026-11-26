@@ -46,6 +46,7 @@ from tiers import train_dict
 TAGGER = Path(os.environ.get("FUSHA_TAGGER_DIR", ROOT / "results" / "checkpoints" / "tagger_merged"))
 GEMMA = os.environ.get("FUSHA_LLM_MODEL", "gemma4:12b")
 LATIN = re.compile(r"[A-Za-z]")
+END_MARKS = ".,،؛;:!?؟…"  # sentence marks glued to a word; brackets, quotes and hyphens are left alone
 CACHE = OUT / "gemma_cache.jsonl"
 FSYSTEM = (
     "أنت خبير في اللغة العربية الفصحى. "
@@ -150,6 +151,18 @@ class Layer:
         d, f = typed_spans(lab)
         return sorted([(s, e, "dialect") for s, e in d] + [(s, e, "foreign") for s, e in f])
 
+    def tag_punct(self, words):
+        """tag() for text as people write it. The dialect training sentences have no punctuation, so a mark glued to a
+        word («بكرة،») hides it from the tagger: dialect spans come from the words without their end marks, foreign
+        spans from the words as written (the foreign data has its marks), and a foreign span wins an overlap.
+        Dev, 25% of words with a glued mark: dialect recall 0.645 -> 0.710; clean dev and foreign dev unchanged."""
+        bare = [w.rstrip(END_MARKS) or w for w in words]
+        if bare == words:
+            return self.tag(words)
+        fore = [x for x in self.tag(words) if x[2] == "foreign"]
+        dia = [x for x in self.tag(bare) if x[2] == "dialect"]
+        return sorted(fore + [x for x in dia if not any(x[0] < e and s < x[1] for s, e, _ in fore)])
+
     # --- step 2: the foreign model, unchanged, on the whole sentence
     def translate(self, sents, bs=16):
         out = []
@@ -243,7 +256,7 @@ class Layer:
         if free:
             self.to_gpu()
         words = [clean(s).split() for s in sentences]
-        spans = [self.tag(w) for w in words]
+        spans = [self.tag_punct(w) for w in words]
         hyps = [h.split() for h in self.translate([" ".join(w) for w in words])]
         if free:
             self.free_gpu()

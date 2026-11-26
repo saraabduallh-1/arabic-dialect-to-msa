@@ -8,7 +8,7 @@ The Fusha layer turns foreign words and Saudi dialect words into Modern Standard
 |---|---|---|
 | Code, training data, Saleem glossary | this repository (branch `KassFushaFeature`) | built into the image |
 | Foreign word model (`foreign_to_msa_model` + the two CSV files beside it, 1.9 GB) | the shared Google Drive folder | mount at `/models/foreign_to_msa` |
-| Word tagger (`tagger_merged`, 650 MB; the checkpoint trained with glued punctuation, `tagger_merged_punct0.15`, uploaded under this name) | the shared Google Drive folder | mount at `/models/tagger_merged` |
+| Word tagger (`tagger_merged`, 650 MB; the checkpoint `tagger_merged_punct0.15_mask` (glued punctuation, no loss on dialect words in the foreign data), uploaded under this name) | the shared Google Drive folder | mount at `/models/tagger_merged` |
 | Gemma (`gemma-4-12B-it`) | Saleem's language model server | `FUSHA_LLM_URL` |
 
 The two model folders are not in the image, so a new model needs no rebuild.

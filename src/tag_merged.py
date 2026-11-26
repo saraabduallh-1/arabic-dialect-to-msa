@@ -15,6 +15,7 @@ usage: python src/tag_merged.py [--epochs 5] [--dia_x 1] [--punct 0.15] [--save 
 import argparse
 import json
 import random
+import re
 from collections import Counter
 
 import torch
@@ -37,6 +38,8 @@ def foreign_tokens(r):
 
 
 MARKS = ["،", "؟", ".", "!"]
+END = ".,،؛;:!?؟…"
+LATIN = re.compile("[A-Za-z]")
 
 
 def glue(sents, share, seed, final=0.0):
@@ -82,14 +85,22 @@ def main():
     ap.add_argument("--lr", type=float, default=3e-5)
     ap.add_argument("--dia_x", type=int, default=1, help="repeat the dialect training sentences this many times")
     ap.add_argument("--punct", type=float, default=0.0, help="share of words given a glued mark in the extra dialect copy")
+    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--mask_dia", action="store_true",
+                    help="no loss on foreign-data words that are dialect words in the dialect training data")
     ap.add_argument("--save", default=str(ROOT / "results" / "checkpoints" / "tagger_merged"))
     a = ap.parse_args()
-    random.seed(0)
-    torch.manual_seed(0)
+    random.seed(a.seed)
+    torch.manual_seed(a.seed)
 
     fsp = load_splits()
     dia_train = read(DATA / "sentences_v2" / "train.csv")
     for_train = [foreign_tokens(r) for r in fsp["train"]]
+    if a.mask_dia:
+        # the foreign data labels the dialect words in it O or F (لازم: F 25 times, بكرة: O 5 / F 7), which
+        # teaches the tagger that common Gulf words are not dialect
+        dvocab = {w.strip(END) for s in dia_train for w, l in s if l in (1, 2)}
+        for_train = [[(w, -100 if w.strip(END) in dvocab and not LATIN.search(w) else l) for w, l in s] for s in for_train]
     train = dia_train * a.dia_x + for_train
     if a.punct > 0:
         train += glue(dia_train, a.punct, seed=1, final=0.5) + unperiod(for_train)
@@ -123,7 +134,7 @@ def main():
     model.eval()
     model.save_pretrained(a.save)
     tok.save_pretrained(a.save)
-    res = {"epochs": a.epochs, "dia_x": a.dia_x, "punct": a.punct, "save": a.save, "train_sentences": {"dialect": len(dia_train), "foreign": len(fsp["train"])},
+    res = {"epochs": a.epochs, "dia_x": a.dia_x, "punct": a.punct, "seed": a.seed, "mask_dia": a.mask_dia, "save": a.save, "train_sentences": {"dialect": len(dia_train), "foreign": len(fsp["train"])},
            **{k: score(model, tok, v, dev) for k, v in dev_sets.items()}}
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / "tagger_dev.jsonl").open("a", encoding="utf-8") as f:

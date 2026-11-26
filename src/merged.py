@@ -43,7 +43,7 @@ from tag_dialect import tokens
 from tag_merged import typed_spans
 from tiers import train_dict
 
-TAGGER = Path(os.environ.get("FUSHA_TAGGER_DIR", ROOT / "results" / "checkpoints" / "tagger_merged_punct0.15"))  # trained with glued marks (src/tag_merged.py --punct 0.15)
+TAGGER = Path(os.environ.get("FUSHA_TAGGER_DIR", ROOT / "results" / "checkpoints" / "tagger_merged_punct0.15_mask"))  # src/tag_merged.py --punct 0.15 --mask_dia
 GEMMA = os.environ.get("FUSHA_LLM_MODEL", "gemma4:12b")
 LATIN = re.compile(r"[A-Za-z]")
 CACHE = OUT / "gemma_cache.jsonl"

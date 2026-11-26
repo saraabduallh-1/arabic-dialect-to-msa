@@ -12,6 +12,7 @@ usage: python src/run_llm.py --models qwen2.5:7b gemma3:12b --modes zero rag rag
 """
 import argparse
 import json
+import os
 import re
 from collections import Counter
 
@@ -23,7 +24,12 @@ from tqdm import tqdm
 from data import ROOT, lexicon, load, normalize
 from metrics import score
 
-OLLAMA = "http://localhost:11434/api/chat"
+# The language model server. Ollama by default (this machine); on Saleem's server set FUSHA_LLM_API=openai and
+# FUSHA_LLM_URL to its OpenAI-compatible endpoint (for example vLLM serving gemma-4-12B-it).
+LLM_API = os.environ.get("FUSHA_LLM_API", "ollama")
+LLM_URL = os.environ.get("FUSHA_LLM_URL", "http://localhost:11434").rstrip("/")
+LLM_KEY = os.environ.get("FUSHA_LLM_KEY", "")
+OLLAMA = f"{LLM_URL}/api/chat"
 PRED_DIR = ROOT / "results" / "preds"
 
 SYSTEM = (
@@ -103,6 +109,18 @@ def postprocess(text):
 
 
 def chat(model, messages):
+    if LLM_API == "openai":
+        # Gemma 4 thinks before answering unless told not to; the thinking would use up max_tokens and leave no answer.
+        # vLLM reads chat_template_kwargs, Ollama reads reasoning_effort; a server that rejects one is asked without it.
+        base = {"model": model, "messages": messages, "temperature": 0, "max_tokens": 128}
+        headers = {"Authorization": f"Bearer {LLM_KEY}"} if LLM_KEY else {}
+        for extra in ({"chat_template_kwargs": {"enable_thinking": False}, "reasoning_effort": "none"},
+                      {"chat_template_kwargs": {"enable_thinking": False}}, {}):
+            r = requests.post(f"{LLM_URL}/v1/chat/completions", json={**base, **extra}, headers=headers, timeout=600)
+            if r.status_code != 400:
+                break
+        r.raise_for_status()
+        return r.json()["choices"][0]["message"].get("content") or ""
     body = {"model": model, "messages": messages, "stream": False, "think": False,
             "keep_alive": "10m", "options": {"temperature": 0, "num_ctx": 4096, "num_predict": 128}}
     r = requests.post(OLLAMA, json=body, timeout=600)

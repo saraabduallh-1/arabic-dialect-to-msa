@@ -4,6 +4,7 @@ The small models (tagger ~650 MB, foreign model ~1.9 GB) run on the CPU; Gemma i
 the layer can share the gemma4:12b that Saleem already runs instead of loading a second copy.
 
 run:   uvicorn merged_api:app --app-dir src --host 0.0.0.0 --port 8010
+       (in Saleem: the Dockerfile at the repository root; settings in docs/DEPLOY_SALEEM.md)
 call:  POST /predict {"text": "ابي اموديفاي العقد بكرة"}
        -> {"input", "msa", "replacements": [{"word", "type": dialect|foreign, "msa", "tier": suggested|review,
                                               "source", "span"}], "not_applied": [...]}

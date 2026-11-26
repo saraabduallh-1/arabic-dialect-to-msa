@@ -19,8 +19,11 @@ import re
 import sys
 from pathlib import Path
 
-SPEC_TERMS = Path(os.environ.get("SPEC_TERMS", Path.home() / "Documents" / "saleem-specialization-layer-" / "data" /
-                                 "processed" / "data_ai" / "terminology_base.json"))
+# Saleem's specialization glossary. A copy ships in data/ (from saleem-specialization-layer-,
+# data/processed/data_ai/terminology_base.json); SPEC_TERMS points elsewhere.
+_SPEC_COPY = Path(__file__).resolve().parents[1] / "data" / "terminology_base.json"
+_SPEC_LOCAL = Path.home() / "Documents" / "saleem-specialization-layer-" / "data" / "processed" / "data_ai" / "terminology_base.json"
+SPEC_TERMS = Path(os.environ.get("SPEC_TERMS", _SPEC_COPY if _SPEC_COPY.exists() else _SPEC_LOCAL))
 
 EN = [("ph", "f"), ("ck", "k"), ("th", "t"), ("sh", "s"), ("ch", "s"), ("x", "ks"), ("qu", "k")]
 EN_MAP = {"b": "B", "p": "B", "f": "F", "v": "F", "t": "T", "d": "D", "s": "S", "z": "S", "c": "K", "k": "K", "q": "K",

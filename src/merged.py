@@ -24,8 +24,10 @@ import difflib
 import gc
 import hashlib
 import json
+import os
 import re
 from collections import Counter
+from pathlib import Path
 
 import requests
 import sacrebleu
@@ -36,13 +38,13 @@ import run_word
 from data import ROOT, clean, load, normalize
 from domain_terms import DomainTerms
 from foreign_data import MODEL_DIR, OUT, foreign_dict, load_splits, load_tokenizer
-from run_llm import Retriever, chat
+from run_llm import LLM_URL, Retriever, chat
 from tag_dialect import tokens
 from tag_merged import typed_spans
 from tiers import train_dict
 
-TAGGER = ROOT / "results" / "checkpoints" / "tagger_merged"
-GEMMA = "gemma4:12b"
+TAGGER = Path(os.environ.get("FUSHA_TAGGER_DIR", ROOT / "results" / "checkpoints" / "tagger_merged"))
+GEMMA = os.environ.get("FUSHA_LLM_MODEL", "gemma4:12b")
 LATIN = re.compile(r"[A-Za-z]")
 CACHE = OUT / "gemma_cache.jsonl"
 FSYSTEM = (
@@ -122,7 +124,7 @@ class Layer:
         if not torch.cuda.is_available():
             return
         try:
-            requests.post("http://localhost:11434/api/generate", json={"model": self.gemma, "keep_alive": 0}, timeout=60)
+            requests.post(f"{LLM_URL}/api/generate", json={"model": self.gemma, "keep_alive": 0}, timeout=60)
         except requests.RequestException:
             pass
         self.tagger.to("cuda"); self.m2m.to("cuda"); self.dev = "cuda"
@@ -178,9 +180,13 @@ class Layer:
             msgs.append({"role": "user", "content": user})
         key = hashlib.sha1(json.dumps([self.gemma, msgs], ensure_ascii=False).encode()).hexdigest()
         if key not in self.cache:
-            self.cache[key] = chat(self.gemma, msgs)
+            raw = chat(self.gemma, msgs)
+            if not raw.strip():  # an empty answer (server trouble) is not kept: the next call asks again
+                return [""] * len(dspans)
+            self.cache[key] = raw
+            CACHE.parent.mkdir(parents=True, exist_ok=True)
             with CACHE.open("a", encoding="utf-8") as f:
-                f.write(json.dumps({"key": key, "raw": self.cache[key]}, ensure_ascii=False) + "\n")
+                f.write(json.dumps({"key": key, "raw": raw}, ensure_ascii=False) + "\n")
         p = run_word.parse(self.cache[key])
         return [p.get(n, "") for n in range(1, len(dspans) + 1)]
 

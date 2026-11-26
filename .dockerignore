@@ -1,0 +1,5 @@
+*
+!deploy/requirements-serve.txt
+!src/**/*.py
+!data/**
+src/__pycache__

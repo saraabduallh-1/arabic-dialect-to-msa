@@ -29,6 +29,6 @@ def health():
 @app.post("/predict")
 def predict(req: PredictRequest):
     o = layer.run([req.text])[0]
-    keep = ("span", "word", "type", "msa", "tier", "source")
+    keep = ("span", "word", "type", "msa", "tier", "source", "glossary")
     return {"input": req.text, "msa": o["msa"], "replacements": [{k: r[k] for k in keep} for r in o["replacements"]],
             "not_applied": o["not_applied"]}

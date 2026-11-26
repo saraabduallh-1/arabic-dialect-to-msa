@@ -1,0 +1,818 @@
+{"key": "2492|[1, 2]|مهمل", "kind": "dialect", "label": "wrong"}
+{"key": "1630|[3, 4]|الترهات", "kind": "dialect", "label": "correct"}
+{"key": "1727|[4, 5]|متملق", "kind": "dialect", "label": "wrong"}
+{"key": "1219|[4, 5]|سييه", "kind": "dialect", "label": "wrong"}
+{"key": "2616|[0, 2]|لاحقا معك", "kind": "dialect", "label": "wrong"}
+{"key": "1298|[0, 1]|تشبه", "kind": "dialect", "label": "wrong"}
+{"key": "2221|[1, 2]|افسحت", "kind": "dialect", "label": "wrong"}
+{"key": "2221|[2, 3]|سابقي", "kind": "dialect", "label": "partial"}
+{"key": "1061|[4, 5]|قلم", "kind": "dialect", "label": "wrong"}
+{"key": "1016|[0, 1]|ترتدي", "kind": "dialect", "label": "correct"}
+{"key": "2457|[4, 5]|الخير", "kind": "dialect", "label": "correct"}
+{"key": "1501|[5, 6]|اعذار", "kind": "dialect", "label": "wrong"}
+{"key": "11|[4, 5]|فاسد", "kind": "dialect", "label": "wrong"}
+{"key": "1364|[0, 1]|ظاهر", "kind": "dialect", "label": "correct"}
+{"key": "1364|[2, 3]|متعبه", "kind": "dialect", "label": "correct"}
+{"key": "798|[1, 2]|تدمع", "kind": "dialect", "label": "wrong"}
+{"key": "798|[3, 4]|اشعر بالارهاق", "kind": "dialect", "label": "correct"}
+{"key": "617|[2, 3]|كراما", "kind": "dialect", "label": "wrong"}
+{"key": "929|[1, 2]|رايع", "kind": "dialect", "label": "correct"}
+{"key": "929|[3, 4]|انيق", "kind": "dialect", "label": "correct"}
+{"key": "2566|[0, 1]|امسكتها", "kind": "dialect", "label": "wrong"}
+{"key": "2566|[2, 3]|سخرت منها", "kind": "dialect", "label": "wrong"}
+{"key": "396|[1, 2]|متحمس", "kind": "dialect", "label": "wrong"}
+{"key": "154|[11, 12]|تتورطون", "kind": "dialect", "label": "correct"}
+{"key": "1210|[4, 5]|سيء", "kind": "dialect", "label": "partial"}
+{"key": "144|[3, 4]|اود", "kind": "dialect", "label": "correct"}
+{"key": "393|[3, 5]|فثمه", "kind": "dialect", "label": "correct"}
+{"key": "1325|[1, 2]|ليس", "kind": "dialect", "label": "correct"}
+{"key": "1325|[6, 8]|يتظاهر بتصديقك", "kind": "dialect", "label": "wrong"}
+{"key": "958|[0, 1]|حسنا", "kind": "dialect", "label": "correct"}
+{"key": "978|[3, 4]|الامر", "kind": "dialect", "label": "partial"}
+{"key": "978|[6, 7]|ام", "kind": "dialect", "label": "partial"}
+{"key": "1216|[2, 3]|ساخرج", "kind": "dialect", "label": "correct"}
+{"key": "2797|[3, 4]|اعتز", "kind": "dialect", "label": "correct"}
+{"key": "1886|[1, 2]|متاججه", "kind": "dialect", "label": "correct"}
+{"key": "1244|[0, 1]|اجلس", "kind": "dialect", "label": "wrong"}
+{"key": "1244|[2, 3]|بجانبهم", "kind": "dialect", "label": "wrong"}
+{"key": "1385|[2, 3]|لا بد", "kind": "dialect", "label": "wrong"}
+{"key": "1355|[1, 2]|يتقرب", "kind": "dialect", "label": "wrong"}
+{"key": "1355|[6, 7]|اعطيته", "kind": "dialect", "label": "wrong"}
+{"key": "131|[0, 1]|اخرج", "kind": "dialect", "label": "wrong"}
+{"key": "131|[3, 4]|اقفز", "kind": "dialect", "label": "wrong"}
+{"key": "505|[1, 2]|حضورهم", "kind": "dialect", "label": "wrong"}
+{"key": "1527|[3, 4]|يفخر", "kind": "dialect", "label": "wrong"}
+{"key": "2142|[0, 1]|يا حبيبي", "kind": "dialect", "label": "correct"}
+{"key": "2142|[1, 2]|سريع الغضب", "kind": "dialect", "label": "correct"}
+{"key": "634|[0, 1]|اذهب", "kind": "dialect", "label": "wrong"}
+{"key": "1858|[5, 6]|متعبا", "kind": "dialect", "label": "wrong"}
+{"key": "1082|[2, 3]|لعوب", "kind": "dialect", "label": "wrong"}
+{"key": "1709|[1, 2]|عاله", "kind": "dialect", "label": "wrong"}
+{"key": "596|[2, 3]|لا يوجد", "kind": "dialect", "label": "correct"}
+{"key": "16|[0, 1]|تركت", "kind": "dialect", "label": "wrong"}
+{"key": "217|[1, 2]|اطفيه", "kind": "dialect", "label": "correct"}
+{"key": "1960|[2, 3]|تمضغ", "kind": "dialect", "label": "partial"}
+{"key": "1409|[2, 3]|مرت", "kind": "dialect", "label": "correct"}
+{"key": "2722|[1, 2]|يضغط", "kind": "dialect", "label": "partial"}
+{"key": "1149|[1, 2]|المرء", "kind": "dialect", "label": "correct"}
+{"key": "1149|[3, 4]|يتحمل", "kind": "dialect", "label": "correct"}
+{"key": "581|[1, 2]|يحتاج", "kind": "dialect", "label": "correct"}
+{"key": "581|[4, 5]|ينضج", "kind": "dialect", "label": "wrong"}
+{"key": "1738|[1, 2]|تذاكري", "kind": "dialect", "label": "wrong"}
+{"key": "35|[4, 5]|جميله", "kind": "dialect", "label": "correct"}
+{"key": "551|[1, 2]|تصنع", "kind": "dialect", "label": "wrong"}
+{"key": "2731|[4, 5]|اكملك او اكمل طريقك", "kind": "dialect", "label": "wrong"}
+{"key": "318|[2, 3]|بهارات", "kind": "dialect", "label": "partial"}
+{"key": "318|[5, 6]|ترهق", "kind": "dialect", "label": "correct"}
+{"key": "1022|[1, 2]|تصرخ فيه", "kind": "dialect", "label": "wrong"}
+{"key": "191|[0, 1]|لا اريد", "kind": "dialect", "label": "wrong"}
+{"key": "895|[1, 2]|النعال", "kind": "dialect", "label": "correct"}
+{"key": "538|[5, 6]|افسدت", "kind": "dialect", "label": "partial"}
+{"key": "1155|[2, 3]|ناضج جدا", "kind": "dialect", "label": "wrong"}
+{"key": "2116|[0, 1]|لدي", "kind": "dialect", "label": "wrong"}
+{"key": "2116|[1, 2]|غصه", "kind": "dialect", "label": "wrong"}
+{"key": "2116|[2, 4]|لم تذهب", "kind": "dialect", "label": "wrong"}
+{"key": "1691|[1, 2]|يري", "kind": "dialect", "label": "partial"}
+{"key": "1096|[2, 3]|غريب", "kind": "dialect", "label": "wrong"}
+{"key": "2621|[1, 2]|اهمله", "kind": "dialect", "label": "wrong"}
+{"key": "2774|[3, 4]|صاخب", "kind": "dialect", "label": "wrong"}
+{"key": "1021|[6, 7]|شده الحراره", "kind": "dialect", "label": "correct"}
+{"key": "1590|[2, 3]|يزعجني", "kind": "dialect", "label": "correct"}
+{"key": "1120|[2, 3]|كاسا من", "kind": "dialect", "label": "correct"}
+{"key": "2069|[4, 5]|انتظموا", "kind": "dialect", "label": "correct"}
+{"key": "2656|[3, 4]|بقايا", "kind": "dialect", "label": "correct"}
+{"key": "1963|[1, 2]|مصارعه", "kind": "dialect", "label": "wrong"}
+{"key": "1017|[1, 2]|يناسب", "kind": "dialect", "label": "wrong"}
+{"key": "419|[4, 5]|حزم", "kind": "dialect", "label": "partial"}
+{"key": "2755|[1, 2]|نزع", "kind": "dialect", "label": "correct"}
+{"key": "19|[0, 1]|ثمر", "kind": "dialect", "label": "wrong"}
+{"key": "19|[2, 3]|ليس", "kind": "dialect", "label": "wrong"}
+{"key": "1991|[2, 3]|اصطدمت", "kind": "dialect", "label": "correct"}
+{"key": "1370|[3, 5]|عندما اصبحت", "kind": "dialect", "label": "correct"}
+{"key": "1370|[5, 6]|بمفردي", "kind": "dialect", "label": "correct"}
+{"key": "992|[1, 2]|عون", "kind": "dialect", "label": "wrong"}
+{"key": "2271|[3, 5]|يطلق بوقا", "kind": "dialect", "label": "correct"}
+{"key": "263|[4, 5]|مهمله", "kind": "dialect", "label": "wrong"}
+{"key": "1635|[0, 2]|منذ ذلك اليوم", "kind": "dialect", "label": "wrong"}
+{"key": "1669|[0, 1]|يتظاهر بانه", "kind": "dialect", "label": "wrong"}
+{"key": "2834|[1, 2]|تنظر", "kind": "dialect", "label": "partial"}
+{"key": "1268|[1, 2]|يتجعد", "kind": "dialect", "label": "correct"}
+{"key": "161|[1, 2]|في ذهني", "kind": "dialect", "label": "wrong"}
+{"key": "161|[2, 3]|اتناول", "kind": "dialect", "label": "wrong"}
+{"key": "1908|[1, 2]|الين قلبها", "kind": "dialect", "label": "correct"}
+{"key": "1824|[1, 2]|يبدو لي انهم", "kind": "dialect", "label": "wrong"}
+{"key": "1824|[2, 3]|حزينون", "kind": "dialect", "label": "partial"}
+{"key": "1987|[2, 3]|لكي", "kind": "dialect", "label": "correct"}
+{"key": "636|[7, 9]|لا قيمه لهم", "kind": "dialect", "label": "wrong"}
+{"key": "1815|[1, 2]|متول", "kind": "dialect", "label": "wrong"}
+{"key": "1127|[1, 2]|تتحدث", "kind": "dialect", "label": "correct"}
+{"key": "1986|[0, 1]|قلب", "kind": "dialect", "label": "wrong"}
+{"key": "1366|[1, 2]|ترين", "kind": "dialect", "label": "correct"}
+{"key": "1123|[2, 3]|الاب", "kind": "dialect", "label": "wrong"}
+{"key": "265|[4, 5]|يذهب", "kind": "dialect", "label": "correct"}
+{"key": "2499|[3, 4]|جروح", "kind": "dialect", "label": "wrong"}
+{"key": "1009|[1, 2]|طوال", "kind": "dialect", "label": "wrong"}
+{"key": "1009|[2, 3]|الغيابات", "kind": "dialect", "label": "wrong"}
+{"key": "2150|[2, 3]|يتناول الماكولات الخفيفه", "kind": "dialect", "label": "correct"}
+{"key": "2285|[0, 2]|ما الهدف", "kind": "dialect", "label": "wrong"}
+{"key": "2285|[4, 5]|ازعاجك", "kind": "dialect", "label": "wrong"}
+{"key": "2634|[3, 4]|تناوله", "kind": "dialect", "label": "wrong"}
+{"key": "956|[0, 1]|ابعد", "kind": "dialect", "label": "correct"}
+{"key": "500|[4, 5]|استغله", "kind": "dialect", "label": "wrong"}
+{"key": "500|[6, 7]|امور", "kind": "dialect", "label": "correct"}
+{"key": "1141|[0, 1]|املا", "kind": "dialect", "label": "correct"}
+{"key": "467|[2, 3]|تاخذ", "kind": "dialect", "label": "wrong"}
+{"key": "1773|[2, 3]|تبين", "kind": "dialect", "label": "wrong"}
+{"key": "1683|[0, 1]|انتظر", "kind": "dialect", "label": "correct"}
+{"key": "1710|[1, 3]|يرهق القلب", "kind": "dialect", "label": "partial"}
+{"key": "2723|[2, 4]|استقر في مكانك", "kind": "dialect", "label": "correct"}
+{"key": "1792|[3, 4]|هذه اللحظه", "kind": "dialect", "label": "wrong"}
+{"key": "653|[1, 3]|لم تعين", "kind": "dialect", "label": "wrong"}
+{"key": "1283|[3, 4]|احاكي", "kind": "dialect", "label": "wrong"}
+{"key": "1283|[4, 5]|اقرانه", "kind": "dialect", "label": "wrong"}
+{"key": "2207|[2, 3]|يا الذي", "kind": "dialect", "label": "wrong"}
+{"key": "1509|[2, 3]|فاقد العقل", "kind": "dialect", "label": "wrong"}
+{"key": "226|[3, 5]|اضرب فيه", "kind": "dialect", "label": "wrong"}
+{"key": "1116|[1, 2]|متجعد", "kind": "dialect", "label": "correct"}
+{"key": "2855|[3, 6]|ليست في عقلي", "kind": "dialect", "label": "wrong"}
+{"key": "2530|[4, 5]|مريض", "kind": "dialect", "label": "wrong"}
+{"key": "201|[1, 2]|رايع", "kind": "dialect", "label": "correct"}
+{"key": "2246|[0, 1]|يتفاخر", "kind": "dialect", "label": "correct"}
+{"key": "2246|[3, 4]|اموال", "kind": "dialect", "label": "correct"}
+{"key": "754|[1, 2]|متعب", "kind": "dialect", "label": "partial"}
+{"key": "1070|[1, 2]|غليت", "kind": "dialect", "label": "wrong"}
+{"key": "1070|[4, 5]|فاضت", "kind": "dialect", "label": "wrong"}
+{"key": "2668|[0, 2]|ما الذي يملك", "kind": "dialect", "label": "wrong"}
+{"key": "834|[0, 1]|الان", "kind": "dialect", "label": "correct"}
+{"key": "834|[4, 6]|متي ستعود", "kind": "dialect", "label": "wrong"}
+{"key": "2198|[1, 2]|اضفها", "kind": "dialect", "label": "wrong"}
+{"key": "2204|[2, 3]|ممدودا", "kind": "dialect", "label": "wrong"}
+{"key": "1438|[2, 3]|استرخاء", "kind": "dialect", "label": "wrong"}
+{"key": "1438|[3, 5]|تماما", "kind": "dialect", "label": "correct"}
+{"key": "207|[2, 3]|اضيفت", "kind": "dialect", "label": "wrong"}
+{"key": "1489|[1, 2]|باهتا", "kind": "dialect", "label": "wrong"}
+{"key": "1489|[3, 4]|تايها", "kind": "dialect", "label": "partial"}
+{"key": "1807|[2, 3]|فضوليون", "kind": "dialect", "label": "partial"}
+{"key": "1964|[0, 1]|فضلك", "kind": "dialect", "label": "partial"}
+{"key": "1964|[3, 4]|اجزيهما", "kind": "dialect", "label": "wrong"}
+{"key": "1093|[2, 3]|يمازح", "kind": "dialect", "label": "wrong"}
+{"key": "896|[1, 2]|يستهزي", "kind": "dialect", "label": "partial"}
+{"key": "564|[1, 2]|يمل", "kind": "dialect", "label": "correct"}
+{"key": "370|[3, 4]|ليست", "kind": "dialect", "label": "correct"}
+{"key": "1756|[1, 2]|جاهل", "kind": "dialect", "label": "partial"}
+{"key": "640|[2, 3]|متسرعا", "kind": "dialect", "label": "wrong"}
+{"key": "796|[0, 1]|سيظن", "kind": "dialect", "label": "correct"}
+{"key": "796|[2, 4]|ليس لديكم مزاج", "kind": "dialect", "label": "partial"}
+{"key": "2863|[1, 2]|يريد", "kind": "dialect", "label": "correct"}
+{"key": "1848|[4, 5]|متكاسلا", "kind": "dialect", "label": "wrong"}
+{"key": "2370|[0, 1]|اخرج", "kind": "dialect", "label": "wrong"}
+{"key": "1445|[0, 1]|ابحثوا", "kind": "dialect", "label": "wrong"}
+{"key": "2395|[4, 5]|ممتع", "kind": "dialect", "label": "wrong"}
+{"key": "660|[2, 3]|غفوه", "kind": "dialect", "label": "correct"}
+{"key": "2881|[1, 2]|جاووا", "kind": "dialect", "label": "correct"}
+{"key": "338|[0, 1]|فقط", "kind": "dialect", "label": "partial"}
+{"key": "338|[4, 5]|لاحقا", "kind": "dialect", "label": "partial"}
+{"key": "117|[3, 4]|ارم", "kind": "dialect", "label": "wrong"}
+{"key": "2781|[3, 4]|لا تستطيع", "kind": "dialect", "label": "wrong"}
+{"key": "1066|[0, 1]|ساغادر", "kind": "dialect", "label": "wrong"}
+{"key": "1066|[4, 5]|العبث", "kind": "dialect", "label": "correct"}
+{"key": "2262|[0, 1]|بارعون", "kind": "dialect", "label": "correct"}
+{"key": "2262|[1, 2]|احبتي", "kind": "dialect", "label": "correct"}
+{"key": "751|[3, 4]|الملاحقه المستمره", "kind": "dialect", "label": "wrong"}
+{"key": "2843|[0, 1]|اتريدني ان", "kind": "dialect", "label": "wrong"}
+{"key": "624|[5, 6]|خارج", "kind": "dialect", "label": "partial"}
+{"key": "649|[0, 1]|الطفل", "kind": "dialect", "label": "correct"}
+{"key": "649|[1, 2]|ينزعج", "kind": "dialect", "label": "wrong"}
+{"key": "1418|[4, 5]|او", "kind": "dialect", "label": "correct"}
+{"key": "2817|[2, 3]|القذره", "kind": "dialect", "label": "wrong"}
+{"key": "2890|[0, 2]|اقترب منه", "kind": "dialect", "label": "wrong"}
+{"key": "2890|[3, 4]|دعه", "kind": "dialect", "label": "correct"}
+{"key": "2890|[4, 5]|ينهيها", "kind": "dialect", "label": "correct"}
+{"key": "2284|[1, 2]|تقطر", "kind": "dialect", "label": "correct"}
+{"key": "2706|[4, 5]|لا تقع او لا تتعثر", "kind": "dialect", "label": "wrong"}
+{"key": "2312|[1, 2]|متسخه", "kind": "dialect", "label": "wrong"}
+{"key": "2312|[3, 4]|قذره", "kind": "dialect", "label": "correct"}
+{"key": "563|[2, 3]|تضعوا", "kind": "dialect", "label": "correct"}
+{"key": "1192|[0, 1]|تركت", "kind": "dialect", "label": "wrong"}
+{"key": "1192|[1, 2]|الافطار", "kind": "dialect", "label": "correct"}
+{"key": "741|[0, 1]|عابس الوجه", "kind": "dialect", "label": "wrong"}
+{"key": "741|[1, 2]|اود", "kind": "dialect", "label": "correct"}
+{"key": "2163|[0, 1]|انت", "kind": "dialect", "label": "correct"}
+{"key": "2163|[4, 5]|كرمتنا", "kind": "dialect", "label": "correct"}
+{"key": "871|[2, 3]|اللامبالاه", "kind": "dialect", "label": "wrong"}
+{"key": "2576|[2, 3]|المطويه", "kind": "dialect", "label": "wrong"}
+{"key": "2441|[3, 4]|الحقيبه", "kind": "dialect", "label": "correct"}
+{"key": "470|[5, 6]|يتجاوزوا عنها", "kind": "dialect", "label": "partial"}
+{"key": "718|[2, 3]|ننهيها", "kind": "dialect", "label": "wrong"}
+{"key": "2075|[3, 4]|يتجهز", "kind": "dialect", "label": "correct"}
+{"key": "1167|[1, 2]|غير مرتب", "kind": "dialect", "label": "partial"}
+{"key": "104|[0, 1]|يا لحظك", "kind": "dialect", "label": "wrong"}
+{"key": "2324|[1, 2]|يربط", "kind": "dialect", "label": "wrong"}
+{"key": "1500|[3, 4]|في المشغل", "kind": "dialect", "label": "wrong"}
+{"key": "1701|[1, 2]|متعبه", "kind": "dialect", "label": "wrong"}
+{"key": "1701|[2, 3]|البارحه", "kind": "dialect", "label": "wrong"}
+{"key": "1215|[0, 1]|يا ابي", "kind": "dialect", "label": "wrong"}
+{"key": "1215|[2, 3]|الهث", "kind": "dialect", "label": "wrong"}
+{"key": "147|[0, 1]|ينبغي", "kind": "dialect", "label": "correct"}
+{"key": "147|[2, 3]|لكن", "kind": "dialect", "label": "correct"}
+{"key": "147|[4, 5]|سيء", "kind": "dialect", "label": "wrong"}
+{"key": "609|[0, 1]|سيي", "kind": "dialect", "label": "partial"}
+{"key": "954|[5, 6]|فاشلا", "kind": "dialect", "label": "partial"}
+{"key": "2331|[1, 2]|متعب", "kind": "dialect", "label": "wrong"}
+{"key": "824|[0, 1]|كثيرا", "kind": "dialect", "label": "correct"}
+{"key": "1450|[0, 1]|رايت", "kind": "dialect", "label": "correct"}
+{"key": "1450|[2, 4]|مت من الضحك", "kind": "dialect", "label": "wrong"}
+{"key": "2510|[0, 1]|ما زلتم", "kind": "dialect", "label": "wrong"}
+{"key": "2510|[1, 2]|ترونهم", "kind": "dialect", "label": "correct"}
+{"key": "2212|[1, 2]|الغلاء", "kind": "dialect", "label": "wrong"}
+{"key": "235|[4, 5]|بالتساوي", "kind": "dialect", "label": "correct"}
+{"key": "704|[2, 3]|كثره", "kind": "dialect", "label": "correct"}
+{"key": "2795|[4, 5]|تمر", "kind": "dialect", "label": "correct"}
+{"key": "748|[0, 1]|الشهم", "kind": "dialect", "label": "wrong"}
+{"key": "1979|[3, 4]|سيخيفه", "kind": "dialect", "label": "wrong"}
+{"key": "1083|[2, 3]|تجاهليه", "kind": "dialect", "label": "correct"}
+{"key": "2400|[1, 2]|النوي", "kind": "dialect", "label": "wrong"}
+{"key": "1600|[1, 2]|مضطرب", "kind": "dialect", "label": "correct"}
+{"key": "392|[1, 2]|القطعه", "kind": "dialect", "label": "wrong"}
+{"key": "1185|[1, 2]|تشتت", "kind": "dialect", "label": "partial"}
+{"key": "2032|[3, 4]|سذاجه", "kind": "dialect", "label": "correct"}
+{"key": "2765|[3, 5]|لا اظهر", "kind": "dialect", "label": "correct"}
+{"key": "1889|[1, 2]|شدته", "kind": "dialect", "label": "wrong"}
+{"key": "fv0|[1, 2]|ستره رسميه", "kind": "foreign", "label": "correct"}
+{"key": "fv1|[2, 3]|تعديل", "kind": "foreign", "label": "wrong"}
+{"key": "fv3|[1, 2]|المركز الاعلامي", "kind": "foreign", "label": "correct"}
+{"key": "fv5|[1, 2]|معاون", "kind": "foreign", "label": "correct"}
+{"key": "fv6|[3, 4]|طري", "kind": "foreign", "label": "correct"}
+{"key": "fv7|[3, 4]|قسم", "kind": "foreign", "label": "correct"}
+{"key": "fv10|[1, 2]|سندا لامر", "kind": "foreign", "label": "correct"}
+{"key": "fv11|[2, 3]|في المرحله التجريبيه", "kind": "foreign", "label": "correct"}
+{"key": "fv14|[2, 3]|بوفيه او مادبه مفتوحه", "kind": "foreign", "label": "wrong"}
+{"key": "fv15|[2, 3]|فواكه", "kind": "foreign", "label": "correct"}
+{"key": "fv16|[4, 5]|هذه", "kind": "foreign", "label": "wrong"}
+{"key": "fv17|[3, 4]|يخدع", "kind": "foreign", "label": "wrong"}
+{"key": "fv19|[4, 5]|نبره", "kind": "foreign", "label": "partial"}
+{"key": "fv20|[3, 4]|العناكب", "kind": "foreign", "label": "correct"}
+{"key": "fv24|[2, 3]|درجه علميه", "kind": "foreign", "label": "correct"}
+{"key": "fv31|[1, 3]|العنايه بالذات", "kind": "foreign", "label": "correct"}
+{"key": "fv32|[1, 3]|موفرا جديدا", "kind": "foreign", "label": "wrong"}
+{"key": "fv33|[1, 3]|المحاضره المفتوحه", "kind": "foreign", "label": "correct"}
+{"key": "fv34|[2, 3]|التواء", "kind": "foreign", "label": "wrong"}
+{"key": "fv35|[1, 2]|تحلق", "kind": "foreign", "label": "wrong"}
+{"key": "fv36|[2, 4]|القياده الذاتيه", "kind": "foreign", "label": "wrong"}
+{"key": "fv37|[4, 5]|مريحا للاعصاب", "kind": "foreign", "label": "correct"}
+{"key": "fv39|[3, 4]|اعاده تمديد الاسلاك", "kind": "foreign", "label": "correct"}
+{"key": "fv41|[2, 4]|مشاركه الملفات", "kind": "foreign", "label": "wrong"}
+{"key": "fv42|[2, 3]|رقص كلاسيكي", "kind": "foreign", "label": "partial"}
+{"key": "fv50|[4, 5]|رايدا", "kind": "foreign", "label": "wrong"}
+{"key": "fv51|[1, 2]|السمن النباتي", "kind": "foreign", "label": "correct"}
+{"key": "fv56|[2, 3]|تفصيلي", "kind": "foreign", "label": "partial"}
+{"key": "fv59|[2, 3]|وجبات خفيفه", "kind": "foreign", "label": "correct"}
+{"key": "fv65|[1, 3]|ضوءا مسلطا", "kind": "foreign", "label": "correct"}
+{"key": "fv66|[4, 5]|بالابتكارات", "kind": "foreign", "label": "correct"}
+{"key": "fv70|[2, 3]|طارد للماء", "kind": "foreign", "label": "correct"}
+{"key": "fv71|[2, 3]|بالارتياب", "kind": "foreign", "label": "partial"}
+{"key": "fv74|[1, 2]|عجه", "kind": "foreign", "label": "correct"}
+{"key": "fv75|[1, 2]|مخفوقا", "kind": "foreign", "label": "wrong"}
+{"key": "fv77|[2, 4]|بمعالجه", "kind": "foreign", "label": "wrong"}
+{"key": "fv81|[2, 3]|مزدوجه", "kind": "foreign", "label": "wrong"}
+{"key": "fv82|[1, 2]|انعكاس", "kind": "foreign", "label": "wrong"}
+{"key": "fv83|[0, 3]|يعاني من رهاب الخوف الذي ينهكه", "kind": "foreign", "label": "correct"}
+{"key": "fv84|[2, 3]|اصحاب المصلحه", "kind": "foreign", "label": "correct"}
+{"key": "fv86|[2, 3]|اعاده طلاء", "kind": "foreign", "label": "wrong"}
+{"key": "fv89|[1, 2]|اختبارا قصيرا", "kind": "foreign", "label": "correct"}
+{"key": "fv97|[3, 4]|واقعي", "kind": "foreign", "label": "correct"}
+{"key": "fv99|[4, 5]|السريعه", "kind": "foreign", "label": "partial"}
+{"key": "fv104|[2, 3]|نظام فوقي", "kind": "foreign", "label": "correct"}
+{"key": "fv107|[1, 3]|تاريخا محددا", "kind": "foreign", "label": "partial"}
+{"key": "fv109|[3, 5]|الموسيقي الكلاسيكيه", "kind": "foreign", "label": "correct"}
+{"key": "fv111|[2, 4]|ديناميكا السوايل", "kind": "foreign", "label": "correct"}
+{"key": "fv114|[2, 3]|مخدوعا", "kind": "foreign", "label": "wrong"}
+{"key": "fv115|[1, 2]|رافعه", "kind": "foreign", "label": "partial"}
+{"key": "fv118|[2, 3]|انخفاض تدريجي", "kind": "foreign", "label": "correct"}
+{"key": "fv121|[1, 2]|ناظم الايقاع", "kind": "foreign", "label": "correct"}
+{"key": "fv123|[1, 3]|جل الاستحمام", "kind": "foreign", "label": "partial"}
+{"key": "fv124|[5, 7]|العصر الفضي", "kind": "foreign", "label": "wrong"}
+{"key": "fv126|[1, 2]|القايد", "kind": "foreign", "label": "wrong"}
+{"key": "fv135|[4, 5]|الاسيله", "kind": "foreign", "label": "wrong"}
+{"key": "fv136|[3, 5]|حديد خالص", "kind": "foreign", "label": "correct"}
+{"key": "fv138|[3, 4]|الرجل الخارق", "kind": "foreign", "label": "correct"}
+{"key": "fv140|[1, 3]|سراويل قصيره ملونه", "kind": "foreign", "label": "correct"}
+{"key": "fv141|[2, 3]|سور حصين", "kind": "foreign", "label": "correct"}
+{"key": "fv142|[3, 4]|بالبذله", "kind": "foreign", "label": "wrong"}
+{"key": "fv144|[1, 2]|العولمه", "kind": "foreign", "label": "correct"}
+{"key": "fv146|[2, 4]|التشغيل الذاتي", "kind": "foreign", "label": "wrong"}
+{"key": "fv147|[1, 2]|يحتوي علي", "kind": "foreign", "label": "correct"}
+{"key": "fv150|[0, 1]|هذه", "kind": "foreign", "label": "correct"}
+{"key": "fv150|[2, 3]|المتقدمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv152|[2, 3]|غابه", "kind": "foreign", "label": "partial"}
+{"key": "fv153|[3, 4]|مطور", "kind": "foreign", "label": "correct"}
+{"key": "fv156|[1, 2]|قطعه لحم رقيقه", "kind": "foreign", "label": "partial"}
+{"key": "fv159|[0, 2]|وقع تخريب", "kind": "foreign", "label": "correct"}
+{"key": "fv161|[3, 4]|عايقا", "kind": "foreign", "label": "correct"}
+{"key": "fv162|[1, 2]|الجده", "kind": "foreign", "label": "wrong"}
+{"key": "fv166|[1, 2]|طرد", "kind": "foreign", "label": "wrong"}
+{"key": "fv169|[1, 2]|الفلفل الحار", "kind": "foreign", "label": "correct"}
+{"key": "fv170|[1, 2]|لحما محمرا", "kind": "foreign", "label": "partial"}
+{"key": "fv171|[0, 1]|ساقابلك", "kind": "foreign", "label": "correct"}
+{"key": "fv172|[1, 2]|مفتاح", "kind": "foreign", "label": "correct"}
+{"key": "fv174|[2, 3]|تفاصيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv176|[1, 5]|يستهلك كهرباء كثيره", "kind": "foreign", "label": "correct"}
+{"key": "fv180|[1, 2]|عنصر", "kind": "foreign", "label": "correct"}
+{"key": "fv183|[4, 8]|ان العمل يجب تسليمه اليوم", "kind": "foreign", "label": "wrong"}
+{"key": "fv188|[2, 3]|مستفسر", "kind": "foreign", "label": "correct"}
+{"key": "fv192|[2, 3]|مجال عمل", "kind": "foreign", "label": "partial"}
+{"key": "fv193|[2, 3]|بالرعب", "kind": "foreign", "label": "wrong"}
+{"key": "fv195|[4, 5]|سكر الحليب", "kind": "foreign", "label": "wrong"}
+{"key": "fv196|[1, 2]|علي", "kind": "foreign", "label": "wrong"}
+{"key": "fv196|[3, 4]|عاطفيه", "kind": "foreign", "label": "partial"}
+{"key": "fv197|[0, 3]|يخيط البنطلون", "kind": "foreign", "label": "wrong"}
+{"key": "fv199|[1, 2]|تقريرا", "kind": "foreign", "label": "correct"}
+{"key": "fv201|[1, 2]|روي", "kind": "foreign", "label": "correct"}
+{"key": "fv202|[0, 1]|يجهزون", "kind": "foreign", "label": "correct"}
+{"key": "fv205|[1, 2]|دليل", "kind": "foreign", "label": "partial"}
+{"key": "fv209|[2, 5]|تم بسهوله", "kind": "foreign", "label": "correct"}
+{"key": "fv210|[2, 3]|فورا", "kind": "foreign", "label": "wrong"}
+{"key": "fv211|[5, 6]|مبدعا", "kind": "foreign", "label": "correct"}
+{"key": "fv215|[4, 6]|دون المستوي المميز", "kind": "foreign", "label": "correct"}
+{"key": "fv218|[4, 5]|محكم الاغلاق", "kind": "foreign", "label": "correct"}
+{"key": "fv222|[1, 2]|بعملات", "kind": "foreign", "label": "correct"}
+{"key": "fv223|[1, 2]|صعوبات", "kind": "foreign", "label": "correct"}
+{"key": "fv226|[1, 2]|سفينه جويه", "kind": "foreign", "label": "correct"}
+{"key": "fv227|[1, 2]|كابوريا", "kind": "foreign", "label": "correct"}
+{"key": "fv230|[3, 4]|مهذبه", "kind": "foreign", "label": "correct"}
+{"key": "fv231|[1, 2]|قابله للكتابه", "kind": "foreign", "label": "wrong"}
+{"key": "fv233|[3, 4]|سلبيا", "kind": "foreign", "label": "correct"}
+{"key": "fv235|[1, 2]|نوبه", "kind": "foreign", "label": "correct"}
+{"key": "fv238|[1, 2]|فرقه", "kind": "foreign", "label": "correct"}
+{"key": "fv239|[1, 3]|لا يزال", "kind": "foreign", "label": "wrong"}
+{"key": "fv241|[1, 3]|يتعلمون الابجديه", "kind": "foreign", "label": "correct"}
+{"key": "fv244|[3, 4]|مفهوما", "kind": "foreign", "label": "correct"}
+{"key": "fv246|[0, 3]|يمكنه الاشتراك", "kind": "foreign", "label": "wrong"}
+{"key": "fv248|[2, 3]|المرتفع", "kind": "foreign", "label": "wrong"}
+{"key": "fv249|[1, 2]|زياده", "kind": "foreign", "label": "wrong"}
+{"key": "fv252|[2, 3]|بلاغه", "kind": "foreign", "label": "partial"}
+{"key": "fv255|[1, 4]|هذه اللوحه ذات تعبير قوي", "kind": "foreign", "label": "partial"}
+{"key": "fv259|[1, 2]|نظام", "kind": "foreign", "label": "wrong"}
+{"key": "fv266|[2, 3]|ملحوظ", "kind": "foreign", "label": "correct"}
+{"key": "fv268|[2, 3]|الدقيق", "kind": "foreign", "label": "correct"}
+{"key": "fv270|[3, 4]|رعي", "kind": "foreign", "label": "wrong"}
+{"key": "fv273|[1, 2]|متطابقان", "kind": "foreign", "label": "correct"}
+{"key": "fv274|[1, 2]|تسجيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv275|[1, 3]|مطبقه", "kind": "foreign", "label": "correct"}
+{"key": "fv276|[2, 3]|جعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv278|[2, 3]|جذابه", "kind": "foreign", "label": "partial"}
+{"key": "fv280|[1, 3]|قطعه قماش ناعمه", "kind": "foreign", "label": "correct"}
+{"key": "fv283|[3, 4]|الانصهار", "kind": "foreign", "label": "correct"}
+{"key": "fv284|[3, 4]|مزيفا", "kind": "foreign", "label": "correct"}
+{"key": "fv285|[0, 2]|لم ار", "kind": "foreign", "label": "wrong"}
+{"key": "fv285|[3, 5]|من قبل", "kind": "foreign", "label": "correct"}
+{"key": "fv286|[2, 3]|علم الطوبوغرافيا", "kind": "foreign", "label": "wrong"}
+{"key": "fv287|[3, 4]|تقشير", "kind": "foreign", "label": "wrong"}
+{"key": "fv292|[4, 5]|عدو سريع", "kind": "foreign", "label": "correct"}
+{"key": "fv294|[1, 3]|فتح فجاه", "kind": "foreign", "label": "correct"}
+{"key": "fv296|[2, 3]|توايم", "kind": "foreign", "label": "correct"}
+{"key": "fv302|[1, 2]|التصوير", "kind": "foreign", "label": "wrong"}
+{"key": "fv307|[0, 2]|لديه ادراك", "kind": "foreign", "label": "partial"}
+{"key": "fv308|[3, 4]|احياء", "kind": "foreign", "label": "correct"}
+{"key": "fv311|[1, 2]|تكرار", "kind": "foreign", "label": "wrong"}
+{"key": "fv312|[0, 3]|تاخرت مرافقو", "kind": "foreign", "label": "wrong"}
+{"key": "fv313|[2, 3]|رقايق بطاطس", "kind": "foreign", "label": "correct"}
+{"key": "fv317|[1, 2]|دانتيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv319|[1, 2]|يعمل", "kind": "foreign", "label": "correct"}
+{"key": "fv319|[3, 5]|مغناطيسي عال", "kind": "foreign", "label": "partial"}
+{"key": "fv320|[1, 2]|نغمه الرنين", "kind": "foreign", "label": "wrong"}
+{"key": "fv322|[1, 2]|اعاده التدوير", "kind": "foreign", "label": "correct"}
+{"key": "fv323|[3, 5]|عنوان البروتوكول الشبكي", "kind": "foreign", "label": "correct"}
+{"key": "fv328|[4, 5]|الشعر المصفف بالتموجات", "kind": "foreign", "label": "partial"}
+{"key": "fv331|[1, 2]|حليبا", "kind": "foreign", "label": "correct"}
+{"key": "fv333|[0, 1]|مدير", "kind": "foreign", "label": "correct"}
+{"key": "fv335|[3, 4]|اليوم", "kind": "foreign", "label": "correct"}
+{"key": "fv338|[1, 2]|الجدول", "kind": "foreign", "label": "correct"}
+{"key": "fv339|[3, 4]|مفكك تشفير", "kind": "foreign", "label": "correct"}
+{"key": "fv341|[1, 4]|ذات تباين عال", "kind": "foreign", "label": "correct"}
+{"key": "fv344|[2, 3]|بلا طعم", "kind": "foreign", "label": "correct"}
+{"key": "fv347|[1, 2]|مخطط", "kind": "foreign", "label": "correct"}
+{"key": "fv349|[0, 4]|هذا الشيء بخمسه ارابيز", "kind": "foreign", "label": "wrong"}
+{"key": "fv352|[2, 4]|مخططا للدايره الكهرباييه", "kind": "foreign", "label": "correct"}
+{"key": "fv353|[3, 4]|مذاق", "kind": "foreign", "label": "correct"}
+{"key": "fv358|[1, 2]|متدرب", "kind": "foreign", "label": "correct"}
+{"key": "fv362|[1, 4]|معرض فني", "kind": "foreign", "label": "wrong"}
+{"key": "fv363|[1, 2]|الرياضيات", "kind": "foreign", "label": "correct"}
+{"key": "fv365|[2, 3]|القاء", "kind": "foreign", "label": "correct"}
+{"key": "fv366|[1, 2]|الزجاج", "kind": "foreign", "label": "wrong"}
+{"key": "fv367|[3, 4]|مضاده للبرد", "kind": "foreign", "label": "correct"}
+{"key": "fv368|[2, 3]|بايجاز", "kind": "foreign", "label": "correct"}
+{"key": "fv369|[1, 2]|خارجا", "kind": "foreign", "label": "wrong"}
+{"key": "fv369|[4, 5]|مبكرا", "kind": "foreign", "label": "correct"}
+{"key": "fv370|[0, 1]|انه", "kind": "foreign", "label": "wrong"}
+{"key": "fv370|[3, 5]|اتهاميه كهذه", "kind": "foreign", "label": "correct"}
+{"key": "fv371|[2, 3]|مويدين", "kind": "foreign", "label": "wrong"}
+{"key": "fv373|[2, 3]|الافضل", "kind": "foreign", "label": "partial"}
+{"key": "fv380|[5, 6]|الملابس الداخليه النساييه", "kind": "foreign", "label": "partial"}
+{"key": "fv381|[0, 4]|يجب ان تحضر بطاقتك التعريفيه", "kind": "foreign", "label": "correct"}
+{"key": "fv383|[3, 4]|ابتكارا", "kind": "foreign", "label": "correct"}
+{"key": "fv384|[2, 3]|وفي", "kind": "foreign", "label": "wrong"}
+{"key": "fv385|[1, 2]|الذكي", "kind": "foreign", "label": "wrong"}
+{"key": "fv387|[1, 2]|نوع", "kind": "foreign", "label": "correct"}
+{"key": "fv388|[2, 3]|احسان", "kind": "foreign", "label": "correct"}
+{"key": "fv390|[2, 3]|حمايه", "kind": "foreign", "label": "wrong"}
+{"key": "fv391|[1, 4]|يقدم استشارات نفسيه", "kind": "foreign", "label": "correct"}
+{"key": "fv392|[2, 3]|المنظار", "kind": "foreign", "label": "correct"}
+{"key": "fv393|[1, 4]|به تيار عال", "kind": "foreign", "label": "correct"}
+{"key": "fv394|[1, 2]|بكتيريا نافعه", "kind": "foreign", "label": "correct"}
+{"key": "fv397|[1, 2]|مغناطيسا", "kind": "foreign", "label": "correct"}
+{"key": "fv399|[1, 2]|اعاده النظر", "kind": "foreign", "label": "partial"}
+{"key": "fv401|[1, 4]|يقوم بتنقيه الهواء", "kind": "foreign", "label": "partial"}
+{"key": "fv404|[3, 4]|عالم رياضيات", "kind": "foreign", "label": "correct"}
+{"key": "fv406|[0, 3]|يرقصن", "kind": "foreign", "label": "correct"}
+{"key": "fv409|[1, 4]|تسقط اوراقا كثيره", "kind": "foreign", "label": "correct"}
+{"key": "fv410|[3, 4]|الخصم", "kind": "foreign", "label": "partial"}
+{"key": "fv414|[0, 1]|علم الدلاله", "kind": "foreign", "label": "wrong"}
+{"key": "fv415|[1, 3]|مركز طاقه", "kind": "foreign", "label": "wrong"}
+{"key": "fv417|[1, 2]|غطاء", "kind": "foreign", "label": "correct"}
+{"key": "fv419|[0, 4]|امش في الشارع حتي نهايته", "kind": "foreign", "label": "wrong"}
+{"key": "fv428|[2, 3]|خصما", "kind": "foreign", "label": "correct"}
+{"key": "fv429|[2, 3]|صيفيه", "kind": "foreign", "label": "correct"}
+{"key": "fv431|[1, 4]|انفجر عندما اقترب", "kind": "foreign", "label": "correct"}
+{"key": "fv438|[2, 3]|بتاشيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv439|[2, 3]|الانعزال", "kind": "foreign", "label": "correct"}
+{"key": "fv441|[3, 4]|تمويل", "kind": "foreign", "label": "partial"}
+{"key": "fv445|[3, 4]|اخماد", "kind": "foreign", "label": "correct"}
+{"key": "fv446|[1, 2]|خلال", "kind": "foreign", "label": "wrong"}
+{"key": "fv446|[3, 4]|هذا", "kind": "foreign", "label": "wrong"}
+{"key": "fv447|[0, 4]|لم اقل انني شيء", "kind": "foreign", "label": "wrong"}
+{"key": "fv450|[4, 5]|التوجيه", "kind": "foreign", "label": "correct"}
+{"key": "fv451|[3, 5]|تشغيليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv456|[1, 2]|معهد", "kind": "foreign", "label": "correct"}
+{"key": "fv457|[2, 3]|غاصه", "kind": "foreign", "label": "correct"}
+{"key": "fv462|[4, 5]|مال", "kind": "foreign", "label": "correct"}
+{"key": "fv465|[1, 2]|حضور", "kind": "foreign", "label": "wrong"}
+{"key": "fv466|[1, 2]|باعاده تغليف", "kind": "foreign", "label": "partial"}
+{"key": "fv467|[1, 2]|المسافه", "kind": "foreign", "label": "wrong"}
+{"key": "fv467|[3, 4]|قليلا", "kind": "foreign", "label": "correct"}
+{"key": "fv468|[2, 3]|مضاد للكسر", "kind": "foreign", "label": "correct"}
+{"key": "fv469|[1, 2]|السايح", "kind": "foreign", "label": "correct"}
+{"key": "fv474|[2, 3]|دينيه", "kind": "foreign", "label": "correct"}
+{"key": "fv475|[4, 5]|تنسيقي", "kind": "foreign", "label": "correct"}
+{"key": "fv476|[1, 2]|ملك", "kind": "foreign", "label": "correct"}
+{"key": "fv479|[1, 3]|ادانت", "kind": "foreign", "label": "correct"}
+{"key": "fv480|[0, 2]|توافر", "kind": "foreign", "label": "correct"}
+{"key": "fv480|[3, 6]|قل هذه الايام", "kind": "foreign", "label": "wrong"}
+{"key": "fv482|[0, 2]|هذا النوع", "kind": "foreign", "label": "correct"}
+{"key": "fv483|[1, 5]|النهايه اعترفت بانني مخطي", "kind": "foreign", "label": "correct"}
+{"key": "fv485|[0, 5]|النظام ليس قادرا علي فعل ذلك", "kind": "foreign", "label": "partial"}
+{"key": "fv486|[2, 3]|الرواق", "kind": "foreign", "label": "correct"}
+{"key": "fv487|[2, 3]|باستحواذ", "kind": "foreign", "label": "wrong"}
+{"key": "fv489|[0, 1]|العمل", "kind": "foreign", "label": "correct"}
+{"key": "fv489|[3, 5]|الطباعه الان", "kind": "foreign", "label": "correct"}
+{"key": "fv494|[1, 2]|اثني عشر بيضه", "kind": "foreign", "label": "correct"}
+{"key": "fv497|[1, 2]|ايقاع", "kind": "foreign", "label": "wrong"}
+{"key": "fv500|[1, 2]|رده فعل", "kind": "foreign", "label": "correct"}
+{"key": "fv501|[1, 2]|سروالا قصيرا", "kind": "foreign", "label": "correct"}
+{"key": "fv505|[1, 2]|ملابس نوم", "kind": "foreign", "label": "correct"}
+{"key": "fv506|[1, 2]|مسبقا", "kind": "foreign", "label": "wrong"}
+{"key": "fv507|[1, 2]|تدوين", "kind": "foreign", "label": "correct"}
+{"key": "fv511|[0, 5]|استمر في التقدم ولا تنظر خلفك", "kind": "foreign", "label": "correct"}
+{"key": "fv515|[1, 2]|رقصه الهنت", "kind": "foreign", "label": "wrong"}
+{"key": "fv517|[0, 2]|هناك انخفاض", "kind": "foreign", "label": "correct"}
+{"key": "fv517|[4, 5]|الاخيره", "kind": "foreign", "label": "correct"}
+{"key": "fv518|[1, 2]|تفادي", "kind": "foreign", "label": "correct"}
+{"key": "fv520|[1, 4]|اشرقت مبكرا اليوم", "kind": "foreign", "label": "correct"}
+{"key": "fv521|[3, 4]|التحفيز الصوتي", "kind": "foreign", "label": "correct"}
+{"key": "fv524|[5, 6]|الكليه", "kind": "foreign", "label": "correct"}
+{"key": "fv525|[3, 4]|بييه غير ملايمه", "kind": "foreign", "label": "partial"}
+{"key": "fv527|[2, 3]|علم الفراسه", "kind": "foreign", "label": "partial"}
+{"key": "fv528|[2, 3]|دردشه", "kind": "foreign", "label": "correct"}
+{"key": "fv531|[2, 3]|سباق طويل", "kind": "foreign", "label": "correct"}
+{"key": "fv538|[1, 2]|تنقيه الهواء", "kind": "foreign", "label": "wrong"}
+{"key": "fv539|[1, 2]|قنطورس الاقرب", "kind": "foreign", "label": "correct"}
+{"key": "fv540|[2, 3]|لوحه مفاتيح", "kind": "foreign", "label": "correct"}
+{"key": "fv541|[2, 4]|قميص نوم قصير", "kind": "foreign", "label": "partial"}
+{"key": "fv542|[0, 2]|ستستطيع ان تبرز", "kind": "foreign", "label": "wrong"}
+{"key": "fv543|[1, 2]|طايره مسيره", "kind": "foreign", "label": "correct"}
+{"key": "fv548|[0, 2]|هذا فرق في", "kind": "foreign", "label": "wrong"}
+{"key": "fv549|[2, 3]|الشعاب المرجانيه", "kind": "foreign", "label": "correct"}
+{"key": "fv0|[1, 2]|ملابس فرعيه", "kind": "foreign", "label": "wrong"}
+{"key": "fv1|[2, 3]|يصنع", "kind": "foreign", "label": "wrong"}
+{"key": "fv2|[3, 4]|قدره علي", "kind": "foreign", "label": "wrong"}
+{"key": "fv3|[1, 2]|الوسايط", "kind": "foreign", "label": "wrong"}
+{"key": "fv4|[1, 3]|مستحق الاعمال", "kind": "foreign", "label": "wrong"}
+{"key": "fv6|[3, 4]|لذيذ", "kind": "foreign", "label": "wrong"}
+{"key": "fv7|[3, 4]|مجموعه خاصه", "kind": "foreign", "label": "partial"}
+{"key": "fv9|[3, 4]|فكره", "kind": "foreign", "label": "wrong"}
+{"key": "fv10|[1, 2]|مسابقه", "kind": "foreign", "label": "wrong"}
+{"key": "fv11|[2, 3]|ثابت", "kind": "foreign", "label": "wrong"}
+{"key": "fv12|[3, 4]|التمرين", "kind": "foreign", "label": "wrong"}
+{"key": "fv14|[2, 3]|زفاف", "kind": "foreign", "label": "wrong"}
+{"key": "fv15|[2, 3]|خارج الطازجه", "kind": "foreign", "label": "wrong"}
+{"key": "fv16|[4, 5]|الاخيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv17|[3, 4]|سريعا", "kind": "foreign", "label": "wrong"}
+{"key": "fv18|[4, 5]|سور", "kind": "foreign", "label": "partial"}
+{"key": "fv20|[3, 4]|علم الاثار", "kind": "foreign", "label": "wrong"}
+{"key": "fv23|[1, 2]|شرطه", "kind": "foreign", "label": "wrong"}
+{"key": "fv25|[1, 2]|السياره الخاصه", "kind": "foreign", "label": "wrong"}
+{"key": "fv31|[1, 3]|الرعايه النفسيه", "kind": "foreign", "label": "partial"}
+{"key": "fv32|[1, 3]|محولا جديدا", "kind": "foreign", "label": "partial"}
+{"key": "fv33|[1, 3]|الفصل المفتوح", "kind": "foreign", "label": "correct"}
+{"key": "fv34|[2, 3]|صدمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv36|[2, 4]|الخروج", "kind": "foreign", "label": "wrong"}
+{"key": "fv37|[4, 5]|مريحا", "kind": "foreign", "label": "correct"}
+{"key": "fv38|[1, 3]|مقعد", "kind": "foreign", "label": "wrong"}
+{"key": "fv39|[3, 4]|باعاده شحن الشقه", "kind": "foreign", "label": "wrong"}
+{"key": "fv41|[2, 4]|الغاء المشاركه", "kind": "foreign", "label": "wrong"}
+{"key": "fv46|[0, 3]|ذهب يده الي العمل", "kind": "foreign", "label": "wrong"}
+{"key": "fv47|[5, 7]|تسجيل النظام", "kind": "foreign", "label": "partial"}
+{"key": "fv48|[1, 2]|مصباح", "kind": "foreign", "label": "wrong"}
+{"key": "fv50|[4, 5]|تضمينا", "kind": "foreign", "label": "wrong"}
+{"key": "fv51|[1, 2]|شطيره محليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv52|[2, 4]|خط", "kind": "foreign", "label": "wrong"}
+{"key": "fv53|[4, 5]|متعدد", "kind": "foreign", "label": "wrong"}
+{"key": "fv54|[1, 2]|واضحه", "kind": "foreign", "label": "wrong"}
+{"key": "fv56|[2, 3]|مستشفا", "kind": "foreign", "label": "wrong"}
+{"key": "fv58|[1, 3]|خطه الفعاليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv59|[2, 3]|الخبز", "kind": "foreign", "label": "wrong"}
+{"key": "fv60|[1, 2]|تنظيما", "kind": "foreign", "label": "wrong"}
+{"key": "fv61|[1, 2]|تحليل", "kind": "foreign", "label": "wrong"}
+{"key": "fv63|[3, 4]|عادي", "kind": "foreign", "label": "wrong"}
+{"key": "fv64|[1, 2]|ورشه عمل", "kind": "foreign", "label": "wrong"}
+{"key": "fv65|[1, 3]|اشاره", "kind": "foreign", "label": "wrong"}
+{"key": "fv66|[4, 5]|بالنوفلات", "kind": "foreign", "label": "wrong"}
+{"key": "fv70|[2, 3]|مخفوق", "kind": "foreign", "label": "wrong"}
+{"key": "fv71|[2, 3]|بالحيويه", "kind": "foreign", "label": "wrong"}
+{"key": "fv72|[2, 3]|الخضار", "kind": "foreign", "label": "wrong"}
+{"key": "fv74|[1, 2]|لحما", "kind": "foreign", "label": "wrong"}
+{"key": "fv75|[1, 2]|عصير", "kind": "foreign", "label": "partial"}
+{"key": "fv78|[2, 4]|برنامج محمول", "kind": "foreign", "label": "wrong"}
+{"key": "fv79|[1, 2]|بالسكينه", "kind": "foreign", "label": "wrong"}
+{"key": "fv81|[2, 3]|قابله للاشاره", "kind": "foreign", "label": "wrong"}
+{"key": "fv82|[1, 2]|يعزف", "kind": "foreign", "label": "wrong"}
+{"key": "fv83|[0, 3]|يعاني من الخوف من العابه", "kind": "foreign", "label": "wrong"}
+{"key": "fv84|[2, 3]|المستندات", "kind": "foreign", "label": "wrong"}
+{"key": "fv85|[3, 4]|بالتقدم السياسي", "kind": "foreign", "label": "wrong"}
+{"key": "fv86|[2, 3]|استرخاء", "kind": "foreign", "label": "wrong"}
+{"key": "fv89|[1, 2]|اسيله", "kind": "foreign", "label": "partial"}
+{"key": "fv92|[4, 5]|تمويل", "kind": "foreign", "label": "partial"}
+{"key": "fv93|[1, 2]|عرض", "kind": "foreign", "label": "partial"}
+{"key": "fv98|[2, 3]|وحده", "kind": "foreign", "label": "wrong"}
+{"key": "fv99|[4, 5]|مكالمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv104|[2, 3]|نظام اساسي", "kind": "foreign", "label": "partial"}
+{"key": "fv105|[4, 5]|تحليل", "kind": "foreign", "label": "wrong"}
+{"key": "fv106|[1, 2]|عمودا متساويا", "kind": "foreign", "label": "wrong"}
+{"key": "fv107|[1, 3]|موعد التسليم", "kind": "foreign", "label": "wrong"}
+{"key": "fv111|[2, 4]|الديناميكيه المستناره", "kind": "foreign", "label": "wrong"}
+{"key": "fv113|[1, 2]|الخزانه", "kind": "foreign", "label": "wrong"}
+{"key": "fv114|[2, 3]|وشدد", "kind": "foreign", "label": "wrong"}
+{"key": "fv115|[1, 2]|صرخه", "kind": "foreign", "label": "wrong"}
+{"key": "fv116|[1, 2]|مسرح", "kind": "foreign", "label": "wrong"}
+{"key": "fv118|[2, 3]|انخفاض", "kind": "foreign", "label": "correct"}
+{"key": "fv120|[2, 3]|عمومي", "kind": "foreign", "label": "partial"}
+{"key": "fv121|[1, 2]|مكبر الصوت", "kind": "foreign", "label": "wrong"}
+{"key": "fv124|[5, 7]|قريه مصر", "kind": "foreign", "label": "wrong"}
+{"key": "fv128|[1, 2]|واكتشفت", "kind": "foreign", "label": "wrong"}
+{"key": "fv130|[2, 3]|مفيده", "kind": "foreign", "label": "wrong"}
+{"key": "fv132|[2, 3]|طابور", "kind": "foreign", "label": "wrong"}
+{"key": "fv133|[2, 3]|العولمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv135|[4, 5]|اسيله", "kind": "foreign", "label": "wrong"}
+{"key": "fv136|[3, 5]|الهواء النقي", "kind": "foreign", "label": "wrong"}
+{"key": "fv140|[1, 3]|اختصارات ملونه", "kind": "foreign", "label": "wrong"}
+{"key": "fv141|[2, 3]|مرشح", "kind": "foreign", "label": "wrong"}
+{"key": "fv143|[2, 4]|بترجمه مفصل", "kind": "foreign", "label": "wrong"}
+{"key": "fv145|[2, 3]|نتحدث", "kind": "foreign", "label": "wrong"}
+{"key": "fv146|[2, 4]|ذاتيه", "kind": "foreign", "label": "partial"}
+{"key": "fv148|[4, 5]|استعاده", "kind": "foreign", "label": "partial"}
+{"key": "fv149|[0, 1]|المثابره تساعد", "kind": "foreign", "label": "wrong"}
+{"key": "fv150|[0, 1]|الاخيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv150|[2, 3]|تلك التجربه", "kind": "foreign", "label": "wrong"}
+{"key": "fv156|[1, 2]|شطيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv159|[0, 2]|حدثت طفره", "kind": "foreign", "label": "wrong"}
+{"key": "fv160|[4, 5]|زراعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv161|[3, 4]|مرفوضا", "kind": "foreign", "label": "wrong"}
+{"key": "fv162|[1, 2]|القبله", "kind": "foreign", "label": "wrong"}
+{"key": "fv165|[2, 3]|قابل للصدق", "kind": "foreign", "label": "partial"}
+{"key": "fv169|[1, 2]|صلصه", "kind": "foreign", "label": "wrong"}
+{"key": "fv170|[1, 2]|معكرونه", "kind": "foreign", "label": "wrong"}
+{"key": "fv171|[0, 1]|سنقابلك", "kind": "foreign", "label": "correct"}
+{"key": "fv172|[1, 2]|محول", "kind": "foreign", "label": "wrong"}
+{"key": "fv173|[2, 3]|منزل", "kind": "foreign", "label": "partial"}
+{"key": "fv174|[2, 3]|مفصلا", "kind": "foreign", "label": "wrong"}
+{"key": "fv176|[1, 5]|يحتوي علي كهرباء كثيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv180|[1, 2]|اسم", "kind": "foreign", "label": "wrong"}
+{"key": "fv181|[1, 2]|حماله مزهريه", "kind": "foreign", "label": "wrong"}
+{"key": "fv185|[1, 3]|ناجحا", "kind": "foreign", "label": "wrong"}
+{"key": "fv186|[1, 2]|ضيف", "kind": "foreign", "label": "wrong"}
+{"key": "fv187|[1, 2]|تحليل", "kind": "foreign", "label": "wrong"}
+{"key": "fv188|[2, 3]|متطلب", "kind": "foreign", "label": "wrong"}
+{"key": "fv189|[2, 3]|صاله الالعاب الرياضيه", "kind": "foreign", "label": "wrong"}
+{"key": "fv191|[1, 2]|السلاح الجوي", "kind": "foreign", "label": "wrong"}
+{"key": "fv192|[2, 3]|شركه", "kind": "foreign", "label": "partial"}
+{"key": "fv193|[2, 3]|بلا مبالاه", "kind": "foreign", "label": "wrong"}
+{"key": "fv196|[3, 4]|علميه", "kind": "foreign", "label": "wrong"}
+{"key": "fv197|[0, 3]|يمارس اختبارا للبنطلون", "kind": "foreign", "label": "wrong"}
+{"key": "fv200|[4, 5]|تكامل", "kind": "foreign", "label": "wrong"}
+{"key": "fv204|[3, 4]|نطاق", "kind": "foreign", "label": "partial"}
+{"key": "fv205|[1, 2]|رايد", "kind": "foreign", "label": "partial"}
+{"key": "fv206|[2, 3]|اضطراب", "kind": "foreign", "label": "wrong"}
+{"key": "fv209|[2, 5]|اتخذ بسهوله", "kind": "foreign", "label": "wrong"}
+{"key": "fv210|[2, 3]|لمده ساعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv211|[5, 6]|مبدع", "kind": "foreign", "label": "correct"}
+{"key": "fv212|[1, 2]|قطار", "kind": "foreign", "label": "wrong"}
+{"key": "fv215|[4, 6]|تخزين بريميوم", "kind": "foreign", "label": "wrong"}
+{"key": "fv217|[2, 3]|جميل", "kind": "foreign", "label": "correct"}
+{"key": "fv218|[4, 5]|هادي", "kind": "foreign", "label": "wrong"}
+{"key": "fv219|[4, 6]|بتدوين", "kind": "foreign", "label": "wrong"}
+{"key": "fv220|[2, 3]|خاليا مفترضا", "kind": "foreign", "label": "wrong"}
+{"key": "fv222|[1, 2]|معقم مختلف", "kind": "foreign", "label": "wrong"}
+{"key": "fv223|[1, 2]|صعوبه", "kind": "foreign", "label": "partial"}
+{"key": "fv224|[5, 6]|خدمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv226|[1, 2]|شمعه جويه", "kind": "foreign", "label": "wrong"}
+{"key": "fv227|[1, 2]|كعكه طازجه", "kind": "foreign", "label": "wrong"}
+{"key": "fv229|[4, 5]|المسار الصحيح", "kind": "foreign", "label": "wrong"}
+{"key": "fv230|[3, 4]|جميله", "kind": "foreign", "label": "partial"}
+{"key": "fv231|[1, 2]|قابله للتصحيح بالاجهزه الحديثه", "kind": "foreign", "label": "wrong"}
+{"key": "fv235|[1, 2]|تشغيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv240|[3, 4]|كره كبيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv241|[1, 3]|الكتابه", "kind": "foreign", "label": "wrong"}
+{"key": "fv243|[1, 2]|بالحيويه", "kind": "foreign", "label": "wrong"}
+{"key": "fv244|[3, 4]|شاملا", "kind": "foreign", "label": "wrong"}
+{"key": "fv245|[6, 7]|حديثه", "kind": "foreign", "label": "correct"}
+{"key": "fv246|[0, 3]|يستطيع ان يشترك", "kind": "foreign", "label": "wrong"}
+{"key": "fv251|[1, 2]|خطا جوي", "kind": "foreign", "label": "partial"}
+{"key": "fv252|[2, 3]|تصميم", "kind": "foreign", "label": "wrong"}
+{"key": "fv254|[4, 5]|احادي", "kind": "foreign", "label": "wrong"}
+{"key": "fv256|[1, 2]|مولد", "kind": "foreign", "label": "wrong"}
+{"key": "fv257|[2, 3]|بطلاقه", "kind": "foreign", "label": "wrong"}
+{"key": "fv258|[1, 2]|قابله لاعاده شحن طاقتك", "kind": "foreign", "label": "partial"}
+{"key": "fv259|[1, 2]|عصبي", "kind": "foreign", "label": "wrong"}
+{"key": "fv261|[3, 5]|وسايل التواصل الاجتماعي", "kind": "foreign", "label": "wrong"}
+{"key": "fv262|[2, 3]|مرتفعات", "kind": "foreign", "label": "wrong"}
+{"key": "fv263|[1, 2]|جسر", "kind": "foreign", "label": "wrong"}
+{"key": "fv264|[2, 3]|خطا", "kind": "foreign", "label": "wrong"}
+{"key": "fv266|[2, 3]|اهميه كبيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv267|[2, 4]|مصنوعه يدا", "kind": "foreign", "label": "correct"}
+{"key": "fv268|[2, 3]|الطلاء", "kind": "foreign", "label": "wrong"}
+{"key": "fv270|[3, 4]|مشاركه", "kind": "foreign", "label": "wrong"}
+{"key": "fv273|[1, 2]|فكريا", "kind": "foreign", "label": "wrong"}
+{"key": "fv274|[1, 2]|تجميع", "kind": "foreign", "label": "wrong"}
+{"key": "fv275|[1, 3]|تطبيق", "kind": "foreign", "label": "wrong"}
+{"key": "fv276|[2, 3]|البيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv280|[1, 3]|غطاء ناعم", "kind": "foreign", "label": "wrong"}
+{"key": "fv283|[3, 4]|صعود", "kind": "foreign", "label": "wrong"}
+{"key": "fv284|[3, 4]|غير", "kind": "foreign", "label": "wrong"}
+{"key": "fv286|[2, 3]|علم", "kind": "foreign", "label": "wrong"}
+{"key": "fv287|[3, 4]|تخزين", "kind": "foreign", "label": "wrong"}
+{"key": "fv289|[1, 2]|تصحيح", "kind": "foreign", "label": "wrong"}
+{"key": "fv292|[4, 5]|رحله جويه", "kind": "foreign", "label": "wrong"}
+{"key": "fv294|[1, 3]|فورا", "kind": "foreign", "label": "wrong"}
+{"key": "fv296|[2, 3]|ثلاثون", "kind": "foreign", "label": "wrong"}
+{"key": "fv302|[1, 2]|خيالي", "kind": "foreign", "label": "wrong"}
+{"key": "fv303|[1, 2]|ندره", "kind": "foreign", "label": "wrong"}
+{"key": "fv306|[3, 5]|خيال العلم", "kind": "foreign", "label": "partial"}
+{"key": "fv308|[3, 4]|استعاده", "kind": "foreign", "label": "partial"}
+{"key": "fv309|[1, 2]|الستاره", "kind": "foreign", "label": "wrong"}
+{"key": "fv310|[2, 3]|متعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv311|[1, 2]|الكاتب", "kind": "foreign", "label": "wrong"}
+{"key": "fv312|[0, 3]|اتاخر المرء عن", "kind": "foreign", "label": "wrong"}
+{"key": "fv315|[1, 2]|عدسه", "kind": "foreign", "label": "wrong"}
+{"key": "fv316|[1, 2]|الحاكم", "kind": "foreign", "label": "wrong"}
+{"key": "fv317|[1, 2]|قميص فستان", "kind": "foreign", "label": "wrong"}
+{"key": "fv319|[1, 2]|في مجال تجاري", "kind": "foreign", "label": "wrong"}
+{"key": "fv319|[3, 5]|في مجال تجاري عالي", "kind": "foreign", "label": "wrong"}
+{"key": "fv320|[1, 2]|سلسله", "kind": "foreign", "label": "wrong"}
+{"key": "fv321|[3, 4]|يملك", "kind": "foreign", "label": "wrong"}
+{"key": "fv322|[1, 2]|اعاده صياغه", "kind": "foreign", "label": "wrong"}
+{"key": "fv325|[3, 4]|باجراء شرطه", "kind": "foreign", "label": "wrong"}
+{"key": "fv326|[1, 2]|متنوع", "kind": "foreign", "label": "wrong"}
+{"key": "fv328|[4, 5]|اولم", "kind": "foreign", "label": "wrong"}
+{"key": "fv329|[2, 3]|تشديد", "kind": "foreign", "label": "wrong"}
+{"key": "fv330|[0, 2]|هناك تنسي", "kind": "foreign", "label": "wrong"}
+{"key": "fv334|[2, 3]|تسجيل", "kind": "foreign", "label": "partial"}
+{"key": "fv336|[3, 4]|الواجب", "kind": "foreign", "label": "wrong"}
+{"key": "fv339|[3, 4]|مخطط", "kind": "foreign", "label": "wrong"}
+{"key": "fv340|[2, 3]|جذابه", "kind": "foreign", "label": "wrong"}
+{"key": "fv341|[1, 4]|علي ترقيه عاليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv344|[2, 3]|لذيذ", "kind": "foreign", "label": "wrong"}
+{"key": "fv346|[1, 2]|اعاده بناء", "kind": "foreign", "label": "partial"}
+{"key": "fv347|[1, 2]|قسم", "kind": "foreign", "label": "wrong"}
+{"key": "fv348|[3, 4]|الوصول", "kind": "foreign", "label": "wrong"}
+{"key": "fv349|[0, 4]|الحاجه بخمس عطلات", "kind": "foreign", "label": "wrong"}
+{"key": "fv351|[3, 5]|مقاوم جويه", "kind": "foreign", "label": "wrong"}
+{"key": "fv352|[2, 4]|خريطه مرور", "kind": "foreign", "label": "wrong"}
+{"key": "fv353|[3, 4]|اختبار", "kind": "foreign", "label": "wrong"}
+{"key": "fv358|[1, 2]|وسيط", "kind": "foreign", "label": "wrong"}
+{"key": "fv362|[1, 4]|المشي لمسافات طويله", "kind": "foreign", "label": "wrong"}
+{"key": "fv365|[2, 3]|تقييم", "kind": "foreign", "label": "wrong"}
+{"key": "fv367|[3, 4]|مضاده", "kind": "foreign", "label": "wrong"}
+{"key": "fv368|[2, 3]|بمسووليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv370|[3, 5]|اتخذ هكذا", "kind": "foreign", "label": "wrong"}
+{"key": "fv371|[2, 3]|براء", "kind": "foreign", "label": "wrong"}
+{"key": "fv372|[1, 2]|ملصق", "kind": "foreign", "label": "wrong"}
+{"key": "fv373|[2, 3]|عطله", "kind": "foreign", "label": "wrong"}
+{"key": "fv374|[6, 7]|موكد", "kind": "foreign", "label": "wrong"}
+{"key": "fv375|[0, 4]|لديه سياره كبيره قويه", "kind": "foreign", "label": "partial"}
+{"key": "fv377|[3, 4]|غير منتج", "kind": "foreign", "label": "wrong"}
+{"key": "fv379|[1, 3]|شخص ذكي", "kind": "foreign", "label": "wrong"}
+{"key": "fv380|[5, 6]|المصنع", "kind": "foreign", "label": "wrong"}
+{"key": "fv381|[0, 4]|يجب ان تاتي المسابقه معك", "kind": "foreign", "label": "wrong"}
+{"key": "fv384|[2, 3]|ذكي", "kind": "foreign", "label": "wrong"}
+{"key": "fv388|[2, 3]|عظمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv389|[2, 3]|ممتازه", "kind": "foreign", "label": "correct"}
+{"key": "fv391|[1, 4]|استماعا نفسيا", "kind": "foreign", "label": "wrong"}
+{"key": "fv392|[2, 3]|جهاز الكشف الداخلي", "kind": "foreign", "label": "partial"}
+{"key": "fv393|[1, 4]|سجاده عاليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv394|[1, 2]|مضاد حيوي", "kind": "foreign", "label": "wrong"}
+{"key": "fv395|[4, 5]|اجماع", "kind": "foreign", "label": "wrong"}
+{"key": "fv397|[1, 2]|مقياس", "kind": "foreign", "label": "wrong"}
+{"key": "fv398|[1, 3]|يتحدث طوال", "kind": "foreign", "label": "correct"}
+{"key": "fv399|[1, 2]|ان استجيب", "kind": "foreign", "label": "wrong"}
+{"key": "fv400|[1, 2]|تبرير", "kind": "foreign", "label": "wrong"}
+{"key": "fv401|[1, 4]|بتشغيل الهواء", "kind": "foreign", "label": "wrong"}
+{"key": "fv402|[3, 5]|مجدد اضافي", "kind": "foreign", "label": "wrong"}
+{"key": "fv404|[3, 4]|الرياضيات", "kind": "foreign", "label": "wrong"}
+{"key": "fv406|[0, 3]|البنات كانوا يرقصن", "kind": "foreign", "label": "partial"}
+{"key": "fv407|[1, 2]|انتاج", "kind": "foreign", "label": "wrong"}
+{"key": "fv409|[1, 4]|تقع حياه كثيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv410|[3, 4]|الفيلان", "kind": "foreign", "label": "wrong"}
+{"key": "fv414|[0, 1]|علم", "kind": "foreign", "label": "wrong"}
+{"key": "fv415|[1, 3]|منزل الطاقه", "kind": "foreign", "label": "wrong"}
+{"key": "fv417|[1, 2]|قبعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv419|[0, 4]|امش شارعا لحد اخر", "kind": "foreign", "label": "wrong"}
+{"key": "fv423|[2, 3]|الاساسي", "kind": "foreign", "label": "wrong"}
+{"key": "fv428|[2, 3]|عرضا", "kind": "foreign", "label": "wrong"}
+{"key": "fv431|[1, 4]|استكشفت السياره لما قرب", "kind": "foreign", "label": "wrong"}
+{"key": "fv432|[3, 4]|علوم", "kind": "foreign", "label": "wrong"}
+{"key": "fv434|[2, 3]|تحديد دول", "kind": "foreign", "label": "wrong"}
+{"key": "fv436|[3, 4]|صعود", "kind": "foreign", "label": "wrong"}
+{"key": "fv437|[2, 3]|مولكيا اساسيا", "kind": "foreign", "label": "wrong"}
+{"key": "fv439|[2, 3]|التنقل", "kind": "foreign", "label": "wrong"}
+{"key": "fv441|[3, 4]|علوم", "kind": "foreign", "label": "wrong"}
+{"key": "fv443|[3, 5]|وجبه خفيفه", "kind": "foreign", "label": "wrong"}
+{"key": "fv445|[3, 4]|توقف", "kind": "foreign", "label": "wrong"}
+{"key": "fv446|[1, 2]|في نهايه هذا", "kind": "foreign", "label": "wrong"}
+{"key": "fv446|[3, 4]|جذب الناس", "kind": "foreign", "label": "wrong"}
+{"key": "fv447|[0, 4]|لم اقل شييا غريبا", "kind": "foreign", "label": "correct"}
+{"key": "fv450|[4, 5]|تشغيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv451|[3, 5]|فنيه", "kind": "foreign", "label": "wrong"}
+{"key": "fv452|[4, 5]|المحيط", "kind": "foreign", "label": "wrong"}
+{"key": "fv453|[0, 2]|اشتريت لك بذره", "kind": "foreign", "label": "wrong"}
+{"key": "fv454|[1, 2]|استقبال", "kind": "foreign", "label": "wrong"}
+{"key": "fv455|[0, 2]|شعرت بجوع", "kind": "foreign", "label": "wrong"}
+{"key": "fv456|[1, 2]|بناء", "kind": "foreign", "label": "wrong"}
+{"key": "fv457|[2, 3]|غايم", "kind": "foreign", "label": "wrong"}
+{"key": "fv458|[1, 2]|حزام صغير", "kind": "foreign", "label": "wrong"}
+{"key": "fv459|[0, 2]|احب التنقل", "kind": "foreign", "label": "wrong"}
+{"key": "fv460|[5, 6]|غير متوقعه", "kind": "foreign", "label": "wrong"}
+{"key": "fv461|[1, 2]|انقطاع", "kind": "foreign", "label": "wrong"}
+{"key": "fv462|[4, 5]|قمر", "kind": "foreign", "label": "wrong"}
+{"key": "fv464|[3, 4]|المصعد", "kind": "foreign", "label": "wrong"}
+{"key": "fv465|[1, 2]|قايد", "kind": "foreign", "label": "partial"}
+{"key": "fv466|[1, 2]|باعاده بيع", "kind": "foreign", "label": "wrong"}
+{"key": "fv467|[1, 2]|بعيده", "kind": "foreign", "label": "wrong"}
+{"key": "fv468|[2, 3]|مضاد", "kind": "foreign", "label": "wrong"}
+{"key": "fv469|[1, 2]|السياح", "kind": "foreign", "label": "wrong"}
+{"key": "fv471|[3, 4]|العاصفه", "kind": "foreign", "label": "wrong"}
+{"key": "fv474|[2, 3]|مبهر", "kind": "foreign", "label": "wrong"}
+{"key": "fv476|[1, 2]|حاكم", "kind": "foreign", "label": "partial"}
+{"key": "fv477|[4, 5]|تلقايي", "kind": "foreign", "label": "correct"}
+{"key": "fv478|[3, 4]|قماش عاليه", "kind": "foreign", "label": "wrong"}
+{"key": "fv479|[1, 3]|اتهم", "kind": "foreign", "label": "wrong"}
+{"key": "fv480|[0, 2]|القيمه الخاصه بالخدمه", "kind": "foreign", "label": "wrong"}
+{"key": "fv481|[1, 2]|عباره", "kind": "foreign", "label": "wrong"}
+{"key": "fv483|[1, 5]|النهايه اعتقدت اني مخطي", "kind": "foreign", "label": "wrong"}
+{"key": "fv485|[0, 5]|النظام لا يعمل علي هذا النحو", "kind": "foreign", "label": "wrong"}
+{"key": "fv486|[2, 3]|الحريق", "kind": "foreign", "label": "wrong"}
+{"key": "fv487|[2, 3]|بتقليل", "kind": "foreign", "label": "wrong"}
+{"key": "fv488|[3, 4]|تقدير", "kind": "foreign", "label": "partial"}
+{"key": "fv489|[3, 5]|البرتقالي الان", "kind": "foreign", "label": "wrong"}
+{"key": "fv492|[2, 3]|اشاره", "kind": "foreign", "label": "wrong"}
+{"key": "fv495|[0, 2]|دعوه الون", "kind": "foreign", "label": "wrong"}
+{"key": "fv496|[0, 1]|وفر", "kind": "foreign", "label": "wrong"}
+{"key": "fv497|[1, 2]|رقصه", "kind": "foreign", "label": "wrong"}
+{"key": "fv498|[1, 2]|مدخل", "kind": "foreign", "label": "wrong"}
+{"key": "fv499|[2, 3]|علم الاسيله", "kind": "foreign", "label": "wrong"}
+{"key": "fv500|[1, 2]|ردود الفعل", "kind": "foreign", "label": "wrong"}
+{"key": "fv501|[1, 2]|فستان قصير", "kind": "foreign", "label": "wrong"}
+{"key": "fv503|[1, 2]|شطيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv505|[1, 2]|بذره صغيره", "kind": "foreign", "label": "wrong"}
+{"key": "fv506|[1, 2]|سرير", "kind": "foreign", "label": "wrong"}
+{"key": "fv507|[1, 2]|توصيل", "kind": "foreign", "label": "wrong"}
+{"key": "fv510|[2, 3]|جماعه", "kind": "foreign", "label": "partial"}
+{"key": "fv511|[0, 5]|كمل جاهد ولا تعليق خلفك", "kind": "foreign", "label": "wrong"}
+{"key": "fv512|[1, 2]|تقديم", "kind": "foreign", "label": "wrong"}
+{"key": "fv514|[3, 4]|تركيب", "kind": "foreign", "label": "wrong"}
+{"key": "fv516|[1, 2]|هاتفا داخليا", "kind": "foreign", "label": "correct"}
+{"key": "fv517|[0, 2]|في", "kind": "foreign", "label": "wrong"}
+{"key": "fv518|[1, 2]|تصحيح", "kind": "foreign", "label": "wrong"}
+{"key": "fv520|[1, 4]|تشرق مبكرا اليوم", "kind": "foreign", "label": "correct"}
+{"key": "fv521|[3, 4]|نظام صوتي", "kind": "foreign", "label": "partial"}
+{"key": "fv525|[3, 4]|العداله", "kind": "foreign", "label": "wrong"}
+{"key": "fv526|[6, 7]|العوده", "kind": "foreign", "label": "wrong"}
+{"key": "fv527|[2, 3]|الوجه", "kind": "foreign", "label": "wrong"}
+{"key": "fv529|[3, 4]|التجربه", "kind": "foreign", "label": "wrong"}
+{"key": "fv531|[2, 3]|مسابقه رياضيه", "kind": "foreign", "label": "partial"}
+{"key": "fv534|[4, 5]|المجتمع", "kind": "foreign", "label": "wrong"}
+{"key": "fv541|[2, 4]|طفل دول", "kind": "foreign", "label": "wrong"}
+{"key": "fv542|[0, 2]|هل يمكن ان تقبل", "kind": "foreign", "label": "wrong"}
+{"key": "fv543|[1, 2]|ضوضاء", "kind": "foreign", "label": "wrong"}
+{"key": "fv550|[5, 6]|بدنيه", "kind": "foreign", "label": "wrong"}
+{"key": "fv551|[1, 3]|قوس قزح صغير", "kind": "foreign", "label": "wrong"}
+{"key": "fv552|[3, 4]|الامان", "kind": "foreign", "label": "wrong"}

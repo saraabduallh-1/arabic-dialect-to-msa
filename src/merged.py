@@ -34,6 +34,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoModelForTokenClassification,
 
 import run_word
 from data import ROOT, clean, load, normalize
+from domain_terms import DomainTerms
 from foreign_data import MODEL_DIR, OUT, foreign_dict, load_splits, load_tokenizer
 from run_llm import Retriever, chat
 from tag_dialect import tokens
@@ -107,6 +108,7 @@ class Layer:
         ftrain = load_splits()["train"]
         self.fdic = foreign_dict(ftrain)
         self.fret = Retriever(foreign_rows(ftrain))
+        self.domain = DomainTerms()  # Saleem's specialization glossary: its terms win (src/domain_terms.py)
         train = load("train", "sentences_v2") + load("verified", "generated")  # +gen3, as the best word systems
         self.ret = Retriever(train)
         self.cache = {}
@@ -172,7 +174,8 @@ class Layer:
             for ex in self.fret.examples(r["src"], self.k):
                 msgs += [{"role": "user", "content": f"الجملة: {ex['src_marked']}"},
                          {"role": "assistant", "content": run_word.answer(ex)}]
-            msgs.append({"role": "user", "content": f"الجملة: {r['src_marked']}"})
+            user = f"الجملة: {r['src_marked']}"
+            msgs.append({"role": "user", "content": user})
         key = hashlib.sha1(json.dumps([self.gemma, msgs], ensure_ascii=False).encode()).hexdigest()
         if key not in self.cache:
             self.cache[key] = chat(self.gemma, msgs)
@@ -199,6 +202,9 @@ class Layer:
             return top, "suggested", "dictionary"
         if kind == "foreign" and self.foreign == "gemma":
             c = dic.get(normalize(w))
+            h = self.domain.lookup(w)
+            if h and not copy(g) and normalize(g) == normalize(h[1]):  # same as the specialization layer's term
+                return g, "suggested", "gemma+domain_glossary"
             if not copy(g) and not copy(m) and normalize(g) == normalize(m):
                 return g, "suggested", "gemma+foreign_model"
             if not copy(g) and c and normalize(g) == normalize(c.most_common(1)[0][0]):
@@ -248,8 +254,11 @@ class Layer:
                 m = aligned(w, h, s, e)
                 g = gans.get((s, e))
                 msa, tier, src = self.decide(t, span, m, g)
+                gl = self.domain.lookup(span) if t == "foreign" else None
                 reps.append({"span": [s, e], "type": t, "word": span, "msa": msa, "tier": tier, "source": src,
-                             "foreign_model": m, "gemma": g})
+                             "foreign_model": m, "gemma": g,
+                             # possible term of Saleem's specialization glossary: that layer decides, not this one
+                             "glossary": {"english": gl[0], "arabic": gl[1]} if gl else None})
                 out += w[pos:s] + [msa]
                 pos = e
             res.append({"src": " ".join(w), "msa": " ".join(out + w[pos:]), "replacements": reps,
@@ -289,6 +298,8 @@ def eval_dialect(layer, split, variants):
         for r, o in zip(rows, outs):
             words = o["src"].split()
             for x in o["replacements"]:  # re-decide for this variant from the stored candidates
+                if x["source"] == "domain_glossary":
+                    continue
                 x["msa"], x["tier"], x["source"] = layer.decide(x["type"], x["word"], x["foreign_model"], x["gemma"])
             gold_sp = sorted(s for s in typed_spans([l for _, l in tokens(r["src_marked"])])[0])
             gold = {sp: m for sp, (_, m) in zip(gold_sp, r["pairs"])}
@@ -345,6 +356,8 @@ def eval_foreign_variants(layer, split):
         layer.foreign = v
         for o in outs:
             for x in o["replacements"]:
+                if x["source"] == "domain_glossary":
+                    continue
                 x["msa"], x["tier"], x["source"] = layer.decide(x["type"], x["word"], x["foreign_model"], x["gemma"])
             w, out, pos = o["src"].split(), [], 0
             for x in o["replacements"]:

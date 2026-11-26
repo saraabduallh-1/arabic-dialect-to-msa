@@ -4,7 +4,13 @@ Dialect labels: the "(...)N" marks of data/sentences_v2 (as src/tag_dialect.py).
 Foreign labels: the words the MSA side changed in the foreign -> MSA project's data (src/foreign_data.py).
 Scored on the two dev sets (dialect dev, foreign dev); test is scored once by src/merged.py --final.
 
-usage: python src/tag_merged.py [--epochs 5] [--dia_x 1] [--save results/checkpoints/tagger_merged]
+Punctuation (--punct p): the dialect training sentences have no marks, so a word with a glued mark ("بكرة،") was
+missed. With p > 0 a second copy of the dialect sentences is added with a mark glued to a share p of the words (and
+a final period half the time), and a copy of the foreign sentences without the final period, so "." stops being a
+sign of foreign data. Labels stay the same. Chosen on the glued dev copies (25% of words, seed 0), as in
+merged.Layer.tag_punct.
+
+usage: python src/tag_merged.py [--epochs 5] [--dia_x 1] [--punct 0.15] [--save results/checkpoints/tagger_merged]
 """
 import argparse
 import json
@@ -28,6 +34,27 @@ def foreign_tokens(r):
         for i in range(s + 1, e):
             lab[i] = 4
     return list(zip(r["words"], lab))
+
+
+MARKS = ["،", "؟", ".", "!"]
+
+
+def glue(sents, share, seed, final=0.0):
+    """A copy where each word gets a random mark with probability `share` (and the last word a period with
+    probability `final`); labels are unchanged."""
+    rng = random.Random(seed)
+    out = []
+    for s in sents:
+        t = [(w + rng.choice(MARKS) if rng.random() < share else w, l) for w, l in s]
+        if t and rng.random() < final and t[-1][0][-1] not in "".join(MARKS):
+            t[-1] = (t[-1][0] + ".", t[-1][1])
+        out.append(t)
+    return out
+
+
+def unperiod(sents):
+    return [s[:-1] + [(s[-1][0].rstrip("."), s[-1][1])] if s and s[-1][0].endswith(".") and len(s[-1][0]) > 1 else s
+            for s in sents]
 
 
 def typed_spans(labels):
@@ -54,6 +81,7 @@ def main():
     ap.add_argument("--epochs", type=int, default=5)
     ap.add_argument("--lr", type=float, default=3e-5)
     ap.add_argument("--dia_x", type=int, default=1, help="repeat the dialect training sentences this many times")
+    ap.add_argument("--punct", type=float, default=0.0, help="share of words given a glued mark in the extra dialect copy")
     ap.add_argument("--save", default=str(ROOT / "results" / "checkpoints" / "tagger_merged"))
     a = ap.parse_args()
     random.seed(0)
@@ -61,9 +89,13 @@ def main():
 
     fsp = load_splits()
     dia_train = read(DATA / "sentences_v2" / "train.csv")
-    train = dia_train * a.dia_x + [foreign_tokens(r) for r in fsp["train"]]
-    dev_sets = {"dialect_dev": read(DATA / "sentences_v2" / "dev.csv"),
-                "foreign_dev": [foreign_tokens(r) for r in fsp["dev"]]}
+    for_train = [foreign_tokens(r) for r in fsp["train"]]
+    train = dia_train * a.dia_x + for_train
+    if a.punct > 0:
+        train += glue(dia_train, a.punct, seed=1, final=0.5) + unperiod(for_train)
+    dd, fd = read(DATA / "sentences_v2" / "dev.csv"), [foreign_tokens(r) for r in fsp["dev"]]
+    dev_sets = {"dialect_dev": dd, "foreign_dev": fd,
+                "dialect_dev_glued": glue(dd, 0.25, seed=0), "foreign_dev_glued": glue(fd, 0.25, seed=0)}
 
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     tok = AutoTokenizer.from_pretrained(a.model)
@@ -91,7 +123,7 @@ def main():
     model.eval()
     model.save_pretrained(a.save)
     tok.save_pretrained(a.save)
-    res = {"epochs": a.epochs, "dia_x": a.dia_x, "train_sentences": {"dialect": len(dia_train), "foreign": len(fsp["train"])},
+    res = {"epochs": a.epochs, "dia_x": a.dia_x, "punct": a.punct, "save": a.save, "train_sentences": {"dialect": len(dia_train), "foreign": len(fsp["train"])},
            **{k: score(model, tok, v, dev) for k, v in dev_sets.items()}}
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / "tagger_dev.jsonl").open("a", encoding="utf-8") as f:

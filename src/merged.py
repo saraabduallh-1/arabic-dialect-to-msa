@@ -41,7 +41,7 @@ from tag_dialect import tokens
 from tag_merged import typed_spans
 from tiers import train_dict
 
-TAGGER = ROOT / "results" / "checkpoints" / "tagger_merged"
+TAGGER = ROOT / "results" / "checkpoints" / "tagger_merged_punct0.15"  # trained with glued marks (src/tag_merged.py --punct 0.15)
 GEMMA = "gemma4:12b"
 LATIN = re.compile(r"[A-Za-z]")
 CACHE = OUT / "gemma_cache.jsonl"

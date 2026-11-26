@@ -26,13 +26,23 @@ def spans(model, tok, s, dev, punct):
     return pd_, pf
 
 
-def score(model, tok, sents, dev, punct):
+CHECK = ["خلاص بنرسل لك اللينك على الواتس بكرة، وش رايك نسوي ميتنق عشان نشوف التارقت؟",
+         "والله ما ادري وش السالفة، بس الدكتور قال لازم نخلص البريزنتيشن اليوم."]
+
+
+def score(model, tok, sents, dev, punct, freq=None):
     c = Counter()
     for s in sents:
         gd, gf = typed_spans([l for _, l in s])
         pd_, pf = spans(model, tok, s, dev, punct)
+        if freq is not None:
+            for a, b in gd:
+                if " ".join(w.strip(END) for w, _ in s[a:b]) in freq:
+                    c["fq"] += 1; c["fq_hit"] += (a, b) in pd_
         for k, g, p in (("D", gd, pd_), ("F", gf, pf)):
             c[k + "tp"] += len(g & p); c[k + "fp"] += len(p - g); c[k + "fn"] += len(g - p)
+    if freq is not None:
+        return round(100 * c["fq_hit"] / max(c["fq"], 1), 1), c["fq"]
     return prf(c["Dtp"], c["Dfp"], c["Dfn"]), prf(c["Ftp"], c["Ffp"], c["Ffn"])
 
 
@@ -45,6 +55,9 @@ def main():
     d = read(DATA / "sentences_v2" / f"{a.split}.csv")
     f = [foreign_tokens(r) for r in fsp[a.split]]
     sets = {"dialect": d, "dialect_glued": glue(d, 0.25, 0), "foreign": f, "foreign_glued": glue(f, 0.25, 0)}
+    tr = read(DATA / "sentences_v2" / "train.csv")
+    cnt = Counter(" ".join(w.strip(END) for w, _ in s[a:b]) for s in tr for a, b in typed_spans([l for _, l in s])[0])
+    freq = {w for w, n in cnt.items() if n >= 5}  # dialect words seen at least 5 times in training
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     for ck in a.ckpts:
         tok = AutoTokenizer.from_pretrained(ck)
@@ -54,6 +67,13 @@ def main():
             for k, v in sets.items():
                 D, F = score(model, tok, v, dev, punct)
                 row[k] = D if k.startswith("dialect") else F
+            row["frequent_dialect_recall"] = score(model, tok, d, dev, punct, freq)
+            row["frequent_dialect_recall_glued"] = score(model, tok, sets["dialect_glued"], dev, punct, freq)
+            for t in CHECK:
+                w = [(x, 0) for x in t.split()]
+                pd_, pf = spans(model, tok, w, dev, punct)
+                row.setdefault("check", []).append({"D": " | ".join(" ".join(t.split()[a:b]) for a, b in sorted(pd_)),
+                                                    "F": " | ".join(" ".join(t.split()[a:b]) for a, b in sorted(pf))})
             print(json.dumps(row, ensure_ascii=False), flush=True)
             with (OUT / "tagger_punct_eval.jsonl").open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps(row, ensure_ascii=False) + "\n")
